@@ -71,8 +71,10 @@ def main() -> None:
         "generatedFrom": {"gameRoot": "redacted", "versionId": "4139551"},
     }
     (build_root / "patch_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    for relative in ["安装汉化.cmd", "卸载汉化.cmd", "README_汉化流程.md"]:
-        shutil.copy2(dev / relative, build_root / relative)
+    for relative in ["安装汉化.cmd", "卸载汉化.cmd", "README.md"]:
+        source = dev / relative
+        if source.exists():
+            shutil.copy2(source, build_root / relative)
     (build_root / "tools").mkdir()
     for relative in ["install.ps1", "uninstall.ps1"]:
         shutil.copy2(dev / "tools" / relative, build_root / "tools" / relative)

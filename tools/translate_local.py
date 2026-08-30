@@ -416,7 +416,7 @@ PHRASES.update({
 })
 
 WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'’-]*\b")
-PROTECT_RE = re.compile(r"(\\\\?[A-Za-z]+(?:\[[^\]]*\]|\([^)]*\))?|\\\\[.\|^!]|%\d+|<[^>]+>)")
+PROTECT_RE = re.compile(r"(\\[A-Za-z]+(?:\[[^\]]*\]|\([^)]*\))?|\\[.\|^!]|%\d+|<[^>]+>)")
 TERM_LOOKUP = {key.lower(): value for key, value in TERMS.items()}
 TERM_RE = re.compile(
     r"(?<![A-Za-z])(?:" + "|".join(re.escape(key) for key in sorted(TERMS, key=len, reverse=True)) + r")(?![A-Za-z])",

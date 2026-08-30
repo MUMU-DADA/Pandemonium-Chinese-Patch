@@ -9,7 +9,12 @@ function Get-Sha256([string]$Path) {
 $packageRoot = Split-Path -Parent $PSScriptRoot
 $manifestPath = Join-Path $packageRoot 'patch_manifest.json'
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
-$gameRoot = [IO.Path]::GetFullPath($GameRoot)
+$cleanGameRoot = $GameRoot.Trim().Trim('"')
+try {
+    $gameRoot = [IO.Path]::GetFullPath($cleanGameRoot)
+} catch {
+    throw "游戏目录路径无效: $GameRoot"
+}
 $backupRoot = Join-Path $gameRoot '.cnpatch_backup'
 $statePath = Join-Path $backupRoot 'state.json'
 New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
