@@ -1,0 +1,9 @@
+    party.removeActor(actor.actorId());
+!
+"█B█N███ ███ H███, ██ █H█ ██T██ ██R█."
+$gameVariables.setValue(1, party.members()[0].actorId());
+//clear the exile box before kicking members
+\n<???>
+party.allMembers().forEach(function(actor) {
+var party = $gameSystem.reserveParty()
+});

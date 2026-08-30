@@ -1,0 +1,2623 @@
+www/data/Actors.json	Haures
+www/data/Actors.json	Demon #64 of the Ars Goetia.
+While quite bold in appearance and flame, her physicality is awful.
+www/data/Actors.json	Ipos
+www/data/Actors.json	Demon #22 of the Ars Goetia.
+Seemingly classy and elegant, at least at first glance.
+www/data/Actors.json	G.Labolas
+www/data/Actors.json	Demon #25 of the Ars Goetia.
+Has a peculiar fascination with all forms of violence.
+www/data/Actors.json	Zepar
+www/data/Actors.json	Demon #16 of the Ars Goetia.
+Solemnly clad in crimson soldier's armor. Has a captivating... personality?
+www/data/Actors.json	Orobas
+www/data/Actors.json	Demon #55 of the Ars Goetia.
+Friendly enough, and is an aspiring track racing star.
+www/data/Actors.json	???
+www/data/Armors.json	(M.DEF+2) (ATK-1)
+www/data/Armors.json	Big Hat
+www/data/Armors.json	(HP-4) (Evasion+15%)
+www/data/Armors.json	Cravat
+www/data/Armors.json	(MP+5) (DEF/HP-2)
+www/data/Armors.json	Plated Jacket
+www/data/Armors.json	(DEF/HP+2) (ATK-1)
+www/data/Armors.json	Red Greaves
+www/data/Armors.json	(HP/MP+5) (ATK-4) (Passive HP Regen)
+www/data/Armors.json	Weighted Dress
+www/data/Classes.json	#22 PROXY
+www/data/Classes.json	#25 PROXY
+www/data/Classes.json	#64 PROXY
+www/data/Classes.json	Priest
+www/data/Classes.json	#55 PROXY
+www/data/Classes.json	#16 PROXY
+www/data/Classes.json	#64
+www/data/Classes.json	SKILL HOLDER
+www/data/Classes.json	#25
+www/data/Classes.json	kushiel
+www/data/Classes.json	#22
+www/data/Classes.json	#16
+www/data/Classes.json	#55
+www/data/CommonEvents.json	WARNING:
+www/data/CommonEvents.json	FOR THE SAFETY OF INFERNAL SPIRITS TRAVERSING THROUGH
+www/data/CommonEvents.json	THE INFERNO
+www/data/CommonEvents.json	THE BOSS DEMANDS THAT A PILGRIMAGE TO PANDAEMONIUM 
+www/data/CommonEvents.json	MUST CONTAIN NO MORE THAN THREE PARTY MEMBERS
+www/data/CommonEvents.json	PLEASE SELECT A DEMON TO SEND ON THEIR WAY:
+www/data/CommonEvents.json	\n<Haures>So that's how it is, huh...
+www/data/CommonEvents.json	\n<Haures>...
+www/data/CommonEvents.json	\n<Haures>Well I'll show ya!
+www/data/CommonEvents.json	\n<Haures>I'm gettin' to Pandaemonium on my own!
+www/data/CommonEvents.json	\n<Haures>I... I'm the best! I don't need no one else
+www/data/CommonEvents.json	with me...!
+www/data/CommonEvents.json	(The Demon scowls at you.)
+www/data/CommonEvents.json	\n<Haures>Later, losers...
+www/data/CommonEvents.json	The Demon has left the party...
+www/data/CommonEvents.json	\n<Ipos>Wh-Huh?
+www/data/CommonEvents.json	\n<Ipos>Well then...
+www/data/CommonEvents.json	\n<Ipos>Suit yourselves!
+www/data/CommonEvents.json	\n<Ipos>As if you lot deserve to be around a
+www/data/CommonEvents.json	Demon of my stature!
+www/data/CommonEvents.json	\n<Ipos>...
+www/data/CommonEvents.json	(The Demon seems very flustered.)
+www/data/CommonEvents.json	\n<Ipos>Don't expect me to help if we're to cross
+www/data/CommonEvents.json	paths again.
+www/data/CommonEvents.json	\n<Glasya-Labolas>Hm... Hm... Hah...
+www/data/CommonEvents.json	\n<Glasya-Labolas>I'll kill you if I see you again,
+www/data/CommonEvents.json	\n<Glasya-Labolas>y'know?
+www/data/CommonEvents.json	\n<Glasya-Labolas>I'm sure Boss won't mind a few
+www/data/CommonEvents.json	no-shows...
+www/data/CommonEvents.json	(The Demon glares at you for a second.)
+www/data/CommonEvents.json	\n<Glasya-Labolas>Mmh...
+www/data/CommonEvents.json	\n<Zepar>...
+www/data/CommonEvents.json	(The Demon remains unmoving.)
+www/data/CommonEvents.json	\n<Zepar>Then it shall be so.
+www/data/CommonEvents.json	\n<Orobas>Huh? Are we racing to Pandaemonium now?!
+www/data/CommonEvents.json	\n<Orobas>...
+www/data/CommonEvents.json	\n<Orobas>O-oh... you wanted me to go
+www/data/CommonEvents.json	\.\.\.on my own?
+www/data/CommonEvents.json	\n<Orobas>Did I-
+www/data/CommonEvents.json	(The Demon's eyes are racing.)
+www/data/CommonEvents.json	\n<Orobas>But
+www/data/CommonEvents.json	\n<Orobas>...What did I do wrong...?
+www/data/CommonEvents.json	The enemy got away...
+www/data/CommonEvents.json	Type O Blood obtained.
+www/data/CommonEvents.json	Unholy Drop obtained.
+www/data/CommonEvents.json	Human Flesh obtained.
+www/data/CommonEvents.json	Stygian Water obtained.
+www/data/CommonEvents.json	Torn Grimoire obtained.
+www/data/CommonEvents.json	Rusty Dagger obtained.
+www/data/CommonEvents.json	Rusty Bagh Nakh obtained.
+www/data/CommonEvents.json	Rusty Sickle obtained.
+www/data/CommonEvents.json	Lucky Horseshoe obtained.
+www/data/CommonEvents.json	Big Hat obtained.
+www/data/CommonEvents.json	Cravat obtained.
+www/data/CommonEvents.json	Plated Jacket obtained.
+www/data/CommonEvents.json	Red Greaves obtained.
+www/data/CommonEvents.json	Weighted Dress obtained.
+www/data/CommonEvents.json	Cursed Poems A obtained.
+www/data/CommonEvents.json	Cursed Poems B obtained.
+www/data/CommonEvents.json	Invocative Poems A obtained.
+www/data/CommonEvents.json	Invocative Poems B obtained.
+www/data/CommonEvents.json	Sickening Poems A obtained.
+www/data/CommonEvents.json	Sickening Poems B obtained.
+www/data/CommonEvents.json	10\G obtained.
+www/data/CommonEvents.json	30\G obtained.
+www/data/CommonEvents.json	50\G obtained.
+www/data/CommonEvents.json	Nothing happened...
+www/data/CommonEvents.json	CHACHA TRANSFER SYSTEM
+www/data/CommonEvents.json	HOW TO ADD A NEW CHARACTER
+www/data/CommonEvents.json	THINGS TO REMEMBER FOR NEW CIRCLES
+www/data/CommonEvents.json	CIRCLE EVENT PLACEMENTS 
+www/data/CommonEvents.json	WEAPONS AND GEAR
+www/data/CommonEvents.json	SPRITES
+www/data/CommonEvents.json	TILES
+www/data/CommonEvents.json	SKILLS
+www/data/CommonEvents.json	HOW MY STATES WORK
+www/data/CommonEvents.json	Fortifying Incense I obtained.
+www/data/CommonEvents.json	Prolonged Incense I obtained.
+www/data/CommonEvents.json	Bulk Incense I obtained.
+www/data/CommonEvents.json	Spiked Incense I obtained.
+www/data/CommonEvents.json	Mindful Incense I obtained.
+www/data/CommonEvents.json	Keen Incense I obtained.
+www/data/CommonEvents.json	Soothing Incense I obtained.
+www/data/CommonEvents.json	Elusive Incense I obtained.
+www/data/Enemies.json	evil_ball
+www/data/Enemies.json	Fell Sinner
+www/data/Enemies.json	Kushiel
+www/data/Enemies.json	Chacha
+www/data/Enemies.json	Fell Lynx
+www/data/Enemies.json	Fell Gecko
+www/data/Enemies.json	Glasya-Labolas
+www/data/Enemies.json	Fell Claw
+www/data/Enemies.json	The Dredged
+www/data/Enemies.json	Dredged Sinner
+www/data/Enemies.json	QUEM QUAERITIS?
+www/data/Enemies.json	Ashmadai
+www/data/Enemies.json	Head of Ashmadai: Vita
+www/data/Enemies.json	Red String
+www/data/Items.json	Recovers 20HP.
+www/data/Items.json	Type O Blood
+www/data/Items.json	Recovers 50HP.
+www/data/Items.json	Type A Blood
+www/data/Items.json	Recovers 100HP.
+www/data/Items.json	Type AB Blood
+www/data/Items.json	Stimulant
+www/data/Items.json	Boosts Tension
+www/data/Items.json	Tension Booster
+www/data/Items.json	Teaches the Skill Curse: Attack.
+www/data/Items.json	Cursed Poems A
+www/data/Items.json	Teaches the Skill Ensomna.
+www/data/Items.json	Sickening Poems A
+www/data/Items.json	Recovers 20MP.
+www/data/Items.json	Unholy Drop
+www/data/Items.json	Recovers 50MP.
+www/data/Items.json	Unholy Essence
+www/data/Items.json	Recovers 100MP.
+www/data/Items.json	Unholy Manifest
+www/data/Items.json	Revives a Fallen ally with 1HP and 0MP.
+www/data/Items.json	Human Flesh
+www/data/Items.json	Revives a Fallen ally with full HP and MP.
+www/data/Items.json	Preserved Human Flesh
+www/data/Items.json	Raises Tensions by 50%.
+www/data/Items.json	Demon's Blood
+www/data/Items.json	Cures an Ailment from one ally.
+www/data/Items.json	Stygian Water
+www/data/Items.json	Teaches the Skill Curse: Defense.
+www/data/Items.json	Cursed Poems B
+www/data/Items.json	Teaches the Skill Invoke: Attack.
+www/data/Items.json	Invocative Poems A
+www/data/Items.json	Teaches the Skill Invoke: Defense.
+www/data/Items.json	Invocative Poems B
+www/data/Items.json	Teaches the Skill Entoxify.
+www/data/Items.json	Sickening Poems B
+www/data/Items.json	A coin from Chacha that once belonged to the Ferryman Charon.
+Opens the Save screen only once in between Circle depths.
+www/data/Items.json	Chacha's Obol Coin
+www/data/Items.json	YOU WILL SNEER
+www/data/Items.json	SNEERIFY
+www/data/Items.json	A coin from a currency long out of print.
+Maybe the Ferryman would know more about it?
+www/data/Items.json	Charon's Obol Coin
+www/data/Items.json	FORTUNE DEMANDS SACRIFICE.
+www/data/Items.json	Gehenna's Poems A
+www/data/Items.json	Nulls all stat changes on the field.
+www/data/Items.json	Null Spirit
+www/data/Items.json	Fully restores an ally's HP and MP.
+www/data/Items.json	Angel's Blood
+www/data/Items.json	A teal feather that must have flown off during your
+dance with the Angel Kushiel. It's soft to the touch.
+www/data/Items.json	Angel Down
+www/data/Items.json	Teaches the Passive Skill: HP Bonus I.
+www/data/Items.json	Fortifying Incense I
+www/data/Items.json	Teaches the Passive Skill: MP Bonus I.
+www/data/Items.json	Prolonged Incense I
+www/data/Items.json	Teaches the Passive Skill: DEF Bonus I.
+www/data/Items.json	Bulk Incense I
+www/data/Items.json	Teaches the Passive Skill: ATK Bonus I.
+www/data/Items.json	Spiked Incense I
+www/data/Items.json	Teaches the Passive Skill: M.DEF Bonus I.
+www/data/Items.json	Mindful Incense I
+www/data/Items.json	Teaches the Passive Skill: M.ATK Bonus I.
+www/data/Items.json	Keen Incense I
+www/data/Items.json	Teaches the Passive Skill: Regen I.
+www/data/Items.json	Soothing Incense I
+www/data/Items.json	Teaches the Passive Skill: Evasion Bonus I.
+www/data/Items.json	Elusive Incense I
+www/data/Items.json	A certain random Incense will be recieved.
+www/data/Items.json	Low-Grade Incense Burner
+www/data/Map001.json	Enter Lower Limbo?
+www/data/Map001.json	Yes
+www/data/Map001.json	No
+www/data/Map001.json	\n<Haures>Yo.
+www/data/Map001.json	\n<Haures>Why're you starin' at me like that?
+www/data/Map001.json	\n<Ipos>Ridiculous...
+www/data/Map001.json	\n<Ipos>At least put on proper attire before we reach
+www/data/Map001.json	Pandaemonium.
+www/data/Map001.json	\n<Ipos>Even the Stygian garb is much less of an eyesore!
+www/data/Map001.json	\n<Haures>Wh-
+www/data/Map001.json	\n<Haures>If you ain't got anything nice to say about me then
+www/data/Map001.json	shut up, loser!
+www/data/Map001.json	\n<Haures>Besides- I doubt Boss or anyone else that shows
+www/data/Map001.json	up would even care.
+www/data/Map001.json	\n<Ipos>Tsk! What an impressive lack of decorum!
+www/data/Map001.json	\n<Ipos>Such behavior would look much better on someone with
+www/data/Map001.json	a better standing than you!
+www/data/Map001.json	\n<Haures>...What? What does that even mean? You're not even
+www/data/Map001.json	makin' any sense now!
+www/data/Map001.json	\n<Haures>You seem uh, pretty happy there eh?
+www/data/Map001.json	\n<Haures>Okay, you're startin' to creep me out a little bit...
+www/data/Map001.json	\n<Glasya-Labolas>Mmrh.
+www/data/Map001.json	\n<Zepar>Your flames look quite astonishing, I must say.
+www/data/Map001.json	\n<Haures>Wha!
+www/data/Map001.json	\n<Haures>Sorry, you spooked me ya big lump of metal!
+www/data/Map001.json	\n<Haures>Thanks, I know. I'll make sure they're even
+www/data/Map001.json	prettier for ya in the future!
+www/data/Map001.json	\n<Haures>Also, I didn't even know you had eyes til now,
+www/data/Map001.json	to be honest.
+www/data/Map001.json	\n<Orobas>What's the conversion rate on float speed,
+www/data/Map001.json	do you think? Is there any correlation between it and
+www/data/Map001.json	grounded travel?
+www/data/Map001.json	\n<Haures>...What?
+www/data/Map001.json	\n<Orobas>Like, do you think how fast you can run has
+www/data/Map001.json	anything to do with how fast you can fly?
+www/data/Map001.json	\n<Haures>Uhhh-
+www/data/Map001.json	\n<Haures>Probably not.
+www/data/Map001.json	\n<Haures>Like, I can run about as fast as anyone else,
+www/data/Map001.json	but I'm still kinda terrible at flying, y'know?
+www/data/Map001.json	\n<Orobas>Ooohh I see (ToT)
+www/data/Map001.json	\n<Ipos>An arduous road is ahead indeed...
+www/data/Map001.json	\n<Ipos>Ah-
+www/data/Map001.json	\n<Ipos>Does it not bother you to wander about barefoot?
+www/data/Map001.json	\n<Haures>Hey!
+www/data/Map001.json	\n<Haures>I can hover when I want, I'll have you know!
+www/data/Map001.json	\n<Ipos>Hmph.
+www/data/Map001.json	\n<Ipos>We may be companions on the road to Pandaemonium,
+www/data/Map001.json	but I'd advise you keep your mumbling around me limited.
+www/data/Map001.json	\n<Glasya-Labolas>Hmmrh.
+www/data/Map001.json	\n<Glasya-Labolas>I don't mumble...
+www/data/Map001.json	\n<Zepar>Your cravat is quite impressive.
+www/data/Map001.json	\n<Zepar>Though I must ask, how do you put it on?
+www/data/Map001.json	\n<Zepar>Without tearing it to shreds, I mean.
+www/data/Map001.json	\n<Ipos>Oh this?
+www/data/Map001.json	\n<Ipos>It's just a clip on, as those Humans would call it.
+www/data/Map001.json	\n<Ipos>Quite impressive, no?
+www/data/Map001.json	\n<Ipos>It makes me look and feel more noble, without having
+www/data/Map001.json	to worry about tying it.
+www/data/Map001.json	\n<Zepar>I see.
+www/data/Map001.json	\n<Orobas>I've been wanting to ask since I saw you...
+www/data/Map001.json	\n<Orobas>But can you fly with that thing?
+www/data/Map001.json	\n<Ipos>I uh-
+www/data/Map001.json	\n<Ipos>Obviously not!
+www/data/Map001.json	\n<Ipos>You'd be a fool to think I'd be one to spend time alone
+www/data/Map001.json	trying to do so!
+www/data/Map001.json	\n<Orobas>Oh, okay~~~
+www/data/Map001.json	\n<Haures>How'd ya feel if I take charge on the way to
+www/data/Map001.json	Pandaemonium, that cool with you?
+www/data/Map001.json	\n<Glasya-Labolas>Hmmrh...
+www/data/Map001.json	\n<Haures>What'd ya say?
+www/data/Map001.json	\n<Glasya-Labolas>Gonna find big brother...
+www/data/Map001.json	\n<Glasya-Labolas>Will he be mad at me?
+www/data/Map001.json	\n<Glasya-Labolas>Hah...
+www/data/Map001.json	\n<Haures>Okay! I think I will probably avoid interacting
+www/data/Map001.json	with you for a little while!
+www/data/Map001.json	(Seriously what a weirdo!)
+www/data/Map001.json	\n<Glasya-Labolas>...
+www/data/Map001.json	\n<Ipos>(A waste of my time.)
+www/data/Map001.json	\n<Ipos>(I feel rancid just standing near her.)
+www/data/Map001.json	\n<Zepar>I must say, it is quite commendable to wear a grin
+www/data/Map001.json	as wide and for as long as you have.
+www/data/Map001.json	\n<Zepar>(I don't think this one's listening to me...)
+www/data/Map001.json	\n<Orobas>Uh-
+www/data/Map001.json	\n<Orobas>N-Nevermind!
+www/data/Map001.json	\n<Glasya-Labolas>...Mmrh.
+www/data/Map001.json	\n<Zepar>Is something the matter?
+www/data/Map001.json	\n<Haures>Whoah! You can talk after all!
+www/data/Map001.json	\n<Zepar>We had talked not too long ago, have we not...
+www/data/Map001.json	\n<Haures>Yeah, my bad. Guess I'm just still not used to
+www/data/Map001.json	it.
+www/data/Map001.json	\n<Ipos>Does it not get hot in this suit of armor?
+www/data/Map001.json	\n<Zepar>It's subjective.
+www/data/Map001.json	\n<Zepar>For me, I can say with confidence that I am never
+www/data/Map001.json	bothered by the heat.
+www/data/Map001.json	\n<Zepar>For someone of your stature though, I suppose it'd
+www/data/Map001.json	be a bit warm.
+www/data/Map001.json	\n<Ipos>Alright...
+www/data/Map001.json	\n<Ipos>Surely it must get more cumbersome towards the lower
+www/data/Map001.json	Circles, no?
+www/data/Map001.json	\n<Zepar>What I will say is that I am relieved that the Capitol
+www/data/Map001.json	is moated by the river Styx, and not burning lava.
+www/data/Map001.json	\n<Glasya-Labolas>I like your armor, sir.
+www/data/Map001.json	\n<Glasya-Labolas>Do you think I could pierce it in a single
+www/data/Map001.json	strike?
+www/data/Map001.json	\n<Zepar>You may be my guest.
+www/data/Map001.json	\n<Zepar>I would be curious to know as well.
+www/data/Map001.json	\n<Glasya-Labolas>Mmmrh.
+www/data/Map001.json	\n<Glasya-Labolas>It was only a joke...
+www/data/Map001.json	\n<Orobas>Hmm...
+www/data/Map001.json	\n<Orobas>How easy is it to run in this thing?
+www/data/Map001.json	\n<Zepar>I cannot muster anything more than a
+www/data/Map001.json	steady march.
+www/data/Map001.json	\n<Zepar>However, I doubt this armor would stop you from
+www/data/Map001.json	overtaking other Demons.
+www/data/Map001.json	\n<Orobas>...Thanks.
+www/data/Map001.json	\n<Haures>Hmmm...
+www/data/Map001.json	\n<Orobas>...Uh, yes?
+www/data/Map001.json	\n<Haures>Nothin' it's just-
+www/data/Map001.json	\n<Haures>The more I look at ya, the more I feel like
+www/data/Map001.json	I've seen you somewhere else before...\^
+www/data/Map001.json	\n<Orobas>Oh, you mean my races!
+www/data/Map001.json	\n<Orobas>Thanks! I do my best to stand out, you know~
+www/data/Map001.json	\n<Haures>Uhh, nah it's not that.
+www/data/Map001.json	\n<Haures>Are you\.\.\. in some kinda costume?
+www/data/Map001.json	\n<Haures>Like is this supposed to be some kinda parody
+www/data/Map001.json	or-\^
+www/data/Map001.json	\n<Orobas>I don't ever want to hear those words leave your
+www/data/Map001.json	mouth again.
+www/data/Map001.json	\n<Orobas>I'm not a parody.
+www/data/Map001.json	\n<Orobas>I'm
+www/data/Map001.json	\n<Orobas>my own racer...
+www/data/Map001.json	\n<Haures>Yeesh, if you say so...
+www/data/Map001.json	\n<Ipos>I'm curious, what led to your obsession with running?
+www/data/Map001.json	\n<Orobas>Oh, that's easy!
+www/data/Map001.json	\n<Orobas>It's because I like to race!
+www/data/Map001.json	\n<Orobas>And I like to win!
+www/data/Map001.json	\n<Orobas>And winning means beating everyone else!
+www/data/Map001.json	\n<Orobas>There's no better feeling in this world than
+www/data/Map001.json	absolute earned victory.
+www/data/Map001.json	\n<Ipos>I suppose that's one way of putting it...
+www/data/Map001.json	\n<Glasya-Labolas>Hm... Hm...
+www/data/Map001.json	\n<Glasya-Labolas>You're like me, I think.
+www/data/Map001.json	\n<Orobas>Huh? R-Really?
+www/data/Map001.json	\n<Glasya-Labolas>A little bit...
+www/data/Map001.json	\n<Glasya-Labolas>I like winning too.
+www/data/Map001.json	\n<Orobas>Huh...
+www/data/Map001.json	\n<Zepar>I commend your passion to running, Demon.
+www/data/Map001.json	\n<Orobas>Oh! You really mean it?!
+www/data/Map001.json	\n<Zepar>It's certainly true that it's something you love.
+www/data/Map001.json	\n<Zepar>I've nothing but for respect for it.
+www/data/Map001.json	\n<Chacha>Oh, you made it!
+www/data/Map001.json	\n<Chacha>There's a Statue of Beatrice close by, probably
+www/data/Map001.json	towards the bottom of the Circle this time.
+www/data/Map001.json	\n<Chacha>Once you reach it, you can get to the second
+www/data/Map001.json	Circle in a flash!
+www/data/Map001.json	\n<Chacha>It's just a little bit more-
+www/data/Map001.json	\n<Chacha>Make sure you all take good care of yourselves,
+www/data/Map001.json	okay?
+www/data/Map001.json	\n<Chacha>Hiya!
+www/data/Map001.json	\n<Chacha>Need something?
+www/data/Map001.json	Shop
+www/data/Map001.json	Heal
+www/data/Map001.json	Chat
+www/data/Map001.json	Exit
+www/data/Map001.json	\n<Chacha>I can do that!
+www/data/Map001.json	\n<Chacha>Here's a cool trick Gramps taught me!
+www/data/Map001.json	The party's HP and MP was restored.
+www/data/Map001.json	\n<Chacha>Promise you'll come back, okay?
+www/data/Map001.json	Travel
+www/data/Map001.json	\n<Chacha>No problem! Where to?
+www/data/Map001.json	Limbo
+www/data/Map001.json	Limbo: Statue Clearing
+www/data/Map001.json	Nevermind
+www/data/Map001.json	\n<Chacha>The Circles seem pretty stable right now,
+www/data/Map001.json	so I can take you there and back in a flash!
+www/data/Map001.json	\n<Chacha>Anything I can help with?
+www/data/Map001.json	Mors
+www/data/Map001.json	Strange Demon
+www/data/Map001.json	Sneering
+www/data/Map001.json	\n<Chacha>Ah so you've met him already?
+www/data/Map001.json	\n<Chacha>He, uh-
+www/data/Map001.json	\n<Chacha>He's kind of mean, isn't he...
+www/data/Map001.json	\n<Chacha>He's got a special connection with another Demon.
+www/data/Map001.json	\n<Chacha>Have you heard of Ashmadai?
+www/data/Map001.json	\n<Chacha>I know most Demons don't know each other very well,
+www/data/Map001.json	since so many of you live here...
+www/data/Map001.json	\n<Chacha>But most Demons at least know Ash, number
+www/data/Map001.json	32.
+www/data/Map001.json	\n<Chacha>She's recently taken up the mantle as the "Wanderlust Demon"
+www/data/Map001.json	and aided the Charon family business even before the battle
+www/data/Map001.json	with the Angels...
+www/data/Map001.json	\n<Chacha>...
+www/data/Map001.json	\n<Chacha>Actually, "aided" is a pretty bad way to put it,
+www/data/Map001.json	haha...
+www/data/Map001.json	\n<Chacha>With how much experience she has in traversing
+www/data/Map001.json	the Inferno, she practically has the entire place charted in
+www/data/Map001.json	her own head!
+www/data/Map001.json	\n<Chacha>She definitely did help ease the burden Gramps had
+www/data/Map001.json	back then, but it's impossible not to notice that she also
+www/data/Map001.json	definitely stole some of our potential customers away!
+www/data/Map001.json	\n<Chacha>Since the battle with the Angels though, nobody's
+www/data/Map001.json	heard a word back from her.
+www/data/Map001.json	\n<Chacha>Not even Mors...
+www/data/Map001.json	\n<Chacha>Anyways-
+www/data/Map001.json	\n<Chacha>You should try talking with Mors more!
+www/data/Map001.json	\n<Chacha>He's not a bad person, or at least I don't
+www/data/Map001.json	think he is.
+www/data/Map001.json	\n<Chacha>Ah, you remembered my little story?~
+www/data/Map001.json	\n<Chacha>Would you believe it-
+www/data/Map001.json	\n<Chacha>I actually saw them again on my way here!
+www/data/Map001.json	\n<Chacha>Their appearance was so striking, I'm sure you'd
+www/data/Map001.json	know who I'm talking about if you saw them too!
+www/data/Map001.json	\n<Chacha>Just before jumping down one of those pits,
+www/data/Map001.json	I got a good look at their face!
+www/data/Map001.json	\n<Chacha>It was sooo serene and relaxed, they almost looked
+www/data/Map001.json	sleepy!
+www/data/Map001.json	\n<Chacha>Maybe that's why they have such a strange outfit on.
+www/data/Map001.json	\n<Chacha>Gramps would yell at me too whenever I dressed wrong
+www/data/Map001.json	after getting up late~
+www/data/Map001.json	\n<Chacha>Hm?
+www/data/Map001.json	\n<Chacha>Ah, you mean that nasty face all you Demons make?
+www/data/Map001.json	\n<Chacha>I think that's just a "Demon" thing, to be totally honest.
+www/data/Map001.json	\n<Chacha>Whenever Gramps and I ran into any rowdy Demons,
+www/data/Map001.json	we never felt anything like that...
+www/data/Map001.json	\n<Chacha>But practically every Demon we met would always
+www/data/Map001.json	get a rise off of being particularly rude!
+www/data/Map001.json	\n<Chacha>I've even heard stories from some Demons, saying
+www/data/Map001.json	things like how the rush they got made them feel unkillable!
+www/data/Map001.json	\n<Chacha>It's a really nasty trait but Gramps and I always
+www/data/Map001.json	saw it as some kind of super power, you know?
+www/data/Map001.json	\n<Chacha>If only I could get some kind of boost just
+www/data/Map001.json	fending those Sinners off...
+www/data/Map001.json	\n<Mors>...
+www/data/Map001.json	\n<Mors>So you made it down here, eh?
+www/data/Map001.json	\n<Mors>That Charon kid's an idiot I tell ya.
+www/data/Map001.json	\n<Mors>Demons are dyin' out there.
+www/data/Map001.json	\n<Mors>Damn near clogging up the River Styx full of their
+www/data/Map001.json	corpses.
+www/data/Map001.json	\n<Mors>You'd think she'd notice by now...
+www/data/Map001.json	\n<Mors>I'll see you off.
+www/data/Map001.json	Would you like to save your progress?
+www/data/Map001.json	\n<Mors>What now?
+www/data/Map001.json	A sign.
+www/data/Map001.json	Read it?
+www/data/Map001.json	It reads as follows:
+www/data/Map001.json	"-even so, it is not the hollowness that rejects wonder"
+www/data/Map001.json	"but the rejection of wonder that births hollowness."
+www/data/Map001.json	The sign broke immediately after reading it.
+www/data/Map001.json	A broken sign.
+www/data/Map002.json	Begin anew...
+www/data/Map002.json	Again
+www/data/Map002.json	and again
+www/data/Map002.json	and again...
+www/data/Map002.json	Begin
+www/data/Map002.json	anew...
+www/data/Map002.json	Begin\.\.\. anew...
+www/data/Map003.json	A statue of Beatrice.
+www/data/Map003.json	What would you like to do?
+www/data/Map003.json	Heal party
+www/data/Map003.json	Save data
+www/data/Map003.json	Return to Title
+www/data/Map003.json	Nothing
+www/data/Map003.json	The party was healed.
+www/data/Map003.json	Are you sure? (Unsaved data CANNOT be recovered!)
+www/data/Map003.json	\n<???>The statue of Beatrice...
+www/data/Map003.json	\n<???>With the power that still remains,
+www/data/Map003.json	I supppose it isn't too surprising to see 
+www/data/Map003.json	it
+www/data/Map003.json	\n<???>...defiled
+www/data/Map003.json	\n<???>To such a degree...
+www/data/Map003.json	\n<Haures>We're practically dyin' over here,
+www/data/Map003.json	\n<Haures>Save some for us won't ya?
+www/data/Map003.json	\n<Haures>...Wait a sec-
+www/data/Map003.json	\n<Haures>Have I seen you around here before?
+www/data/Map003.json	\n<Haures>To be honest, I've been meeting a 
+www/data/Map003.json	lotta new faces lately.
+www/data/Map003.json	\n<Haures>Have ya heard? Beelze is gathering
+www/data/Map003.json	a buncha-
+www/data/Map003.json	\n<???>You'd best watch your tongue, 
+www/data/Map003.json	"demon"...
+www/data/Map003.json	\n<???>From here on, you'd do well to
+www/data/Map003.json	address me properly...
+www/data/Map003.json	\n<???>as an angel.
+www/data/Map003.json	\n<Haures>Huh?!
+www/data/Map003.json	\n<Haures>An angel?
+www/data/Map003.json	\n<Haures>How is it even possible for you
+www/data/Map003.json	guys to be down here?!
+www/data/Map003.json	\n<???>You could consider it a sort of 
+www/data/Map003.json	special privilege I alone possess...
+www/data/Map003.json	\n<???>But to me, there is nothing more
+www/data/Map003.json	\n<???>infuriating
+www/data/Map003.json	\n<???>than to dirty my feet with every
+www/data/Map003.json	step I take in this land.
+www/data/Map003.json	\n<Haures>Well if ya hate it THAT much,
+www/data/Map003.json	\n<Haures>then why don't ya just flutter
+www/data/Map003.json	away and get outta here then?
+www/data/Map003.json	\n<???>...
+www/data/Map003.json	\n<???>I am well aware of your plans to 
+www/data/Map003.json	return to the human realm.
+www/data/Map003.json	\n<Haures>!!
+www/data/Map003.json	\n<???>In truth, I have come to deliver a
+www/data/Map003.json	message to you all.
+www/data/Map003.json	\n<???>At the sound of my horn,
+www/data/Map003.json	\n<???>I will cut each of you down.
+www/data/Map003.json	\n<???>And in ¨€¨€¨€¨€'s name I
+www/data/Map003.json	solemnly swear...
+www/data/Map003.json	\n<???>You shall remain here
+www/data/Map003.json	\n<???>until the end of time.
+www/data/Map003.json	\n<???>...Be not afraid.
+www/data/Map003.json	\n<Kushiel>...
+www/data/Map003.json	\n<Kushiel>Oh...
+www/data/Map003.json	\n<Kushiel>My legs\.\.\. have given out.
+www/data/Map003.json	\n<Kushiel>"Punishment..."
+www/data/Map003.json	\n<Kushiel>But for whom\.\.\. is this punishment for again...?
+www/data/Map003.json	\n<Kushiel>It hurts...
+www/data/Map003.json	\n<Kushiel>For every Demon that I cross-
+www/data/Map003.json	\n<Kushiel>every Circle that I traverse
+www/data/Map003.json	\n<Kushiel>and every breath that blows through my horn...
+www/data/Map003.json	\n<Kushiel>Over and over again...!
+www/data/Map003.json	\n<Kushiel>The pain only gets worse, and yet-
+www/data/Map003.json	\n<???>Grovelling doesn't suit you at all.
+www/data/Map003.json	\n<???>Oh how did Gramps put it...?
+www/data/Map003.json	\n<???>"Ferryman's Third Rule:"
+www/data/Map003.json	\n<???>"Off your knees and on the shore," 
+www/data/Map003.json	\n<???>"the strongest Ferrymen are always ready for more!" 
+www/data/Map004.json	\n<Haures>Looooser!
+www/data/Map004.json	\n<Haures>Huh? What's up with this?
+www/data/Map004.json	\n<Ipos>Phew! Easy enough.
+www/data/Map004.json	\n<Ipos>Hm? Looks like it was holding something...
+www/data/Map004.json	\n<Glasya-Labolas>Hmm... Hmm... Hah...
+www/data/Map004.json	\n<Glasya-Labolas>Mine now.
+www/data/Map004.json	\n<Zepar>Thank you.
+www/data/Map004.json	\n<Orobas>Oh!
+www/data/Map004.json	\n<Orobas>It looks like he left me some gifts!
+www/data/Map004.json	(What was the Sinner holding?)
+www/data/Map004.json	Poems
+www/data/Map004.json	Incense
+www/data/Map004.json	Bones
+www/data/Map004.json	300B Obtained.
+www/data/Map004.json	\n<Chacha>Oh!
+www/data/Map004.json	\n<Chacha>We meet again!
+www/data/Map004.json	Descend
+www/data/Map004.json	\n<Chacha>Be careful out there!
+www/data/Map004.json	\n<Chacha>If you ever feel like coming back I'll be here
+www/data/Map004.json	for you!
+www/data/Map006.json	\n<???>Huh?
+www/data/Map006.json	\n<???>What do you want?
+www/data/Map006.json	\n<???>Oooooh I get it...
+www/data/Map006.json	\n<???>Tryna be buddy buddies with me, is that it?
+www/data/Map006.json	\n<???>Fufufu~ I guess I really do have that kind of
+www/data/Map006.json	effect on people.
+www/data/Map006.json	\n<Haures>The name's Haures, loser.
+www/data/Map006.json	\n<Haures>Number 64. What's it to ya?
+www/data/Map006.json	(Should I try to convince this one to travel with me?)
+www/data/Map006.json	(Or maybe it would be easier to just use force...)
+www/data/Map006.json	(I can talk with them for a little bit...)
+www/data/Map006.json	(But they might leave after talking with me.)
+www/data/Map006.json	(Everyone does.)
+www/data/Map006.json	(...)
+www/data/Map006.json	(Oh oh oh!)
+www/data/Map006.json	(Now's my chance to get a training buddy!)
+www/data/Map006.json	(But would they be more interested in my skills?)
+www/data/Map006.json	(Or maybe I should get to know them first!)
+www/data/Map006.json	Talk
+www/data/Map006.json	Attack
+www/data/Map006.json	You speak to the Demon.\.\.\..\.\.\..
+www/data/Map006.json	You attack the Demon!
+www/data/Map006.json	\n<Haures>Woah woah what the Hell?!
+www/data/Map006.json	\n<???>Ah, it seems we've both taken a similar
+www/data/Map006.json	route to the Capitol.
+www/data/Map006.json	\n<Ipos>I'm Ipos. Infernal Number 22, at your service.
+www/data/Map006.json	(There's no way I can make it all the way down on my own!)
+www/data/Map006.json	(What's the best way to get them to come with me...?)
+www/data/Map006.json	\n<Ipos>Hm?
+www/data/Map006.json	\n<Ipos>A duel it is then!
+www/data/Map006.json	\n<???>Hmm...\.\. Hmm...\.\. Hah...\.\.
+www/data/Map006.json	\n<???>You're lost too...?
+www/data/Map006.json	\n<Glasya-Labolas>I'm Glasya-Labolas.
+www/data/Map006.json	Number 25.
+www/data/Map006.json	(...I would much rather travel on my own than travel with
+www/data/Map006.json	this mutt, but the Boss suggests traveling in groups.)
+www/data/Map006.json	(I can try and make it quick.)
+www/data/Map006.json	...
+www/data/Map006.json	\n<Glasya-Labolas>Hah...\.\.
+www/data/Map006.json	\n<Glasya-Labolas>I don't like fighting other Demons
+www/data/Map006.json	all that much...
+www/data/Map006.json	\n<Glasya-Labolas>Can we hang out for a little bit...?
+www/data/Map006.json	\n<???>"Zepar."
+www/data/Map006.json	\n<Zepar>You will learn to be wary of Demons with
+www/data/Map006.json	this name.
+www/data/Map006.json	\n<???>*Huff*\.\. *Huff*\.\. *Huff*
+www/data/Map006.json	\n<???>Ah!
+www/data/Map006.json	\n<???>Sorry, I didn't see you!
+www/data/Map006.json	\n<???>I've been running around a lot and got a bit
+www/data/Map006.json	lightheaded...
+www/data/Map006.json	\n<???>It's kinda hard to see you through-\^
+www/data/Map006.json	\n<???>It's kinda hard to see you through stars,
+www/data/Map006.json	\n<???>Urk...
+www/data/Map006.json	\n<???>Wah?!
+www/data/Map006.json	\n<Haures>Tch.
+www/data/Map006.json	\n<Haures>Y'know, I think I'll actually be fine on my own.
+www/data/Map006.json	(The Demon has left the area.)
+www/data/Map006.json	\n<Haures>Alright, alright I'll go with you!
+www/data/Map006.json	\n<Haures>You see those weirdos out there right?
+www/data/Map006.json	\n<Haures>"Sinners" is what they call 'em.
+www/data/Map006.json	\n<Haures>They say based on how awful a person they
+www/data/Map006.json	were in life, they get sent into different parts of hell.
+www/data/Map006.json	\n<Haures>What's your take on 'em?
+www/data/Map006.json	They're cute
+www/data/Map006.json	They're annoying
+www/data/Map006.json	Don't care
+www/data/Map006.json	\n<Haures>Like, actually?
+www/data/Map006.json	\n<Haures>Yeah whatever.
+www/data/Map006.json	\n<Haures>You look like someone who would be into those
+www/data/Map006.json	freaks.
+www/data/Map006.json	\n<Haures>Yeah?
+www/data/Map006.json	\n<Haures>To be honest I couldn't give less of a shit about
+www/data/Map006.json	those guys wanderin' about.
+www/data/Map006.json	\n<Haures>But I absolutely hate how their stupid
+www/data/Map006.json	head-holes leak gunk wherever they go- eugh!
+www/data/Map006.json	\n<Haures>Hey, ya jerk.
+www/data/Map006.json	\n<Haures>You were the one who came to see lil ol' me,
+www/data/Map006.json	at least try to seem interested, yeah?
+www/data/Map006.json	\n<Haures>Hey.
+www/data/Map006.json	\n<Haures>Don't think I didn't catch ya lookin' me
+www/data/Map006.json	up and down.
+www/data/Map006.json	\n<Haures>Got somethin' to say to me?
+www/data/Map006.json	I think you're cute
+www/data/Map006.json	I think you're ugly
+www/data/Map006.json	I've got nothing to say
+www/data/Map006.json	You could use some boots
+www/data/Map006.json	\n<Haures>If you were just gonna suck up to me I'd
+www/data/Map006.json	much rather you gimme some Bones instead.
+www/data/Map006.json	\n<Haures>And I think you're a total looooser.
+www/data/Map006.json	\n<Haures>Happy to know we're in a safe space here.
+www/data/Map006.json	\n<Haures>Y'know, it's always nice to see someone else
+www/data/Map006.json	about as honest as I am.
+www/data/Map006.json	\n<Haures>Oh?
+www/data/Map006.json	\n<Haures>I've left you speechless, is that it~
+www/data/Map006.json	\n<Haures>Huh?
+www/data/Map006.json	\n<Haures>Listen, I ain't some fashion model or whatever
+www/data/Map006.json	they call them in the Human world.
+www/data/Map006.json	\n<Haures>There's literally no way in Hell you'd
+www/data/Map006.json	see me in those stuffy ass stompers.
+www/data/Map006.json	\n<Haures>Besides, I can float, kinda.
+www/data/Map006.json	\n<Haures>It's only been 10 years ain't it?
+www/data/Map006.json	\n<Haures>Since that big battle with the Angels I mean.
+www/data/Map006.json	\n<Haures>Whaddya think the Human world's gonna be like?
+www/data/Map006.json	\n<Haures>Y'know, if the Boss can actually get us
+www/data/Map006.json	back up there.
+www/data/Map006.json	The same
+www/data/Map006.json	Super advanced
+www/data/Map006.json	No idea
+www/data/Map006.json	\n<Haures>Booooring.
+www/data/Map006.json	\n<Haures>But I guess it wouldn't be so bad if it's
+www/data/Map006.json	still the world we know, huh...
+www/data/Map006.json	\n<Haures>I get lost pretty easy, y'know?
+www/data/Map006.json	\n<Haures>I mean, just Hell alone changed so much since
+www/data/Map006.json	then.
+www/data/Map006.json	\n<Haures>It's kinda hard to believe it all happened in
+www/data/Map006.json	just 10 years...
+www/data/Map006.json	\n<Haures>In any case, I doubt those Humans'd be able
+www/data/Map006.json	to come up with anything strong enough to withstand
+www/data/Map006.json	my flame.
+www/data/Map006.json	\n<Haures>Not even in a million years~
+www/data/Map006.json	\n<Haures>Oh come on.
+www/data/Map006.json	\n<Haures>Nothing that comes to mind? Seriously?
+www/data/Map006.json	(The Demon is picking at her shackles.)
+www/data/Map006.json	About other Demons...
+www/data/Map006.json	About you...
+www/data/Map006.json	About Humans...
+www/data/Map006.json	Do you hate them?
+www/data/Map006.json	Do you care about them?
+www/data/Map006.json	\n<Haures>Hate?
+www/data/Map006.json	\n<Haures>Hmm...
+www/data/Map006.json	\n<Haures>Nah, none in particular.
+www/data/Map006.json	\n<Haures>I've always been the kinda gal to think if there's
+www/data/Map006.json	anyone who I've got bad blood with, it was probably my
+www/data/Map006.json	fault.
+www/data/Map006.json	\n<Haures>Doubly so for everyone who loves me~
+www/data/Map006.json	\n<Haures>Care's a funny word.
+www/data/Map006.json	\n<Haures>Guess I'm kinda neutral on it, in a sense.
+www/data/Map006.json	\n<Haures>Like I'll help ya out if I see you're in a pinch,
+www/data/Map006.json	\n<Haures>but tough luck if I get my ass beat tryna
+www/data/Map006.json	get you outta there.
+www/data/Map006.json	\n<Haures>Not a single Infernal soul down here can
+www/data/Map006.json	burn as bright as I do, y'hear me?
+www/data/Map006.json	\n<Haures>Absolutely no one!
+www/data/Map006.json	\n<Haures>I guess...
+www/data/Map006.json	\n<Haures>They're alright.
+www/data/Map006.json	\n<Haures>Back then, nothing brought me a bigger smile
+www/data/Map006.json	than to burn whatever I was invoked to burn.
+www/data/Map006.json	\n<Haures>It's been real quiet since the Angels cut us
+www/data/Map006.json	off though, those feather-brains.
+www/data/Map006.json	\n<Haures>Fufufu~
+www/data/Map006.json	\n<Haures>You wanna travel together dont'cha?
+www/data/Map006.json	\n<Haures>Tell ya what.
+www/data/Map006.json	\n<Haures>Prove to me you can be someone I can count
+www/data/Map006.json	on and I'll do the same for you.
+www/data/Map006.json	\n<Haures>A nice deal, right?
+www/data/Map006.json	\n<Haures>Mmhm!
+www/data/Map006.json	\n<Haures>I'll come with ya for now...
+www/data/Map006.json	\n<Haures>-after you show me you're not a total pushover!
+www/data/Map006.json	\n<Haures>You're soooo boring.
+www/data/Map006.json	\n<Haures>Picky guy eh?
+www/data/Map006.json	\n<Haures>Whatever.
+www/data/Map006.json	\n<Ipos>Ah.
+www/data/Map006.json	\n<Ipos>Perhaps it'd be best if we part ways for now.
+www/data/Map006.json	\n<Ipos>I feel we would only get in each other's way.
+www/data/Map006.json	\n<Ipos>Farewell.
+www/data/Map006.json	\n<Ipos>If it's not too much trouble...
+www/data/Map006.json	\n<Ipos>I wonder...
+www/data/Map006.json	\n<Ipos>Pitiable creatures they are...
+www/data/Map006.json	\n<Ipos>Hm? Ah, I reference the "Sinners," as they are
+www/data/Map006.json	called.
+www/data/Map006.json	\n<Ipos>Tell me, what do you think of them?
+www/data/Map006.json	I hate them
+www/data/Map006.json	I feel bad for them
+www/data/Map006.json	\n<Ipos>I see.
+www/data/Map006.json	\n<Ipos>A bit heartless, but that just comes naturally
+www/data/Map006.json	with us Demons, I suppose.
+www/data/Map006.json	\n<Ipos>I can empathize your with disgust at erm,
+www/data/Map006.json	\n<Ipos>certain features about them, however.
+www/data/Map006.json	\n<Ipos>Oh?
+www/data/Map006.json	\n<Ipos>Refreshing. It's not often another Demon shares
+www/data/Map006.json	my \.\.respect for lowly, pathetic creatures.
+www/data/Map006.json	\n<Ipos>Tell me.
+www/data/Map006.json	\n<Ipos>Do you think a "hero" can be redeemed?
+www/data/Map006.json	\n<Ipos>Apologies, that might have sounded a bit
+www/data/Map006.json	confusing.
+www/data/Map006.json	\n<Ipos>What I mean to say is, if a "hero" is made as a
+www/data/Map006.json	result of their actions...
+www/data/Map006.json	\n<Ipos>Despite some of those actions being reprehensible-
+www/data/Map006.json	\n<Ipos>Can you still call that person a "hero"?
+www/data/Map006.json	\n<Ipos>Care to explain why?
+www/data/Map006.json	They made things better in the end 
+www/data/Map006.json	Nobody else knows the bad things
+www/data/Map006.json	\n<Ipos>But what's "better" is purely a subjective matter,
+www/data/Map006.json	is it not?
+www/data/Map006.json	\n<Ipos>Hundreds of infant children could be culled
+www/data/Map006.json	to improve food shortages for impoverished communities.
+www/data/Map006.json	\n<Ipos>Could you still make that point then?
+www/data/Map006.json	\n<Ipos>Oh.
+www/data/Map006.json	\n<Ipos>How interesting.
+www/data/Map006.json	\n<Ipos>Personally, I revel in that kind of secrecy.
+www/data/Map006.json	\n<Ipos>Things done in secret are simply much more intriguing
+www/data/Map006.json	than what's known to the public, no?
+www/data/Map006.json	Some actions are inexcusable
+www/data/Map006.json	Some "villains" operate exactly the same
+www/data/Map006.json	\n<Ipos>Mm.
+www/data/Map006.json	\n<Ipos>I see your point.
+www/data/Map006.json	\n<Ipos>Personally, I find it extremely intriguing to
+www/data/Map006.json	see such noble figures stoop to such lows...
+www/data/Map006.json	\n<Ipos>It makes for much more interesting and nuanced
+www/data/Map006.json	personalities, wouldn't you agree?~
+www/data/Map006.json	\n<Ipos>Hah.
+www/data/Map006.json	\n<Ipos>A fair point.
+www/data/Map006.json	\n<Ipos>Nonetheless, heroes remain heroes, and villains
+www/data/Map006.json	remain villains in the end... I suppose.
+www/data/Map006.json	\n<Ipos>Pandaemonium is still quite the ways away...
+www/data/Map006.json	\n<Ipos>How confident are you in completing the journey?
+www/data/Map006.json	I'll make it
+www/data/Map006.json	It'll be tough
+www/data/Map006.json	I won't make it
+www/data/Map006.json	\n<Ipos>As expected.
+www/data/Map006.json	\n<Ipos>The Boss spares no qualms as far as attendance
+www/data/Map006.json	is concerned.
+www/data/Map006.json	\n<Ipos>We'd do well to make the rendezvous-
+www/data/Map006.json	\n<Ipos>No matter the cost.
+www/data/Map006.json	\n<Ipos>As it stands with the current state of Hell,
+www/data/Map006.json	I must agree with you.
+www/data/Map006.json	\n<Ipos>Though I still find it unbelievable...
+www/data/Map006.json	\n<Ipos>The bottom four Circles falling out..?
+www/data/Map006.json	\n<Ipos>It's certainly worrying what else might have changed
+www/data/Map006.json	since our failed attempt on the Human realm.
+www/data/Map006.json	\n<Ipos>Hmm.
+www/data/Map006.json	\n<Ipos>With that outlook, you may very well be right.
+www/data/Map006.json	(The Demon is studying your figure.)
+www/data/Map006.json	\n<Ipos>Not at all.
+www/data/Map006.json	\n<Ipos>I've utmost respect for my fellow Demons in arms...
+www/data/Map006.json	\n<Ipos>Save for that red-haired freak.
+www/data/Map006.json	\n<Ipos>She and her brother still elect to wear the old
+www/data/Map006.json	Stygian garb-
+www/data/Map006.json	\n<Ipos>The same uniforms worn in that great battle
+www/data/Map006.json	about a decade ago.
+www/data/Map006.json	\n<Ipos>I'm sure you know whom I'm referencing.
+www/data/Map006.json	\n<Ipos>Her attitude is disgusting!
+www/data/Map006.json	\n<Ipos>That girl gets off on pain- inflicted and recieved.
+www/data/Map006.json	\n<Ipos>I um, can attest to indulging in violence, but
+www/data/Map006.json	that girl is senseless!
+www/data/Map006.json	\n<Ipos>I doubt any other Demon in Hell is as much of a 
+www/data/Map006.json	degenerate as she is...
+www/data/Map006.json	\n<Ipos>In any case a Demon is a Demon, and I will do my
+www/data/Map006.json	best to service my fellow Demons in arms.
+www/data/Map006.json	\n<Ipos>Of course.
+www/data/Map006.json	\n<Ipos>There is a type of strength in solidarity that
+www/data/Map006.json	I am attracted to.
+www/data/Map006.json	\n<Ipos>A strength much different than the difference between
+www/data/Map006.json	predator and prey.
+www/data/Map006.json	\n<Ipos>I've piqued your interest?
+www/data/Map006.json	\n<Ipos>I can't say I'm a very interesting Demon...
+www/data/Map006.json	\n<Ipos>Apart from my physical features, you could consider
+www/data/Map006.json	me to be quite orderly.
+www/data/Map006.json	\n<Ipos>Though I must admit, I do take a special interest in
+www/data/Map006.json	breaking order from time to time~
+www/data/Map006.json	\n<Ipos>Ah, Humans are my favorite creatures to t-
+www/data/Map006.json	\n<Ipos>To follow!
+www/data/Map006.json	\n<Ipos>Seeing how the meek become bold, and
+www/data/Map006.json	how the bold become meek-
+www/data/Map006.json	\n<Ipos>It's all so fascinating!
+www/data/Map006.json	\n<Ipos>Being able to witness and feel it firsthand
+www/data/Map006.json	is one of my greatest joys!~
+www/data/Map006.json	\n<Ipos>Hmm...
+www/data/Map006.json	\n<Ipos>If we were to duel, who do you think would prevail?
+www/data/Map006.json	Me
+www/data/Map006.json	You
+www/data/Map006.json	\n<Ipos>How bold!
+www/data/Map006.json	(A faint glimmer appears in the corner of your vision.)
+www/data/Map006.json	(Suddenly, the Demon is brandishing a dagger in her
+www/data/Map006.json	able hand.)
+www/data/Map006.json	\n<Ipos>A pity. You seeing it spoils the fun.
+www/data/Map006.json	\n<Ipos>A poor attempt at flattery.
+www/data/Map006.json	\n<Ipos>If you wish to travel together, I'd suggest
+www/data/Map006.json	you prove you won't be a burden in the future.
+www/data/Map006.json	\n<Glasya-Labolas>Mmmmmrh.
+www/data/Map006.json	\n<Glasya-Labolas>Hm. \.\.Hm.
+www/data/Map006.json	\n<Glasya-Labolas>Mmh.
+www/data/Map006.json	\n<Glasya-Labolas>Ah.
+www/data/Map006.json	\n<Glasya-Labolas>I don't like bugs.
+www/data/Map006.json	\n<Glasya-Labolas>I don't like the way they skitter...
+www/data/Map006.json	\n<Glasya-Labolas>And I don't like the way they taste.
+www/data/Map006.json	I like bugs
+www/data/Map006.json	I don't have an issue with bugs
+www/data/Map006.json	I hate bugs
+www/data/Map006.json	\n<Glasya-Labolas>Mmmrh...
+www/data/Map006.json	\n<Glasya-Labolas>I crush them when I see them.
+www/data/Map006.json	\n<Glasya-Labolas>But when I crush them, they make a big mess.
+www/data/Map006.json	\n<Glasya-Labolas>The mess makes me crazy.
+www/data/Map006.json	\n<Glasya-Labolas>I've tried eating them before, to try and
+www/data/Map006.json	clean it up...
+www/data/Map006.json	\n<Glasya-Labolas>But I'll puke up every time, and big brother
+www/data/Map006.json	told me to stop.
+www/data/Map006.json	\n<Glasya-Labolas>"Sinners"...
+www/data/Map006.json	\n<Glasya-Labolas>Nothing but worthless bugs.
+www/data/Map006.json	\n<Glasya-Labolas>Then you're no different.
+www/data/Map006.json	\n<Glasya-Labolas>Just wandering around.
+www/data/Map006.json	\n<Glasya-Labolas>Have you seen them? The bugs?
+www/data/Map006.json	\n<Glasya-Labolas>The shambling ones that bleed...
+www/data/Map006.json	\n<Glasya-Labolas>I'd crush you all the same.
+www/data/Map006.json	\n<Glasya-Labolas>I like to crush them.
+www/data/Map006.json	\n<Glasya-Labolas>I like knowing that they won't skitter around
+www/data/Map006.json	anymore.
+www/data/Map006.json	\n<Glasya-Labolas>But really...
+www/data/Map006.json	\n<Glasya-Labolas>I like how it feels between my fingers,
+www/data/Map006.json	\n<Glasya-Labolas>and on my arms, and on my face-
+www/data/Map006.json	\n<Glasya-Labolas>that mess they leave behind.
+www/data/Map006.json	\n<Glasya-Labolas>Did you know?
+www/data/Map006.json	\n<Glasya-Labolas>It's all the same
+www/data/Map006.json	\n<Glasya-Labolas>the same mess
+www/data/Map006.json	\n<Glasya-Labolas>whether it's Humans,\.\. Angels,\.\. Sinners\.\....
+www/data/Map006.json	\n<Glasya-Labolas>or Demons.
+www/data/Map006.json	\n<Glasya-Labolas>Can I tell you a secret?
+www/data/Map006.json	\n<Glasya-Labolas>When we get to Pandaemonium,
+www/data/Map006.json	\n<Glasya-Labolas>I'm going to kill the Boss.
+www/data/Map006.json	\n<Glasya-Labolas>Have you ever wondered-
+www/data/Map006.json	\n<Glasya-Labolas>what kind of mess he'd leave behind?
+www/data/Map006.json	\n<Glasya-Labolas>Promise me you won't tell anyone else.
+www/data/Map006.json	I promise
+www/data/Map006.json	I don't believe you
+www/data/Map006.json	I can't make any promises
+www/data/Map006.json	\n<Glasya-Labolas>Hmh...
+www/data/Map006.json	\n<Glasya-Labolas>Big brother would yell at me if he knew I
+www/data/Map006.json	told you.
+www/data/Map006.json	\n<Glasya-Labolas>Hah.
+www/data/Map006.json	\n<Glasya-Labolas>I'm just kidding, you know...
+www/data/Map006.json	\n<Glasya-Labolas>It was a joke anyways.
+www/data/Map006.json	\n<Glasya-Labolas>Big brother told me I shouldn't make jokes
+www/data/Map006.json	like that.
+www/data/Map006.json	\n<Glasya-Labolas>You're making a funny face.
+www/data/Map006.json	\n<Glasya-Labolas>It was just a joke.
+www/data/Map006.json	\n<Glasya-Labolas>What do you think is going to happen when
+www/data/Map006.json	we get there,
+www/data/Map006.json	\n<Glasya-Labolas>to Pandaemonium?
+www/data/Map006.json	Return to the Human realm
+www/data/Map006.json	A way to beat Angels
+www/data/Map006.json	I don't know
+www/data/Map006.json	\n<Glasya-Labolas>Hm...
+www/data/Map006.json	\n<Glasya-Labolas>I hope so.
+www/data/Map006.json	\n<Glasya-Labolas>I hope that's true.
+www/data/Map006.json	\n<Glasya-Labolas>Because I like Humans.
+www/data/Map006.json	\n<Glasya-Labolas>We don't need another way to beat them...
+www/data/Map006.json	\n<Glasya-Labolas>We're already good enough.
+www/data/Map006.json	\n<Glasya-Labolas>We'll prove it to him.
+www/data/Map006.json	\n<Glasya-Labolas>To the boss.
+www/data/Map006.json	\n<Glasya-Labolas>No one does.
+www/data/Map006.json	\n<Glasya-Labolas>No one except me, and big brother.
+www/data/Map006.json	\n<Glasya-Labolas>That's how much the Boss trusts us, 
+www/data/Map006.json	you know...
+www/data/Map006.json	\n<Glasya-Labolas>Hm.\.\. Hm.\.\. Hah.
+www/data/Map006.json	(The Demon smiles coldly at you.)
+www/data/Map006.json	\n<Glasya-Labolas>Yes.
+www/data/Map006.json	\n<Glasya-Labolas>Some of them call me names.
+www/data/Map006.json	\n<Glasya-Labolas>Some don't like talking with me either, I
+www/data/Map006.json	can tell.
+www/data/Map006.json	\n<Glasya-Labolas>It doesn't really bother me anymore though.
+www/data/Map006.json	\n<Glasya-Labolas>Because I can cut through Demon flesh really
+www/data/Map006.json	easily-
+www/data/Map006.json	\n<Glasya-Labolas>did you know?
+www/data/Map006.json	\n<Glasya-Labolas>No.
+www/data/Map006.json	\n<Glasya-Labolas>Big brother's the only one who doesn't think
+www/data/Map006.json	I'm weird.
+www/data/Map006.json	\n<Glasya-Labolas>He takes care of me too.
+www/data/Map006.json	\n<Glasya-Labolas>That's what he told me.
+www/data/Map006.json	\n<Glasya-Labolas>I don't like fighting...
+www/data/Map006.json	\n<Glasya-Labolas>If there's something bothering me, big brother
+www/data/Map006.json	tries to solve it for me.
+www/data/Map006.json	\n<Glasya-Labolas>But sometimes he's too slow.
+www/data/Map006.json	\n<Glasya-Labolas>I can solve problems really fast, you know?
+www/data/Map006.json	\n<Glasya-Labolas>It doesn't have to be a fight at all...
+www/data/Map006.json	\n<Glasya-Labolas>They're funny.
+www/data/Map006.json	\n<Glasya-Labolas>They invoke me to help solve their problems
+www/data/Map006.json	sometimes.
+www/data/Map006.json	\n<Glasya-Labolas>They think I have the power to make other humans 
+www/data/Map006.json	hostile...
+www/data/Map006.json	\n<Glasya-Labolas>Hostile enough to take another Human's
+www/data/Map006.json	life.
+www/data/Map006.json	\n<Glasya-Labolas>But I can't do anything like that.
+www/data/Map006.json	\n<Glasya-Labolas>They celebrate the death of one party caused
+www/data/Map006.json	by another.
+www/data/Map006.json	\n<Glasya-Labolas>And they always look past the mess.
+www/data/Map006.json	\n<Glasya-Labolas>Mmmh.
+www/data/Map006.json	\n<Glasya-Labolas>I wonder if they realise\.\. Humans can't make
+www/data/Map006.json	messes like that...
+www/data/Map006.json	\n<Glasya-Labolas>Do you like games?
+www/data/Map006.json	\n<Glasya-Labolas>There's a game we can play...
+www/data/Map006.json	\n<Glasya-Labolas>Humans made it up. It's called "Chicken."
+www/data/Map006.json	\n<Glasya-Labolas>We play it like this:
+www/data/Map006.json	\n<Glasya-Labolas>One Demon does something scary, and the other
+www/data/Map006.json	Demon tries to top it.
+www/data/Map006.json	\n<Glasya-Labolas>The first Demon who gets scared and runs
+www/data/Map006.json	away loses. Does it sound fun?
+www/data/Map006.json	\n<Glasya-Labolas>You start then.
+www/data/Map006.json	(Pretend to strike the Demon)
+www/data/Map006.json	(Make a scary face)
+www/data/Map006.json	(Make a scary noise)
+www/data/Map006.json	\n<Glasya-Labolas>My turn.
+www/data/Map006.json	\n<Glasya-Labolas>That's okay.
+www/data/Map006.json	\n<Glasya-Labolas>I wasn't actually expecting you to answer.
+www/data/Map006.json	\n<Glasya-Labolas>At least you aren't patronizing me.
+www/data/Map006.json	\n<Zepar>If there's nothing else, I shall depart.
+www/data/Map006.json	\n<Zepar>May our Devil's own luck be with you on your pilgrimage.
+www/data/Map006.json	\n<Zepar>Hm.
+www/data/Map006.json	\n<Zepar>The ones that wander.
+www/data/Map006.json	\n<Zepar>Do you think they were once loved?
+www/data/Map006.json	Surely
+www/data/Map006.json	Surely not
+www/data/Map006.json	I hope not
+www/data/Map006.json	\n<Zepar>...I see.
+www/data/Map006.json	\n<Zepar>To sin and to be loved cannot be mutually exclusive.
+www/data/Map006.json	\n<Zepar>It may even be possible that those who loved them
+www/data/Map006.json	are now residing here, in the same Circles.
+www/data/Map006.json	\n<Zepar>Sorrowful, how It has all been reduced to mindless
+www/data/Map006.json	wandering...
+www/data/Map006.json	\n<Zepar>If none are to mourn them, then I shall shoulder
+www/data/Map006.json	the burden.
+www/data/Map006.json	\n<Zepar>-Even if it is considered taboo amongst us Demons.
+www/data/Map006.json	\n<Zepar>An interesting take.
+www/data/Map006.json	\n<Zepar>I wonder if those words come from a place of hatred,
+www/data/Map006.json	or pure indifference.
+www/data/Map006.json	\n<Zepar>What does "love" mean to you?
+www/data/Map006.json	\n<Zepar>Answer how you'd like.
+www/data/Map006.json	A feeling
+www/data/Map006.json	Destiny
+www/data/Map006.json	No comment
+www/data/Map006.json	\n<Zepar>Fair enough.
+www/data/Map006.json	\n<Zepar>If it goes beyond words and expression, a "feeling"
+www/data/Map006.json	may be an appropriate definition.
+www/data/Map006.json	\n<Zepar>As it should be.
+www/data/Map006.json	\n<Zepar>Ah.
+www/data/Map006.json	\n<Zepar>Perhaps it was a mistake asking a Demon for their
+www/data/Map006.json	opinion on these matters.
+www/data/Map006.json	\n<Zepar>If it would cost you your most prized possession
+www/data/Map006.json	to reach Pandaemonium, would you still be willing to take
+www/data/Map006.json	on this journey?
+www/data/Map006.json	It doesn't matter to me
+www/data/Map006.json	Yes, it's worth it
+www/data/Map006.json	No, not worth it.
+www/data/Map006.json	\n<Zepar>If that's your opinion.
+www/data/Map006.json	\n<Zepar>A respectable answer.
+www/data/Map006.json	\n<Zepar>Despite our Demonic status, this is good to hear
+www/data/Map006.json	from another Demon.
+www/data/Map006.json	\n<Zepar>I find it interesting that you would have something
+www/data/Map006.json	you're unwilling to let go of, despite our Demonic status.
+www/data/Map006.json	(The Demon is standing tall and unmoving.)
+www/data/Map006.json	\n<Zepar>No.
+www/data/Map006.json	\n<Zepar>I respect those of our status, and have no qualms.
+www/data/Map006.json	\n<Zepar>I cannot say for sure.
+www/data/Map006.json	\n<Zepar>What I will tell you is that I have a mutual respect
+www/data/Map006.json	for those of our kind.
+www/data/Map006.json	\n<Zepar>I am Zepar, numbered 16th of us Infernal Spirits.
+www/data/Map006.json	\n<Zepar>Before our struggle against the Angels, I was commonly
+www/data/Map006.json	invoked to bring love among Humans.
+www/data/Map006.json	\n<Zepar>Needless to say, those days are long since passed.
+www/data/Map006.json	\n<Zepar>I despised those times.
+www/data/Map006.json	\n<Zepar>I've a great deal of respect for them.
+www/data/Map006.json	\n<Zepar>Their concept of "love" intrigues me greatly.
+www/data/Map006.json	\n<Zepar>Yet at the same time, it is one of the most disgusting
+www/data/Map006.json	things I've borne witness to.
+www/data/Map006.json	\n<Zepar>That is all I have to say.
+www/data/Map006.json	\n<Zepar>Allow me to be frank.
+www/data/Map006.json	\n<Zepar>Would you care to spar with me?
+www/data/Map006.json	\n<Zepar>Wonderful.
+www/data/Map006.json	\n<Zepar>It is important for us Demons to stay at the top
+www/data/Map006.json	of our ability at all times.
+www/data/Map006.json	\n<Zepar>A shame.
+www/data/Map006.json	\n<Zepar>You should care more about upkeeping your skills
+www/data/Map006.json	in the future.
+www/data/Map006.json	\n<???>Um...
+www/data/Map006.json	\n<???>No offense or anything, but I think I'm gonna practice
+www/data/Map006.json	my times on the way to Pandaemonium.
+www/data/Map006.json	\n<???>Like on my own.
+www/data/Map006.json	\n<???>Bye bye.
+www/data/Map006.json	\n<???>Oh, that reminds me!
+www/data/Map006.json	\n<???>Uhhh...
+www/data/Map006.json	\n<???>What was I saying?
+www/data/Map006.json	\n<???>Oh yeah!
+www/data/Map006.json	\n<???>How fast do you think those purple guys out there run?
+www/data/Map006.json	Pretty fast
+www/data/Map006.json	Faster than you
+www/data/Map006.json	Pretty slow
+www/data/Map006.json	\n<???>Nuh uh.
+www/data/Map006.json	\n<???>If you hold "Shift" to run, you're actually faster
+www/data/Map006.json	than those guys by like, a decent amount.
+www/data/Map006.json	\n<???>Don't tell me you weren't paying any attention...?
+www/data/Map006.json	\n<???>Like if I was walking, probably.
+www/data/Map006.json	\n<???>But running though?
+www/data/Map006.json	\n<???>Do you seriously think that?
+www/data/Map006.json	\n<???>Yeah, I was actually thinking the same thing as well.
+www/data/Map006.json	\n<???>Like you'd have to be a dumbass to say otherwise.
+www/data/Map006.json	\n<???>Either that or you're blind!
+www/data/Map006.json	\n<???>I've got a question!
+www/data/Map006.json	\n<???>How do you win races?
+www/data/Map006.json	Cheating
+www/data/Map006.json	Hold "Shift" to run
+www/data/Map006.json	Training
+www/data/Map006.json	\n<???>
+www/data/Map006.json	\n<???>Are you stupid or something?
+www/data/Map006.json	\n<???>I wanna WIN races.
+www/data/Map006.json	\n<???>If I didn't earn it, then I didn't win.
+www/data/Map006.json	\n<???>Do you get it, shit-for-brains?
+www/data/Map006.json	\n<???>Yeah,\.\. I guess so.
+www/data/Map006.json	\n<???>You're still dead ass wrong but I'll give it to
+www/data/Map006.json	you.
+www/data/Map006.json	\n<???>Training...
+www/data/Map006.json	Speed
+www/data/Map006.json	Stamina
+www/data/Map006.json	Power
+www/data/Map006.json	Guts
+www/data/Map006.json	Wit
+www/data/Map006.json	\n<???>Yeah, that was pretty obvious huh.
+www/data/Map006.json	\n<???>In or out of races, nothing beats the feeling
+www/data/Map006.json	of getting faster times~
+www/data/Map006.json	\n<???>Yeah, I getcha.
+www/data/Map006.json	\n<???>It'd suck if I tuckered out in the middle of a bout!
+www/data/Map006.json	\n<???>Making sure I can go the distance is definitely gonna
+www/data/Map006.json	help me win those types of races, at least!
+www/data/Map006.json	\n<???>Yeah, I see!
+www/data/Map006.json	\n<???>Because I'd need that extra oomph to break through,
+www/data/Map006.json	right?
+www/data/Map006.json	\n<???>It's one thing to go fast, but it's a totally different
+www/data/Map006.json	level I could ramp it up instantly!
+www/data/Map006.json	\n<???>Sure!
+www/data/Map006.json	\n<???>I'll believe you!
+www/data/Map006.json	\n<???>Yeah!
+www/data/Map006.json	\n<???>I've been studying up on my contemporaries.
+www/data/Map006.json	\n<???>Watching their techniques and how they handle certain
+www/data/Map006.json	situations is not only something I can absorb for myself...
+www/data/Map006.json	\n<???>But also something I can learn to counter.
+www/data/Map006.json	\n<???>I want to win my races.
+www/data/Map006.json	\n<???>But I also want to beat everyone else.
+www/data/Map006.json	\n<???>Do you get it?
+www/data/Map006.json	\n<???>Wanna race to Pandaemonium?
+www/data/Map006.json	\n<???>Even though you know you'd lose?
+www/data/Map006.json	\n<???>That's really cute.
+www/data/Map006.json	\n<???>That's okay!
+www/data/Map006.json	\n<???>I wouldn't wanna race with a sorry excuse for a
+www/data/Map006.json	Demon either!
+www/data/Map006.json	\n<???>You don't want to race
+www/data/Map006.json	\n<???>just because you know you'd lose,\.\. is that why?
+www/data/Map006.json	\n<???>At least grow some balls and stand up to the challenge,
+www/data/Map006.json	you coward.
+www/data/Map006.json	(The Demon is bouncing from one foot to the other.)
+www/data/Map006.json	\n<???>Absolutely.
+www/data/Map006.json	\n<???>None of them take me seriously.
+www/data/Map006.json	\n<???>Just because of some "hobby" that I have.
+www/data/Map006.json	\n<???>Some Demons like to torment Sinners.
+www/data/Map006.json	\n<???>Some Demons like to burn things down.
+www/data/Map006.json	\n<???>I like to run.
+www/data/Map006.json	\n<???>What's wrong with that?
+www/data/Map006.json	\n<???>Not in the slightest.
+www/data/Map006.json	\n<???>If you can beat me in a race, then I'd have some
+www/data/Map006.json	respect for you.
+www/data/Map006.json	\n<???>Otherwise, you all are nothing to me but dirt
+www/data/Map006.json	beneath my feet on the tracks that I run on.
+www/data/Map006.json	\n<???>Me?
+www/data/Map006.json	\n<???>I'm the fastest!
+www/data/Map006.json	\n<???>I love running and am always training to be even
+www/data/Map006.json	faster!
+www/data/Map006.json	\n<???>The fastest there is.
+www/data/Map006.json	\n<???>I couldn't care less about Humans.
+www/data/Map006.json	\n<???>Sure, some of them participate in sports,
+www/data/Map006.json	or even races of their own...
+www/data/Map006.json	\n<???>But I can't stand the idea of betting money on racers.
+www/data/Map006.json	\n<???>Those people are upset that their favorite didn't win
+www/data/Map006.json	them their cash.
+www/data/Map006.json	\n<???>*I* get upset that I didn't beat my competition into
+www/data/Map006.json	the ground where they belong.
+www/data/Map006.json	\n<???>It's just incomparable.
+www/data/Map006.json	\n<???>You can help me with some strength training!
+www/data/Map006.json	\n<???>Just some basic combat stuff is fine!
+www/data/Map006.json	Okay
+www/data/Map006.json	I don't want to
+www/data/Map006.json	\n<???>I wasn't asking.
+www/data/Map006.json	\n<Haures>...You're pretty good!
+www/data/Map006.json	\n<Haures>Be sure to protect me along the way,
+www/data/Map006.json	\n<Haures>hand to hand combat isn't really my forte,
+www/data/Map006.json	y'know~
+www/data/Map006.json	(A Demon has joined the party.)
+www/data/Map006.json	\n<Ipos>I think it would be in our best interest to travel
+www/data/Map006.json	together.
+www/data/Map006.json	\n<Ipos>A trip like this would be much more manageable
+www/data/Map006.json	with kindred souls, no?
+www/data/Map006.json	\n<Glasya-Labolas>Mmmmh.
+www/data/Map006.json	\n<Glasya-Labolas>You're not that bad.
+www/data/Map006.json	\n<Glasya-Labolas>Let's go to Pandaemonium together...
+www/data/Map006.json	\n<Zepar>You've proven yourself to me.
+www/data/Map006.json	\n<Zepar>Please.
+www/data/Map006.json	\n<Zepar>Consider me an acquaintance until we reach our
+www/data/Map006.json	destination.
+www/data/Map006.json	\n<???>Did I ever introduce myself?
+www/data/Map006.json	\n<Orobas>I'm Orobas! Number 55!
+www/data/Map006.json	\n<Orobas>I think we should go to the Capitol together!
+www/data/Map006.json	\n<Orobas>I'll even race you, if you'd like~
+www/data/Map006.json	\n<Orobas>Ah!
+www/data/Map006.json	\n<Orobas>Sorry if I get a bit heated sometimes...
+www/data/Map006.json	\n<Orobas>I just\.\. care a lot\.\. about what I do\.\. haha...
+www/data/Map006.json	\n<Orobas>More than anything else.
+www/data/Map006.json	"Tread the land and witness"
+www/data/Map006.json	"for the greatest cruelty is not to witness"
+www/data/Map006.json	"but to tread."
+www/data/Map016.json	\n<???>Hiya!
+www/data/Map016.json	\n<???>The name's Chacha!
+www/data/Map016.json	\n<Chacha>Chacha, The Ferrier of Souls!
+www/data/Map016.json	Ferrier?
+www/data/Map016.json	\n<Chacha>Mmhm!
+www/data/Map016.json	\n<Chacha>Surely you know of Charon the Ferryman?
+www/data/Map016.json	\n<Chacha>Charon was my Gramps!
+www/data/Map016.json	\n<Chacha>Times in the Inferno have changed a lot
+www/data/Map016.json	since the fight with the Angels all those years
+www/data/Map016.json	ago...
+www/data/Map016.json	\n<Chacha>So much that Gramps had to step down
+www/data/Map016.json	as the Inferno's transport.
+www/data/Map016.json	\n<Chacha>Thanks to me and the Beatrice Statues
+www/data/Map016.json	though, Demons can still travel freely throughout
+www/data/Map016.json	the Inferno!
+www/data/Map016.json	\n<Chacha>Please come talk to me if you need any
+www/data/Map016.json	trinkets or help moving around!
+www/data/Map016.json	\n<Chacha>Oh, right!
+www/data/Map016.json	\n<Chacha>Some pits have been opening up all over
+www/data/Map016.json	Hell's circles recently.
+www/data/Map016.json	\n<Chacha>If you're gonna go by foot, finding these should be
+www/data/Map016.json	your fastest way down!
+www/data/Map016.json	\n<Chacha>Apart from me, of course~
+www/data/Map016.json	\n<Chacha>You'll know them when you see them!
+www/data/Map016.json	\n<Chacha>Ah, and if you see these Skullies lying
+www/data/Map016.json	around you should try opening them!
+www/data/Map016.json	\n<Chacha>They're real pretty, and the critters
+www/data/Map016.json	inside like to hoard all sorts of stuff!
+www/data/Map016.json	Lower Limbo
+www/data/Map016.json	Charon
+www/data/Map016.json	Pandaemonium
+www/data/Map016.json	\n<Chacha>Gramps was amazing!
+www/data/Map016.json	\n<Chacha>I heard Gramps once helped that Man
+www/data/Map016.json	who walked down here before!
+www/data/Map016.json	\n<Chacha>What was that Man's name...
+www/data/Map016.json	\n<Chacha>...Anyways, Gramps taught me a bunch of
+www/data/Map016.json	stuff before he passed.
+www/data/Map016.json	\n<Chacha>I'm still not as good at ferrying as
+www/data/Map016.json	he was though, so I'm sorry if there's any
+www/data/Map016.json	hiccups...
+www/data/Map016.json	\n<Chacha>But rest assured that I'll always come
+www/data/Map016.json	find you if you get lost-
+www/data/Map016.json	\n<Chacha>And I'll do my best to take you wherever
+www/data/Map016.json	you need to go!
+www/data/Map016.json	\n<Chacha>This is a good enough life for me,
+www/data/Map016.json	I think.
+www/data/Map016.json	\n<Chacha>The Demons are usually nice to me,
+www/data/Map016.json	and I get to collect any trinkets they leave behind!
+www/data/Map016.json	\n<Chacha>Any junk I don't like,
+www/data/Map016.json	I can sell. Simple!
+www/data/Map016.json	\n<Chacha>Other than that, I'm not a toootal cheapskate
+www/data/Map016.json	like Gramps was.
+www/data/Map016.json	\n<Chacha>I'm totally cool with ferrying Demons free
+www/data/Map016.json	of charge!
+www/data/Map016.json	\n<Chacha>...My only rule being you guys gotta
+www/data/Map016.json	buy something from my shop every now and again.
+www/data/Map016.json	\n<Chacha>C'mon! My collection's full of stuff from
+www/data/Map016.json	other Demons!
+www/data/Map016.json	\n<Chacha>You gotta admit to being at least a little
+www/data/Map016.json	bit curious about what I've got, right?
+www/data/Map016.json	\n<Chacha>Limbo is the first of the nine Circles of Hell.
+www/data/Map016.json	\n<Chacha>Here, many of the Sinners wander around
+www/data/Map016.json	all tired-like.
+www/data/Map016.json	\n<Chacha>Quite sad really, but much more relaxed than the
+www/data/Map016.json	other Circles in my opinion.
+www/data/Map016.json	\n<Chacha>Uhm,
+www/data/Map016.json	\n<Chacha>I remember seeing a real peculiar Demon
+www/data/Map016.json	around here too, but I never got a chance to speak
+www/data/Map016.json	with them...
+www/data/Map016.json	\n<Chacha>From what I remember, it looked like they
+www/data/Map016.json	had two party hats strapped to the sides of their
+www/data/Map016.json	head-
+www/data/Map016.json	\n<Chacha>I've ferried loads of Demons before but
+www/data/Map016.json	I don't remember anyone with such a strange fashion
+www/data/Map016.json	sense, hehe! 
+www/data/Map016.json	\n<Chacha>Ah!
+www/data/Map016.json	\n<Chacha>If you could make friends with them, maybe
+www/data/Map016.json	you could recommend them to my shop~
+www/data/Map016.json	\n<Chacha>After the war with the Angels, Hell also
+www/data/Map016.json	took a pretty big toll once the Demons were
+www/data/Map016.json	vanquished...
+www/data/Map016.json	\n<Chacha>Basically, the bottom four Circles ended up
+www/data/Map016.json	falling out, and the whole landscape of Hell
+www/data/Map016.json	started to shift around too...
+www/data/Map016.json	\n<Chacha>I don't blame you if it gets hard to
+www/data/Map016.json	navigate!
+www/data/Map016.json	\n<Chacha>That part's always kinda been the family's
+www/data/Map016.json	business anyways hehe!
+www/data/Map016.json	\n<Chacha>But I gotta say, even I've been having
+www/data/Map016.json	trouble getting around as efficiently...
+www/data/Map016.json	\n<Chacha>Luckily Pandaemonium is still safe in the 
+www/data/Map016.json	5th Circle, but I wonder how much longer it'll
+www/data/Map016.json	stay that way.
+www/data/Map016.json	\n<Chacha>Boss Beelzebub is probably thinking the same
+www/data/Map016.json	thing...
+www/data/Map016.json	\n<Chacha>I bet it's why he's calling everyone
+www/data/Map016.json	over to the Capitol so urgently in the first place.
+www/data/Map016.json	\n<Chacha>Looks like business is gonna start picking
+www/data/Map016.json	up for me again real soon hehe~
+www/data/Map016.json	It's shut tight...
+www/data/Map016.json	500\G was inside.
+www/data/Map016.json	\n<Chacha>I've been trying to open that one for
+www/data/Map016.json	ages now...
+www/data/Map016.json	\n<Chacha>B-but you can keep whatever was inside
+www/data/Map016.json	since you opened it first!
+www/data/Map016.json	\n<Chacha>Mmmm...
+www/data/Map016.json	\n<???>Sitting there all sad doesn't suit you at all.
+www/data/Map016.json	\n<???>"Off your knees and onto shore," 
+www/data/Map016.json	(Boss suggests that we travel in threes on
+www/data/Map016.json	our way to Pandaemonium...)
+www/data/Map016.json	(I should at least chat up that other Demon while
+www/data/Map016.json	I'm here.)
+www/data/Map016.json	(My memories of this Circle are too hazy for me to
+www/data/Map016.json	traverse safely...)
+www/data/Map016.json	(I need to ask that Demon about the Capitol first.)
+www/data/Map016.json	\n<???>Huh? Leaving already?
+www/data/Map016.json	\n<???>Y'know you'll get lost without directions...
+www/data/Map016.json	\n<???>Hey.
+www/data/Map016.json	Enter Limbo?
+www/data/Map016.json	\n<???>I ain't the Demon you're lookin' for bud.
+www/data/Map016.json	\n<???>Don't even think about askin' me for directions.
+www/data/Map016.json	\n<???>I'm Mors. One of Ashmadai's heads.
+www/data/Map016.json	\n<Mors>You're goin' somewhere ain'tcha?
+www/data/Map016.json	\n<Mors>Let me know when you're settin' off
+www/data/Map016.json	and I'll be right behind ya.
+www/data/Map016.json	\n<Mors>I'll be there just in time to pick the meat
+www/data/Map016.json	off your bones whenever you lot die.
+www/data/Map016.json	\n<Mors>Keh.
+www/data/Map016.json	\n<Mors>Goin' somewhere or what?
+www/data/Map016.json	\n<Chacha>Seems like you've had it pretty rough this time
+www/data/Map016.json	'round, hm?
+www/data/Map016.json	\n<Chacha>The Demons\.\.\. have been exceptionally rude
+www/data/Map016.json	from the looks of things...
+www/data/Map016.json	\n<Kushiel>Ferryman,\.\.\.
+www/data/Map016.json	\n<Kushiel>Do you think\.\.\. it's still worth pursuing?
+www/data/Map016.json	\n<Chacha>Whether it is or whether it isn't-
+www/data/Map016.json	\n<Chacha>I don't think I really have a right to say...
+www/data/Map016.json	\n<Chacha>But\.\.\. as a Ferryman\.\.\. I will tell you this.
+www/data/Map016.json	\n<Chacha>In my travels, I've seen lots of Demons.
+www/data/Map016.json	\n<Chacha>Heard lots of stories
+www/data/Map016.json	\n<Chacha>and experienced great loss.
+www/data/Map016.json	\n<Chacha>Does it sound familiar?
+www/data/Map016.json	\n<Chacha>But-
+www/data/Map016.json	\n<Chacha>There's other experiences, too.
+www/data/Map016.json	\n<Chacha>The ones that you don't know about.
+www/data/Map016.json	\n<Chacha>The ones that exist only in my memories.
+www/data/Map016.json	\n<Chacha>You could say\.\. they're a part of me.
+www/data/Map016.json	\n<Chacha>Knowing this,
+www/data/Map016.json	\n<Chacha>do you still have it in you to forsake these things?
+www/data/Map016.json	\n<Kushiel>.\.\.\..\.\.\..
+www/data/Map016.json	\n<Chacha>Ah,\.\.\. can't answer?
+www/data/Map016.json	\n<Chacha>Clearly, there's something on your mind.
+www/data/Map016.json	\n<Chacha>No, that's wrong.
+www/data/Map016.json	\n<Chacha>It's something deeper than that, isn't it?
+www/data/Map016.json	\n<Chacha>For the Charon family, it's very easy to spot
+www/data/Map016.json	these things.
+www/data/Map016.json	\n<Chacha>Think it over, for just a little bit.
+www/data/Map016.json	\n<Chacha>Even after a thousand years of wandering,
+www/data/Map016.json	\n<Chacha>only now you think to ask me that question?
+www/data/Map016.json	\n<Kushiel>One thousand years passed.
+www/data/Map016.json	\n<Kushiel>And one thousand years' worth of doubt has
+www/data/Map016.json	begun to cloud my mind...
+www/data/Map016.json	\n<Kushiel>You can see it clear as day, Ferryman.
+www/data/Map016.json	\n<Kushiel>Even my legs have grown tired...
+www/data/Map016.json	\n<Chacha>But this Angel keeps on marching, don't they?
+www/data/Map016.json	\n<Chacha>To me it looks like,
+www/data/Map016.json	\n<Chacha>my dear passenger already has a destination in
+www/data/Map016.json	mind.
+www/data/Map016.json	\n<Chacha>You still haven't told me, wanderer.
+www/data/Map016.json	\n<Chacha>What business does an Angel have pursuing the
+www/data/Map016.json	Inferno?
+www/data/Map016.json	\n<Haures>Tch!
+www/data/Map016.json	\n<Haures>Why does navigatin' around here have
+www/data/Map016.json	to be so damn difficult?!
+www/data/Map016.json	\n<Haures>The Boss said he wants everyone to meet up
+www/data/Map016.json	in Pandaemonium, which is in\.\.\..\.\.\..\.\.\..
+www/data/Map016.json	\n<Haures>W-Whatever!
+www/data/Map016.json	\n<Haures>I'll just go tag along with that Demon
+www/data/Map016.json	up ahead!
+www/data/Map016.json	\n<Ipos>So this is Limbo...
+www/data/Map016.json	\n<Ipos>I must admit I am rather unfamiliar with
+www/data/Map016.json	this circle of Hell...
+www/data/Map016.json	\n<Ipos>Let's see...
+www/data/Map016.json	\n<Ipos>If my memory serves right, Pandaemonium
+www/data/Map016.json	should be in the 5th Circle.
+www/data/Map016.json	\n<Ipos>S-Surely!
+www/data/Map016.json	\n<Ipos>Maybe it wouldn't be a bad idea to ask
+www/data/Map016.json	for some proper directions.
+www/data/Map016.json	\n<Zepar>.\.\.\..\.\.\..
+www/data/Map016.json	\n<Zepar>...?
+www/data/Map016.json	\n<???>Hey!
+www/data/Map016.json	\n<???>Hey hey!
+www/data/Map016.json	\n<???>You look kinda lost mister!
+www/data/Map016.json	\n<???>Even though I'm having some trouble around here too,
+www/data/Map016.json	I can still help with directions!
+www/data/Map016.json	It's broken, and the words are too faded to make out.
+www/data/Map016.json	"¨€B¨€N¨€¨€¨€ ¨€¨€¨€ H¨€¨€¨€, ¨€¨€ ¨€H¨€ ¨€¨€T¨€¨€ ¨€¨€R¨€."
+www/data/Map019.json	\n<???>Many times I've seen these faces.
+www/data/Map019.json	\n<???>Those who have wandered into Limbo...
+www/data/Map019.json	\n<???>Demons of the Grimoire.
+www/data/Map019.json	\n<???>I wonder.\.\.\..\.\.\..
+www/data/Map019.json	\n<???>How will you keep me enthralled this time?
+www/data/Map019.json	\n<???>Numbered 64 within the Ars Goetia, the Demon's
+www/data/Map019.json	name is "Haures."
+www/data/Map019.json	\n<???>Her flames have always burned in the prettiest
+www/data/Map019.json	of colors.
+www/data/Map019.json	\n<???>But as of late, it seems she's had some
+www/data/Map019.json	trouble maintaining these flames she takes so much
+www/data/Map019.json	pride in.
+www/data/Map019.json	\n<???>Despite her waning flames, her personality
+www/data/Map019.json	remains quite easygoing.
+www/data/Map019.json	Begin the story with this Demon?
+www/data/Map019.json	\n<???>Of course it would be wise to keep in mind that
+www/data/Map019.json	the lives of these Demons.\.\.\..\.\.\..
+www/data/Map019.json	\n<???>...Are ultimately meaningless.
+www/data/Map019.json	\n<???>Though meaningless they may be, I will
+www/data/Map019.json	parse every sense of meaning that I can from these
+www/data/Map019.json	Demons.
+www/data/Map019.json	\n<???>Until even "meaning" itself becomes foreign.
+www/data/Map019.json	\n<???>Numbered 16th within the Ars Goetia, the Demon's
+www/data/Map019.json	name is "Zepar."
+www/data/Map019.json	\n<???>Stoic, and not much for words, if I recall.
+www/data/Map019.json	\n<???>Love.
+www/data/Map019.json	\n<???>The idea doesn't mean a thing to me.
+www/data/Map019.json	\n<???>Though as it seems, this Demon seems to have his own
+www/data/Map019.json	troubled perception on the matter.
+www/data/Map019.json	\n<???>Numbered 22nd within the Ars Goetia, the Demon's
+www/data/Map019.json	name is "Ipos."
+www/data/Map019.json	\n<???>On the surface, she keeps a rather dignified
+www/data/Map019.json	attitude about her.
+www/data/Map019.json	\n<???>But this attitude doesn't appear to be true to her
+www/data/Map019.json	heart.
+www/data/Map019.json	\n<???>Or at least, what could be called a "heart" as
+www/data/Map019.json	far as those Demons are concerned.
+www/data/Map019.json	\n<???>Despite her eccentric nature, doubtless that 
+www/data/Map019.json	she is always confident and self assured.
+www/data/Map020.json	Skip intro?
+www/data/Map020.json	\n<???>And so it begins anew.
+www/data/Map020.json	Skip Intro?
+www/data/Map020.json	\n<???>Formless and empty.
+www/data/Map020.json	\n<???>I've grown \.\.\.accustomed to this story by now.
+www/data/Map020.json	"One day, malice incarnate-"
+www/data/Map020.json	"the Demon called 'Beelzebub'
+www/data/Map020.json	announced to the world:"
+www/data/Map020.json	'O Angels high!'
+www/data/Map020.json	'Soon cometh Infernus In Terra.'
+www/data/Map020.json	'And in time, all shall learn-'
+www/data/Map020.json	'That which is above,'
+www/data/Map020.json	'so too is that which lies beneath.'
+www/data/Map020.json	"And when the time comes..."
+www/data/Map020.json	"Angels.\.\. Demons."
+www/data/Map020.json	"Show me \.\.\.what's left of you."
+www/data/Map020.json	"Beyond the 9 Circles
+www/data/Map020.json	I will await.
+www/data/Map020.json	Past the gates
+www/data/Map020.json	of \{ \{  \{  \{PANDAEMONIUM."
+www/data/Map021.json	\n<Haures>(This Sinner really is so small... Whatever's
+www/data/Map021.json	up ahead is definitely gonna be way tougher!)
+www/data/Map021.json	\n<Haures>(Argh! It's no help that my flames have been
+www/data/Map021.json	gettin' weaker lately too...)
+www/data/Map021.json	\n<Haures>(Should I get a warmup in before setting off?)
+www/data/Map021.json	\n<Haures>(Tch! Nah, it ain't worth my time.)
+www/data/Map021.json	\n<Ipos>(Aaaaah it really is tiny!)
+www/data/Map021.json	\n<Ipos>(I'd feel terrible having to hurt something so cute!)
+www/data/Map021.json	\n<Ipos>(...)
+www/data/Map021.json	\n<Ipos>(Of course that's an utter lie.)
+www/data/Map021.json	\n<Ipos>(Should I take care of it right now?)
+www/data/Map021.json	\n<Ipos>(It's just too cute... I can hold on a little longer,
+www/data/Map021.json	I think!)
+www/data/Map021.json	\n<Zepar>(...)
+www/data/Map021.json	\n<Zepar>(Idle sickles only rust in time.)
+www/data/Map021.json	Engage in Combat
+www/data/Map021.json	Retreat
+www/data/Map021.json	\n<Zepar>(Perhaps I can find better opportunities ahead.)
+www/data/Map021.json	In battles, Tensions will rise among your Demons whenever
+www/data/Map021.json	they take/deal damage, or use an item/skill.
+www/data/Map021.json	When the Tension Meter is full, powerful Tension Skills
+www/data/Map021.json	can be performed.
+www/data/Map021.json	Please note that only the current party leader will have
+www/data/Map021.json	access to these Tension Skills, however.
+www/data/Map021.json	\n<Chacha>Ooooh~
+www/data/Map021.json	\n<Chacha>This Sinner is just so kyuute!
+www/data/Map021.json	\n<Chacha>Sinners normally come in all sorts of
+www/data/Map021.json	shapes and sizes but I've never seen one so small!
+www/data/Map021.json	\n<Chacha>*Ahem*
+www/data/Map021.json	\n<Chacha>Were you planning on going on?
+www/data/Map021.json	\n<Chacha>We'll be off then!
+www/data/Map021.json	\n<Chacha>No problem! I'll be waiting right here!
+www/data/Map021.json	\n<Chacha>Aaaaah... \.\.\.Ok...
+www/data/Map021.json	\n<Chacha>Did you
+www/data/Map021.json	\n<Chacha>want to go somewhere?
+www/data/Map021.json	\n<Chacha>Ok...
+www/data/Map021.json	\n<Chacha>Ah...
+www/data/Map022.json	"Have you ever considered"
+www/data/Map022.json	"what is left of the walking man"
+www/data/Map022.json	"as the road winds down?"
+www/data/Map022.json	\n<Mors>Has the Statue of Beatrice always looked like that?
+www/data/Map022.json	\n<Mors>You Demons sure are somethin' else.
+www/data/Map022.json	\n<Mors>There's a funny one up ahead.
+www/data/Map022.json	\n<Mors>Pale hair too.
+www/data/Map022.json	\n<Mors>Hey.
+www/data/Map022.json	\n<Mors>Looks like someone else beat you lot to the Statue.
+www/data/Map022.json	\n<Mors>Better hope they don't mean you any trouble.
+www/data/Map022.json	\n<Mors>It'd be a shame to come here just to die and miss
+www/data/Map022.json	out on whatever the Boss has to say.
+www/data/Map022.json	\n<Chacha>We're here!
+www/data/Map022.json	\n<Chacha>The Statue of Beatrice is just up ahead!
+www/data/Map022.json	\n<Chacha>You know how to use it right?
+www/data/Map022.json	\n<Chacha>Just siphon the power from it and you'll be
+www/data/Map022.json	in the next Circle in no time at all!
+www/data/Map022.json	\n<Chacha>Oh, me?
+www/data/Map022.json	\n<Chacha>I'll be right behind you of course!
+www/data/Map022.json	\n<Chacha>...Hehe.
+www/data/Map022.json	\n<Chacha>I'll make some rounds around this Circle in case
+www/data/Map022.json	any other Demons need my help navigating.
+www/data/Map022.json	\n<Chacha>It's like what Gramps used to say!
+www/data/Map022.json	\n<Chacha>"Ferryman's Second Rule:"
+www/data/Map022.json	\n<Chacha>"Passengers yet to ride are as loose coin on the 
+www/data/Map022.json	wayside!"
+www/data/Map022.json	\n<Chacha>O-Oh, you came back!
+www/data/Map022.json	\n<Chacha>That coin!
+www/data/Map022.json	\n<Chacha>That coin is-
+www/data/Map022.json	\n<Chacha>See, haha...
+www/data/Map022.json	\n<Chacha>It \.\.it belonged-
+www/data/Map022.json	\n<Chacha>The thing is, Gramps told me that if he were
+www/data/Map022.json	to ever pass,
+www/data/Map022.json	\n<Chacha>making top dollar out of his possessions
+www/data/Map022.json	should be the second priority for the Charon family...
+www/data/Map022.json	\n<Chacha>"Any good Ferryman should know that
+www/data/Map022.json	wealth builds itself-
+www/data/Map022.json	\n<Chacha>lest their accumen grow meek, as poor aged booze
+www/data/Map022.json	on the shelf."
+www/data/Map022.json	\n<Chacha>...I forget which Rule this is.
+www/data/Map022.json	\n<Chacha>But-!
+www/data/Map022.json	\n<Chacha>Do you think\.\.\. I can have that coin back?
+www/data/Map022.json	(Yikes, she's gettin' all fiesty...)
+www/data/Map022.json	(Maybe I don't have it in me to hurt this kid's feelings...)
+www/data/Map022.json	(Hm?)
+www/data/Map022.json	(The Ferryman is acting quite strangely over this coin...)
+www/data/Map022.json	(Normally I'd find this kind of jaded behavior amusing, but
+www/data/Map022.json	it really is just pitiful...)
+www/data/Map022.json	(Hmrh.)
+www/data/Map022.json	(So annoying.)
+www/data/Map022.json	(I feel a great urge to return this coin.)
+www/data/Map022.json	(Whoah, the Ferrier is super bummed...)
+www/data/Map022.json	(I get it!)
+www/data/Map022.json	(This must be their version of losing first place
+www/data/Map022.json	by a neck's length...)
+www/data/Map022.json	Return the coin
+www/data/Map022.json	Hang on to it
+www/data/Map022.json	Chacha snatched the coin before you could even react!
+www/data/Map022.json	999\G obtained.
+www/data/Map022.json	\n<Chacha>I uh...
+www/data/Map022.json	\n<Chacha>I'll f-fight you for it!
+www/data/Map022.json	\n<Chacha>That's what you want right?
+www/data/Map022.json	\n<Chacha>We'll have a contest...!
+www/data/Map022.json	\n<Chacha>I...
+www/data/Map022.json	\n<Chacha>Sorry Gramps...
+www/data/Map022.json	\n<Chacha>Maybe I was a little greedy, hehe...
+www/data/Map022.json	\n<Chacha>...Uhm,
+www/data/Map022.json	\n<Chacha>You can keep that coin from now on.
+www/data/Map022.json	\n<Chacha>It came from back when Gramps was Hell's Ferryman.
+www/data/Map022.json	\n<Chacha>It should be the last of its kind since that currency
+www/data/Map022.json	went out of print a long time ago...
+www/data/Map022.json	\n<Chacha>I think it'd be best if you took it with you
+www/data/Map022.json	on your way to Pandaemonium.
+www/data/Map022.json	\n<Chacha>Passed between hands and travelling across the world...
+www/data/Map022.json	\n<Chacha>That's what money's for, isn't it?
+www/data/Map022.json	Lust
+www/data/Map022.json	The Statue
+www/data/Map022.json	\n<Chacha>So you really don't know her?
+www/data/Map022.json	\n<Chacha>Hmm...
+www/data/Map022.json	\n<Chacha>Well if I had to describe her, she's quite boisterous
+www/data/Map022.json	and has pretty white hair!
+www/data/Map022.json	\n<Chacha>Oh! And she always carries puppets with her!
+www/data/Map022.json	\n<Chacha>You'll know her when you see her, that's for sure.
+www/data/Map022.json	\n<Chacha>Maybe you'll bump into her on your way to Pandaemonium!
+www/data/Map022.json	\n<Chacha>Something like that happening would only be perfectly
+www/data/Map022.json	in character for the "Wanderlust Demon" hehe.
+www/data/Map022.json	\n<Chacha>Ah, you mean the next Circle!
+www/data/Map022.json	\n<Chacha>Compared to Limbo's wasteland, it's a big, dry canyon.
+www/data/Map022.json	\n<Chacha>But the weird thing is, there's always this
+www/data/Map022.json	stormy wind that's blowing!
+www/data/Map022.json	\n<Chacha>The Sinners there are much more active than the
+www/data/Map022.json	ones here in Limbo, always running around.
+www/data/Map022.json	\n<Chacha>That's what Gramps told me, anyways.
+www/data/Map022.json	\n<Chacha>To be totally honest, the second Circle is the only
+www/data/Map022.json	Circle I've never ever been to, if you can believe it.
+www/data/Map022.json	\n<Chacha>I'm\.\. still not old enough to go there on my
+www/data/Map022.json	own.
+www/data/Map022.json	\n<Chacha>Anyways, Gramps told me that he left enough
+www/data/Map022.json	clues behind that anybody smart enough should be able to
+www/data/Map022.json	find their way through-
+www/data/Map022.json	\n<Chacha>whatever that means~
+www/data/Map022.json	\n<Chacha>Oh I guess it has been a while since you've used
+www/data/Map022.json	it, huh.
+www/data/Map022.json	\n<Chacha>Some time after that Man left the Inferno,
+www/data/Map022.json	these pretty statues appeared!
+www/data/Map022.json	\n<Chacha>Gramps told me they were to help guide anyone else
+www/data/Map022.json	who gets lost down here like that Man did,
+www/data/Map022.json	\n<Chacha>but the only other people who end up in Hell besides
+www/data/Map022.json	us are those Sinners...
+www/data/Map022.json	\n<Chacha>I guess it's a good thing their power isn't going
+www/data/Map022.json	to waste though.
+www/data/Map022.json	\n<Chacha>And as much as I hate to admit it...
+www/data/Map022.json	\n<Chacha>They're a real help for me too.
+www/data/Map022.json	\n<Chacha>I\.\. still haven't been able to Ferry people
+www/data/Map022.json	directly from Circle to Circle like Gramps did,\.\. hehe...
+www/data/Map022.json	\n<Ipos>It appears our time in Limbo is coming to an
+www/data/Map022.json	end...
+www/data/Map022.json	\n<Ipos>Have you learned how to fly yet, witch?
+www/data/Map022.json	\n<Haures>Hey, knock it off already wouldja!
+www/data/Map022.json	\n<Haures>I don't wanna hear anything about flight, especially
+www/data/Map022.json	not from you bird-brains!
+www/data/Map022.json	\n<Ipos>Bird br-
+www/data/Map022.json	\n<Ipos>D-don't stick your tongue out at me like that!
+www/data/Map022.json	\n<Glasya-Labolas>You look real squishy...
+www/data/Map022.json	\n<Glasya-Labolas>I bet you wouldn't last to Pandaemonium.
+www/data/Map022.json	\n<Haures>Squishy!?
+www/data/Map022.json	\n<Haures>What the Hell's that supposed to mean, ya mutt!?
+www/data/Map022.json	\n<Glasya-Labolas>Hehe.
+www/data/Map022.json	\n<Zepar>The Statue lies just beyond us.
+www/data/Map022.json	\n<Zepar>Surely you're prepared for what's ahead?
+www/data/Map022.json	\n<Haures>Yeah, about as ready as a gal like me'd ever be.
+www/data/Map022.json	\n<Zepar>...An empty satchel at your side leads me to believe
+www/data/Map022.json	otherwise.
+www/data/Map022.json	\n<Haures>Ah-!
+www/data/Map022.json	\n<Haures>Potions cost a lot these days, y'know?
+www/data/Map022.json	\n<Haures>Besides, I'm more of a book and curse kinda Demon.
+www/data/Map022.json	\n<Zepar>Fair. So long as you know your limits.
+www/data/Map022.json	\n<Haures>But hmmm...
+www/data/Map022.json	\n<Haures>Now that ya mention it, it'd probably be a good
+www/data/Map022.json	idea to stock up on a healing tonic or two.
+www/data/Map022.json	\n<Orobas>Say, Haures...
+www/data/Map022.json	\n<Orobas>Are there any potions in that bag of yours?
+www/data/Map022.json	\n<Haures>Um, in all honesty, nah not at all.
+www/data/Map022.json	\n<Orobas>So you've got nothing to enhance performance?
+www/data/Map022.json	Boost muscle growth, focus-
+www/data/Map022.json	\n<Orobas>Anything like that?
+www/data/Map022.json	\n<Haures>Besides some scrounged up Human Blood rations, I've
+www/data/Map022.json	got nothin' like that.
+www/data/Map022.json	\n<Haures>I never took ya for the kinda athlete to be into
+www/data/Map022.json	that sorta stuff...
+www/data/Map022.json	\n<Orobas>Idiot.
+www/data/Map022.json	\n<Orobas>I'm obviously not.
+www/data/Map022.json	\n<Orobas>If I found out you were peddling performance enhancers
+www/data/Map022.json	I'd have probably stomped your brains out by now.
+www/data/Map022.json	\n<Orobas>Lucky lucky Haures~~
+www/data/Map022.json	\n<Haures>Agh- Jeez!
+www/data/Map022.json	\n<Haures>Yo. I've been kinda curious.
+www/data/Map022.json	\n<Haures>What's up with that dagger o' yours?
+www/data/Map022.json	\n<Haures>It's poison, ain't it?
+www/data/Map022.json	\n<Haures>I mean, how does it stay all nasty-like after
+www/data/Map022.json	so many battles?
+www/data/Map022.json	\n<Ipos>Curious, are you?
+www/data/Map022.json	\n<Ipos>Well.
+www/data/Map022.json	\n<Ipos>If you really wish to know...
+www/data/Map022.json	\n<Ipos>It's spit.
+www/data/Map022.json	\n<Haures>Ew!
+www/data/Map022.json	\n<Haures>Ewww!
+www/data/Map022.json	\n<Ipos>What's the matter?
+www/data/Map022.json	\n<Ipos>Chimera's spit is quite potent you know.
+www/data/Map022.json	\n<Ipos>It's simply much more cost effective than purchasing
+www/data/Map022.json	brewed toxins.
+www/data/Map022.json	\n<Ipos>And much more hygenic than certain "other" methods
+www/data/Map022.json	of tainting a piercing weapon.
+www/data/Map022.json	\n<Haures>I'm good, ya don't need to say anything else!
+www/data/Map022.json	\n<Glasya-Labolas>Hey.
+www/data/Map022.json	\n<Glasya-Labolas>Hey. Are you listening?
+www/data/Map022.json	\n<Zepar>Our final destination grows nearer.
+www/data/Map022.json	\n<Zepar>Have you any thoughts on the journey thus far?
+www/data/Map022.json	\n<Ipos>I suppose I am glad to have found at least one
+www/data/Map022.json	travelling companion who hasn't been so unruly.
+www/data/Map022.json	\n<Ipos>No, "annoying" is a much more fitting word.
+www/data/Map022.json	\n<Ipos>I believe there is a difference between being
+www/data/Map022.json	"unruly" versus being "annoying."
+www/data/Map022.json	\n<Ipos>Thankfully, you fit none of those criteria, Zepar.
+www/data/Map022.json	\n<Orobas>I'm bored!
+www/data/Map022.json	\n<Orobas>Let's-
+www/data/Map022.json	\n<Ipos>Respectfully, I am not racing you to the Statue
+www/data/Map022.json	Orobas.
+www/data/Map022.json	\n<Ipos>Please understand that it was exhausting enough
+www/data/Map022.json	just to arrive here...
+www/data/Map022.json	\n<Orobas>Huh?
+www/data/Map022.json	\n<Orobas>I just wanted to play a game of Roshambo!
+www/data/Map022.json	\n<Orobas>Since we can't effectively study tactica at the moment
+www/data/Map022.json	I figured a game of Roshambo would do the trick.
+www/data/Map022.json	\n<Ipos>Oh- Uh, sure.
+www/data/Map022.json	\n<Orobas>Again!
+www/data/Map022.json	\n<Orobas>Argh!
+www/data/Map022.json	\n<Ipos>Ah- you know I can only do one sign with this hand, right?
+www/data/Map022.json	\n<Orobas>Yeah, that makes sense actually.
+www/data/Map022.json	\n<Orobas>It's real easy to get in your own head sometimes.
+www/data/Map022.json	\n<Haures>I'll probably sound like a total jerk for sayin'
+www/data/Map022.json	this, but do you have any actual friends?
+www/data/Map022.json	\n<Haures>Like anybody to hang out with that isn't
+www/data/Map022.json	your big bro?
+www/data/Map022.json	\n<Glasya-Labolas>The dogs in the Human world were nice to me.
+www/data/Map022.json	\n<Glasya-Labolas>So warm...
+www/data/Map022.json	\n<Glasya-Labolas>And their hearts beat so fast.
+www/data/Map022.json	\n<Haures>R-Right on!
+www/data/Map022.json	\n<Glasya-Labolas>You're staring at me...
+www/data/Map022.json	\n<Ipos>Ah, my apologies.
+www/data/Map022.json	\n<Ipos>Surely you understand that any Demon with a head atop
+www/data/Map022.json	their shoulders would know to keep wary around you,
+www/data/Map022.json	Glasya-Labolas.
+www/data/Map022.json	\n<Ipos>That wasn't a compliment.
+www/data/Map022.json	\n<Zepar>The Statue is but a few paces north.
+www/data/Map022.json	\n<Glasya-Labolas>Yeah...
+www/data/Map022.json	\n<Glasya-Labolas>But big brother isn't anywhere near here...
+www/data/Map022.json	\n<Zepar>This "big brother" of yours...
+www/data/Map022.json	\n<Zepar>I take it he's quite the remarkable man.
+www/data/Map022.json	\n<Glasya-Labolas>He's just nice to me.
+www/data/Map022.json	\n<Glasya-Labolas>That's all.
+www/data/Map022.json	\n<Orobas>Hey!
+www/data/Map022.json	\n<Orobas>How fast do you think you can run on all fours?
+www/data/Map022.json	\n<Glasya-Labolas>Mmrh?
+www/data/Map022.json	\n<Orobas>Like on your hands and feet!
+www/data/Map022.json	\n<Glasya-Labolas>Not very fast.
+www/data/Map022.json	(She's totally lying to me right now!)
+www/data/Map022.json	\n<Haures>Ugh, my legs are killin' me...
+www/data/Map022.json	\n<Haures>Don'tcha get all sore walking around in this thing?
+www/data/Map022.json	\n<Zepar>Yes. Truthfully.
+www/data/Map022.json	\n<Zepar>Though it would be just the same as you after walking
+www/data/Map022.json	this far.
+www/data/Map022.json	\n<Haures>Huh, guess that makes sense.
+www/data/Map022.json	\n<Ipos>Just how tall are you in this suit of armor, really?
+www/data/Map022.json	\n<Ipos>Perhaps beneath all this crimson is a little goblin
+www/data/Map022.json	of sorts.~
+www/data/Map022.json	\n<Ipos>Hmm. Maybe it's about time we get a peek at that
+www/data/Map022.json	pretty face of yours, hm?
+www/data/Map022.json	\n<Zepar>I'd advise against any foolish ideas, chimera.
+www/data/Map022.json	\n<Glasya-Labolas>Hmh.
+www/data/Map022.json	\n<Glasya-Labolas>I like the color red.
+www/data/Map022.json	\n<Zepar>Crimson is quite the striking shade.
+www/data/Map022.json	\n<Orobas>Say, how high can you jump?
+www/data/Map022.json	\n<Orobas>Think you could do any cool jumping attacks?
+www/data/Map022.json	\n<Orobas>Bet it'd be SUPER cool if you could like,
+www/data/Map022.json	make shockwaves with a big jump,
+www/data/Map022.json	\n<Orobas>or something.
+www/data/Map022.json	\n<Zepar>Indeed it would drastically improve my combat
+www/data/Map022.json	capabilities.
+www/data/Map022.json	\n<Zepar>Unfortunately, while the weight of my armor allows me
+www/data/Map022.json	to excel at taking hits, it is quite restrictive in movement.
+www/data/Map022.json	\n<Orobas>Ah poo...
+www/data/Map022.json	\n<Orobas>*Munch* *Munch* *Munch*
+www/data/Map022.json	\n<Haures>Are those carrots?
+www/data/Map022.json	\n<Orobas>Oh you bet!
+www/data/Map022.json	\n<Orobas>I'm not too big on meat myself.
+www/data/Map022.json	\n<Orobas>But I love colorful veggies!
+www/data/Map022.json	\n<Orobas>The bright orange carrots are the best!
+www/data/Map022.json	\n<Orobas>They sorta remind me of your hair.
+www/data/Map022.json	\n<Haures>H-Hey! Back off!
+www/data/Map022.json	\n<Ipos>Would you mind raising your bangs for me a bit?
+www/data/Map022.json	\n<Orobas>Huh? You mean like this?
+www/data/Map022.json	\n<Ipos>Hm. It really is just as I suspected...
+www/data/Map022.json	\n<Ipos>A perfectly smooth plane on either side of your face.
+www/data/Map022.json	\n<Ipos>Naturally, since your ears are atop your head.
+www/data/Map022.json	\n<Glasya-Labolas>Hm.
+www/data/Map022.json	\n<Glasya-Labolas>Your hair is pretty.
+www/data/Map022.json	\n<Orobas>Oh, uhm- Thank you, I think!
+www/data/Map022.json	\n<Zepar>Your hair accessories are quite striking.
+www/data/Map022.json	\n<Orobas>Oh thanks!
+www/data/Map022.json	\n<Orobas>I made them myself out of Human world shells!
+www/data/Map022.json	\n<Orobas>The whole outfit actually was put together by
+www/data/Map022.json	yours truly.
+www/data/Map022.json	\n<Zepar>Impressive.
+www/data/Map022.json	\n<Orobas>Yup!
+www/data/Map022.json	\n<Orobas>I wanna make sure those sorry Demons remember my
+www/data/Map022.json	face when I beat them into nothing.
+www/data/Map030.json	"..."
+www/data/Map030.json	"Can I ask you something?"
+www/data/Map030.json	"When was\.\. the first time you experienced death?"
+www/data/Map030.json	"Is that something\.\. you can still comprehend?"
+www/data/Map030.json	I can't remember
+www/data/Map030.json	I'm sorry
+www/data/Map030.json	"It's okay."
+www/data/Map030.json	"I should know better than to pester one who has just
+www/data/Map030.json	come to."
+www/data/Map030.json	Welcome to Purgatorio, the place in between that which
+www/data/Map030.json	is above, and that which lies beneath.
+www/data/Map030.json	If you're seeing this, then that means the next major
+www/data/Map030.json	version update hasn't been released yet.
+www/data/Map030.json	But rest assured-
+www/data/Map030.json	The next time you load up this File, you can go straight
+www/data/Map030.json	into the new content with all your goodies
+www/data/Map030.json	once it's available!
+www/data/Map030.json	...Otherwise you can still enjoy what's currently available
+www/data/Map030.json	in new Save Files from the title screen.
+www/data/Map030.json	What would you like to do now?
+www/data/Map030.json	Extras
+www/data/Map030.json	Bye bye~
+www/data/Map030.json	BGM
+www/data/Map030.json	Something else
+www/data/Map030.json	What kind of music did you want to listen to?
+www/data/Map030.json	WAILING
+www/data/Map030.json	Beasts of Claw and Dagger
+www/data/Map030.json	Beasts of Tongue and Grimoire
+www/data/Map030.json	FLAMEBOUND
+www/data/Map030.json	Next
+www/data/Map030.json	DAEMOCIDIUM
+www/data/Map030.json	HELLBOUND
+www/data/Map030.json	O, Fickle Ferryman
+www/data/Map030.json	Simple Combat Tutorial
+www/data/Map031.json	\n<???>Po\.\.\. po\.\.\. po\.\.\....
+www/data/Map031.json	\n<???>Can you hear me?
+www/data/Map031.json	\n<???>I want you to tell me that story again.
+www/data/Map031.json	\n<???>To see if it's\.\. really you.
+www/data/Map031.json	\n<???>Do you recall how it goes?
+www/data/Map031.json	\n<???>It's okay.
+www/data/Map031.json	\n<???>We can go over it together.
+www/data/Map031.json	\n<???>Just tell me what you remember.
+www/data/Map031.json	\n<???>In the kingdom...
+www/data/Map031.json	A beggar sat on the roadside.
+www/data/Map031.json	A farmer was digging a hole.
+www/data/Map031.json	A new face walked the streets.
+www/data/Map031.json	\n<???>Regular life for those who lived in the kingdom.
+www/data/Map031.json	\n<???>The King whom they lived under had not one, but many
+www/data/Map031.json	temples established throughout this kingdom.
+www/data/Map031.json	\n<???>Each one dedicated to certain deities that watched
+www/data/Map031.json	over the land.
+www/data/Map031.json	\n<???>People came and went, finding peaceful respite
+www/data/Map031.json	within the temples.
+www/data/Map031.json	\n<???>Thanks to the King, the kingdom found itself in a golden
+www/data/Map031.json	age of peace that was impossible to deny.
+www/data/Map031.json	But then...
+www/data/Map031.json	There was a mess at the market...
+www/data/Map031.json	A wild mutt made off with the baker's bread
+www/data/Map031.json	A little boy had burst into tears
+www/data/Map031.json	The musician's guitar strings snapped
+www/data/Map031.json	\n<???>The mutt ran wildly, startling the market goers.
+www/data/Map031.json	\n<???>But not once did it attack them.
+www/data/Map031.json	\n<???>It was a mess nonetheless, but the baker didn't mind it
+www/data/Map031.json	one bit.
+www/data/Map031.json	\n<???>So long as the mutt was fed and pleased, it could
+www/data/Map031.json	come into his bakery along with the rest of his customers.
+www/data/Map031.json	\n<???>Hm.
+www/data/Map031.json	\n<???>As it happens, he had lost his mother in the waves
+www/data/Map031.json	of people.
+www/data/Map031.json	\n<???>He cried and he cried, until the sun went down.
+www/data/Map031.json	\n<???>Fortunately, his mother had not stopped searching
+www/data/Map031.json	from the moment he left her side.
+www/data/Map031.json	\n<???>Rather than eyeing the newly opened markets, she walked
+www/data/Map031.json	step after step among the crowd
+www/data/Map031.json	\n<???>until she and the boy were reunited at dusk.
+www/data/Map031.json	\n<???>A shame, as droves of people gathered to hear him perform.
+www/data/Map031.json	\n<???>His heart raced.
+www/data/Map031.json	\n<???>What would he do now?
+www/data/Map031.json	\n<???>It was then he realized, his lips never stopped moving.
+www/data/Map031.json	\n<???>The poem he had been reciting had continued to spill
+www/data/Map031.json	out of himself and into the crowd.
+www/data/Map031.json	\n<???>Bewilderingly, the crowd began to sing along.
+www/data/Map031.json	\n<???>Rather than driving them away, his snapped string
+www/data/Map031.json	seems to have brought him closer to his audience.
+www/data/Map031.json	\n<???>Of course, life in the kingdom is not perfect,
+www/data/Map031.json	but the King's wisdom helped establish the kingdom's age
+www/data/Map031.json	of peace.
+www/data/Map031.json	\n<???>This was in addition to the watchful eyes of the
+www/data/Map031.json	temple's deities.
+www/data/Map031.json	\n<???>Each one had a unique trait about them...
+www/data/Map031.json	\n<???>For example, one would bring bountiful harvests,
+www/data/Map031.json	while another could grant swift victories in war...
+www/data/Map031.json	\n<???>I'm\.\. curious.
+www/data/Map031.json	\n<???>If I had a temple,
+www/data/Map031.json	\n<???>what kind of deity do you think I would be?
+www/data/Map031.json	Wrathful
+www/data/Map031.json	Gentle
+www/data/Map031.json	Weak
+www/data/Map031.json	\n<???>I see...
+www/data/Map031.json	\n<???>In the kingdom, there lived more than just the King
+www/data/Map031.json	and his subjects.
+www/data/Map031.json	\n<???>More than just the insects, the animals, and even the
+www/data/Map031.json	temple deities.
+www/data/Map031.json	\n<???>...Do you recall them?
+www/data/Map031.json	\n<???>In the underbelly of the kingdom's waking world,
+www/data/Map031.json	slumbered a dreadful presence known as "Demons."
+www/data/Map031.json	\n<???>Little did the subjects know that the deities they
+www/data/Map031.json	worshipped, the temples they prayed in-
+www/data/Map031.json	\n<???>or even the golden age they had been blessed with
+www/data/Map031.json	were only made possible\.\. through these Demons.
+www/data/Map031.json	\n<???>In truth, the King harnessed the power of Demons to
+www/data/Map031.json	construct his many temples.
+www/data/Map031.json	\n<???>They would guard his mind- Grant him knowledge of all things.
+www/data/Map031.json	\n<???>The many deities the people worshipped\.\. did not
+www/data/Map031.json	exist.
+www/data/Map031.json	Then why would he construct so many temples?
+www/data/Map031.json	\n<???>Quite inquisitive.
+www/data/Map031.json	\n<???>Perhaps it was to satisfy the subjects, giving them
+www/data/Map031.json	something more to believe in...
+www/data/Map031.json	\n<???>Or perhaps to him, these deities truly did exist.
+www/data/Map031.json	\n<???>There is no true answer.
+www/data/Map031.json	\n<???>However, it would soon become truth that the kingdom's
+www/data/Map031.json	golden age would come to an end...
+www/data/Map031.json	How so?
+www/data/Map031.json	\n<???>Corruption had begun to run rampant in the kingdom.
+www/data/Map031.json	\n<???>A starving man with no coin to his name had come
+www/data/Map031.json	and slain the mutt for the loaf it had stolen.
+www/data/Map031.json	\n<???>A stranger had robbed a mother's home as she was out
+www/data/Map031.json	looking for her boy.
+www/data/Map031.json	\n<???>And the musician was stoned as soon as his show had
+www/data/Map031.json	ended.
+www/data/Map031.json	\n<???>In fact, he had been no musician at all.
+www/data/Map031.json	\n<???>For the public soon discovered that his work
+www/data/Map031.json	belonged to someone else...
+www/data/Map031.json	\n<???>Someone he'd buried in a farm before taking
+www/data/Map031.json	his place in the market.
+www/data/Map031.json	How could this happen?
+www/data/Map031.json	\n<???>Alas, this too was undoubtedly the work of Demons,
+www/data/Map031.json	capable of inciting unrest and unruly behavior.
+www/data/Map031.json	\n<???>Having grown tired of living in the kingdom's shadows,
+www/data/Map031.json	it seems the Demons intended to make the world their own...
+www/data/Map031.json	\n<???>by having the humans tear themselves apart.
+www/data/Map031.json	!
+www/data/Map031.json	\n<???>Ah, I didn't realize I had taken the role of
+www/data/Map031.json	storyteller now...
+www/data/Map031.json	What happens next?
+www/data/Map031.json	\n<???>The Demons\.\. ruined the kingdom.
+www/data/Map031.json	\n<???>The growing chaos would lead to a revolution,
+www/data/Map031.json	one that would see to the end of the King's life.
+www/data/Map031.json	\n<???>And after having thoroughly razed the kingdom, the
+www/data/Map031.json	Demons would retreat into the shadows to prepare for their
+www/data/Map031.json	next undertaking...
+www/data/Map031.json	\n<???>An assault to humanity itself-
+www/data/Map031.json	\n<???>and a grand war against Angels to assert the Demons'
+www/data/Map031.json	place in the world.
+www/data/Map031.json	\n<???>...To establish their own
+www/data/Map031.json	"golden age."
+www/data/Map032.json	Read it
+www/data/Map032.json	Ignore
+www/data/Map032.json	"Because Love is Mutually Assured"
+www/data/Map032.json	"so bitter"
+www/data/Map032.json	"it's a"
+www/data/Map032.json	"taste that"
+www/data/Map032.json	"takes me out"
+www/data/Map032.json	"i hope it"
+www/data/Map032.json	"tastes"
+www/data/Map032.json	"the same"
+www/data/Map032.json	"for you too"
+www/data/Map032.json	Mirroring the fleeting nature of a transient world,
+www/data/Map032.json	the sign fell apart once you finished reading it.
+www/data/Map032.json	So poetic!
+www/data/Map032.json	Type O Blood was inside.
+www/data/Map032.json	Unholy Drop was inside.
+www/data/Map032.json	Blunt Shards were inside.
+www/data/Map032.json	A Rusty Dagger was inside.
+www/data/Map032.json	A Rusty Sickle was inside.
+www/data/Map032.json	A Torn Grimoire was inside.
+www/data/Map032.json	A Rusty Bagh Nakh was inside.
+www/data/Map032.json	A Leather Grimoire was inside.
+www/data/Map032.json	Invocative Poems A was inside.
+www/data/Map032.json	Invocative Poems B was inside.
+www/data/Map032.json	Sickening Poems A was inside.
+www/data/Map032.json	Sickening Poems B was inside.
+www/data/Map032.json	Cursed Poems A was inside.
+www/data/Map032.json	Cursed Poems B was inside.
+www/data/Map032.json	10\G was inside.
+www/data/Map032.json	50\G was inside.
+www/data/Map032.json	100\G was inside.
+www/data/Map032.json	\n<Haures>Tch...
+www/data/Map032.json	\n<Haures>Feels like someone's watchin' me...
+www/data/Map032.json	\n<Ipos>Is that the sound of-
+www/data/Map032.json	\n<Ipos>gnashing teeth?
+www/data/Map032.json	\n<Glasya-Labolas>Haaah...
+www/data/Map032.json	\n<Glasya-Labolas>I can smell something strong
+www/data/Map032.json	nearby...
+www/data/Map032.json	\n<Zepar>Hmph.
+www/data/Map032.json	\n<Zepar>I sense a challenger.
+www/data/Map032.json	\n<Orobas>Oooooh I can feel eyes on me!
+www/data/Map032.json	\n<Orobas>Better keep watching because I'll be
+www/data/Map032.json	on a roll soon!
+www/data/Map032.json	\n<Orobas>Sorry sorry no autographs for today!
+www/data/Map032.json	I really do have the best fans!
+www/data/Map032.json	Gear
+www/data/Map032.json	\n<Haures>And I think you're a bitch.
+www/data/Map032.json	than what's known to the public, no?~
+www/data/Map032.json	\n<Ipos>Ah, Humans are my favorite creatures to tor-
+www/data/Map032.json	about like that.
+www/data/Map034.json	\n<Chacha>Hm? You wanted to go now?
+www/data/Map034.json	\n<Chacha>But did you try making friends with that other
+www/data/Map034.json	Demon already?
+www/data/Map034.json	\n<Chacha>I'll get pretty worried if you guys end up
+www/data/Map034.json	at each other's throats later you know...
+www/data/Map034.json	Proceed to next area
+www/data/Map034.json	Stay here
+www/data/Map034.json	\n<Chacha>Alright then...
+www/data/Map034.json	\n<Chacha>Promise me you'll be more
+www/data/Map034.json	careful from here, okay?
+www/data/Map034.json	\n<Chacha>Didn't the Boss say to travel in threes?
+www/data/Map034.json	\n<Chacha>I know techically you don't HAVE to but-
+www/data/Map034.json	\n<Chacha>Oh how did Gramps put it...
+www/data/Map034.json	\n<Chacha>"Ferryman's First Rule:"
+www/data/Map034.json	\n<Chacha>"Good paying customers must always come back,"
+www/data/Map034.json	\n<Chacha>"-but preferably not in a body sack!"
+www/data/Map034.json	\n<Chacha>Oooh looks like I'm getting more passengers!
+www/data/Map034.json	\n<Chacha>Ready to move on?
+www/data/Map034.json	\n<Chacha>No problem!
+www/data/Map034.json	\n<Chacha>Take as much time as you need to get to know
+www/data/Map034.json	each other!
+www/data/Map034.json	\n<Chacha>The best ferry rides are always with happy
+www/data/Map034.json	customers~
+www/data/Map034.json	"A wondrous journey cannot be"
+www/data/Map034.json	"if such souls remain hollow."
+www/data/Map035.json	The critter inside this Skully seems to be running
+www/data/Map035.json	some sort of business...
+www/data/Map035.json	Take a peek inside?
+www/data/Map035.json	\n<???>GRAMPS, I THINK THIS CLOAK IS TOO BIG FOR ME.
+www/data/Map035.json	\n<???>ME.
+www/data/Map035.json	\n<Haures>Uh, what the Hell?
+www/data/Map035.json	\n<Mors>I wouldn't mess with it if I were you.
+www/data/Map035.json	\n<Mors>Old man Charon left a bunch of those things
+www/data/Map035.json	around here.
+www/data/Map035.json	\n<Mors>You know.
+www/data/Map035.json	\n<Mors>Since that Chacha kid can't go around these parts.
+www/data/Map035.json	\n<Mors>Back then they spoke his directions.
+www/data/Map035.json	\n<Mors>But now it's all jibber jabber.
+www/data/Map035.json	\n<Ipos>Hmmm...
+www/data/Map035.json	\n<Ipos>It really bears a striking resemblance to-
+www/data/Map035.json	\n<Glasya-Labolas>Mrh.
+www/data/Map035.json	\n<Glasya-Labolas>Just garbage.
+www/data/Map035.json	\n<Orobas>What the heck!
+www/data/Map035.json	\n<Orobas>What is this freaky thing here for?
+www/data/Map035.json	\n<Haures>Damn!
+www/data/Map035.json	\n<Haures>Looks like just comin' here sucked all the power
+www/data/Map035.json	outta this thing...
+www/data/Map035.json	\n<Ipos>It's snowing, but the statue appears to be untouched...
+www/data/Map035.json	\n<Ipos>Curious!
+www/data/Map035.json	\n<Glasya-Labolas>This one won't work.
+www/data/Map035.json	\n<Glasya-Labolas>There's another Statue here.
+www/data/Map035.json	\n<Glasya-Labolas>I wonder if big brother found it yet...
+www/data/Map035.json	\n<Zepar>Solace.
+www/data/Map035.json	\n<Orobas>It's busted!
+www/data/Map035.json	\n<Orobas>Siiiiiiiigh...
+www/data/Map035.json	\n<Orobas>I've gotta find another Statue as soon as I can!
+www/data/Map035.json	\n<Orobas>No one else is gonna beat me to Pandaemonium!
+www/data/Map035.json	\n<Orobas>Especially not that Angel...
+www/data/Map035.json	(Really?)
+www/data/Map035.json	(Just run around out there like a dummy?)
+www/data/Map035.json	(Yeah, no thanks.)
+www/data/Map035.json	(I'll look around for a little bit here where it's warmer...)
+www/data/Map035.json	(M-My feathers are frosted already?)
+www/data/Map035.json	(I should look around first, maybe there's a way out that
+www/data/Map035.json	won't get me lost...)
+www/data/Map035.json	(Or at least something to keep myself warm!)
+www/data/Map035.json	\n<Zepar>Not yet.
+www/data/Map035.json	\n<Glasya-Labolas>I can't catch big brother's scent in
+www/data/Map035.json	the wind.
+www/data/Map035.json	\n<Glasya-Labolas>Has he even been here yet...?
+www/data/Map035.json	\n<Orobas>(No way!)
+www/data/Map035.json	\n<Orobas>(I'm just gonna get lost if I run out there now!)
+www/data/Map035.json	\n<Orobas>(My metaphorical sash may be on the line,
+www/data/Map035.json	but there's a difference between running and running
+www/data/Map035.json	amok.)
+www/data/Map035.json	Enter Lust?
+www/data/Map035.json	\n<Mors>An Angel, huh?
+www/data/Map035.json	\n<Mors>Just our luck.
+www/data/Map035.json	\n<Mors>Looks like Charon's kid ain't here.
+www/data/Map035.json	\n<Mors>She knows her way around, I'll give her that-
+www/data/Map035.json	\n<Mors>But she's dumb as rocks when it really comes down
+www/data/Map035.json	to it.
+www/data/Map035.json	\n<Mors>I wish Charon were still around.
+www/data/Map035.json	\n<Orobas>Whoah!
+www/data/Map035.json	\n<Orobas>This thing has a really big behind!
+www/data/Map035.json	\n<Haures>C-Cold!
+www/data/Map035.json	\n<Haures>I-It's so\.\. damn\.\. cold allova sudden!
+www/data/Map035.json	\n<Haures>Whoah!
+www/data/Map035.json	\n<Haures>Th-This must be the s-second circle, huh?
+www/data/Map035.json	\n<Ipos>I-I'm shivering...
+www/data/Map035.json	\n<Ipos>I-is this-
+www/data/Map035.json	\n<Ipos>Oh!
+www/data/Map035.json	\n<Ipos>No, this c-can't be right!
+www/data/Map035.json	\n<Ipos>Lust isn't supposed to be this f-frigid!
+www/data/Map035.json	\n<Glasya-Labolas>It's too cold...
+www/data/Map035.json	\n<Glasya-Labolas>Hmrh.
+www/data/Map035.json	\n<Orobas>Achoo!
+www/data/Map035.json	\n<Orobas>Wh-why is it so c-cold now?
+www/data/Map035.json	\n<Orobas>What the heck is that (ToT)
+www/data/Map035.json	\n<Orobas>A-Ah!
+www/data/Map035.json	\n<Orobas>My hooves are sinking into the ground...!
+www/data/Map035.json	\n<Orobas>This place is awful!
+www/data/Map035.json	\n<Glasya-Labolas>Oh! You really mean it?!
+www/data/Map036.json	\n<???>So this is what it's been reduced to...
+www/data/Map036.json	\n<???>...How pitiful.
+www/data/Map036.json	\n<Haures>Yo!
+www/data/Map036.json	\n<Haures>Save some of that for the rest of us!
+www/data/Map036.json	\n<Haures>Can't hog all that statue-power for yourself
+www/data/Map036.json	these days, y'know?
+www/data/Map036.json	\n<Haures>Huh? Awfully sleepy looking fella...
+www/data/Map036.json	\n<Haures>How'd you even manage to make it down here with
+www/data/Map036.json	your eyes all shut fufufu~
+www/data/Map036.json	\n<???>Not another step, Demon.
+www/data/Map036.json	\n<Haures>Hey, relax! We can be buddies, right?
+www/data/Map036.json	\n<Haures>Alright listen, I can't be bothered with another
+www/data/Map036.json	fight right now.
+www/data/Map036.json	\n<Haures>You know how hard it was just to get down here?
+www/data/Map036.json	\n<Haures>I'm lucky enough the other guys didn't pick
+www/data/Map036.json	on me all that much on the way here...
+www/data/Map036.json	\n<Haures>Oh, speakin' of, I don't think I've met another
+www/data/Map036.json	Demon like you before.
+www/data/Map036.json	\n<Haures>I'm Haures. What's your deal loser-\^
+www/data/Map036.json	\n<???>Again and again...
+www/data/Map036.json	\n<???>Many times I've felled a face like yours in this field.
+www/data/Map036.json	\n<???>I wonder-
+www/data/Map036.json	\n<???>Will you show me\.\.\. something new...?
+www/data/Map036.json	\n<Haures>What?
+www/data/Map036.json	\n<Haures>You get hit in the head or somethin'? Or maybe you're
+www/data/Map036.json	still half asleep, talking all that gibberish~
+www/data/Map036.json	\n<???>You'd do well to heed my words, Demon.
+www/data/Map036.json	\n<???>Listen carefully,
+www/data/Map036.json	\n<???>to the words of an Angel.
+www/data/Map036.json	\n<Haures>H-huh?!
+www/data/Map036.json	\n<???>Are you\.\.\. afraid?
+www/data/Map036.json	\n<???>Ah- It's as I thought.
+www/data/Map036.json	\n<???>You're no different from the rest of them.
+www/data/Map036.json	\n<Haures>W-what are you talking about...?
+www/data/Map036.json	\n<???>The other ones with your face\.\.\. met the same end
+www/data/Map036.json	to me here.
+www/data/Map036.json	\n<Haures>You mean the other Demons?
+www/data/Map036.json	\n<Haures>There's\.\. no way...
+www/data/Map036.json	\n<Kushiel>I am called Kushiel. I come bearing good news
+www/data/Map036.json	of great joy.
+www/data/Map036.json	\n<Kushiel>For unto you is borne a blade that will vanquish
+www/data/Map036.json	all evil.
+www/data/Map036.json	\n<Haures>Hey hey hey, you can't be for real, right?
+www/data/Map036.json	\n<Kushiel>May peace be with you-
+www/data/Map036.json	\n<Kushiel>in your final hours.
+www/data/Map036.json	\n<Ipos>Oh, it seems I have company here.
+www/data/Map036.json	\n<Ipos>What a peculiar outfit...
+www/data/Map036.json	\n<Ipos>Um, I'm Ipos, number 22.
+www/data/Map036.json	\n<Ipos>May I know who you are?
+www/data/Map036.json	\n<Ipos>Hm? Is everything alright?
+www/data/Map036.json	\n<Ipos>You seem ill...
+www/data/Map036.json	\n<Ipos>Surely you wouldn't be foolish enough to challenge
+www/data/Map036.json	me, hm?
+www/data/Map036.json	\n<Ipos>Though if it'd mean putting someone so sickly out of
+www/data/Map036.json	their misery, I'm more than willing to oblige.
+www/data/Map036.json	\n<Ipos>You're speaking nonsense.
+www/data/Map036.json	\n<Ipos>...What exactly are you?
+www/data/Map036.json	\n<Ipos>That's impossible.
+www/data/Map036.json	\n<Ipos>An angel\.\.\. here in Hell...?
+www/data/Map036.json	\n<???>Once again, I am met with that face.
+www/data/Map036.json	\n<Ipos>Angel! How is it even possible for one of your kind
+www/data/Map036.json	to exist down here?
+www/data/Map036.json	\n<???>I'm the only one\.\.\. able to do so.
+www/data/Map036.json	\n<???>Such has been the case for ages.
+www/data/Map036.json	\n<???>One may call it my "duty."
+www/data/Map036.json	\n<???>But I consider it as nothing more than a punishment.
+www/data/Map036.json	\n<???>To breathe the same air...
+www/data/Map036.json	\n<???>To dirty my feet with every step I take upon this
+www/data/Map036.json	wretched place...
+www/data/Map036.json	\n<Ipos>You're\.\.\. responsible for the deaths of other
+www/data/Map036.json	Demons around here, aren't you?
+www/data/Map036.json	\n<Ipos>Perhaps you're unaware that in only mere years,
+www/data/Map036.json	our Infernal Spirits will return from the River Styx?
+www/data/Map036.json	\n<Ipos>If your duty is a culling, Angel, your God has
+www/data/Map036.json	placed quite the "punishment" upon you.
+www/data/Map036.json	\n<Kushiel>Such is only befitting of one called
+www/data/Map036.json	\n<Kushiel>the "Angel of Punishment."
+www/data/Map036.json	\n<Glasya-Labolas>Hm\.\. hm\.\. hah...
+www/data/Map036.json	\n<Glasya-Labolas>I've smelled something like this before...
+www/data/Map036.json	\n<???>Of the other Demons, I have always found you most
+www/data/Map036.json	despicable, Glasya-Labolas.
+www/data/Map036.json	\n<Glasya-Labolas>Haaaah...
+www/data/Map036.json	\n<Glasya-Labolas>Aaangel...
+www/data/Map036.json	\n<Glasya-Labolas>Hmmrh... Did you know...?
+www/data/Map036.json	\n<Glasya-Labolas>I've tasted it before-
+www/data/Map036.json	\n<Glasya-Labolas>During that battle.
+www/data/Map036.json	\n<Glasya-Labolas>Angel's blood.
+www/data/Map036.json	\n<Glasya-Labolas>It's so sweet. \.\.Like syrup.
+www/data/Map036.json	\n<Glasya-Labolas>I'll crush you up.
+www/data/Map036.json	\n<Glasya-Labolas>Then I'll take you back to big brother
+www/data/Map036.json	to share...
+www/data/Map036.json	\n<???>Sickening.
+www/data/Map036.json	\n<???>Savages like you don't deserve God's mercy.
+www/data/Map036.json	\n<Kushiel>I am called Kushiel. Once more I will show you
+www/data/Map036.json	the vastness that exists between mere beasts and Angels.
+www/data/Map036.json	\n<Zepar>You're no Demon.
+www/data/Map036.json	\n<???>How perceptive...
+www/data/Map036.json	\n<Zepar>How does an Angel as gentle-faced as
+www/data/Map036.json	you find themself in this place?
+www/data/Map036.json	\n<???>I\.\. often wonder the same thing myself.
+www/data/Map036.json	\n<Zepar>I am Zepar. Numbered 25th among Infernal Spirits.
+www/data/Map036.json	\n<Zepar>...I'm afraid your only solace shall be in knowing
+www/data/Map036.json	the name of your executioner.
+www/data/Map036.json	\n<Kushiel>I am called Kushiel.
+www/data/Map036.json	\n<Kushiel>Tell me, Zepar.
+www/data/Map036.json	\n<Kushiel>How much does an executioner know of "punishment,"
+www/data/Map036.json	I wonder?
+www/data/Map036.json	\n<Orobas>Someone\.\.\. beat me here...?
+www/data/Map036.json	\n<Orobas>Hey.
+www/data/Map036.json	\n<Orobas>You...
+www/data/Map036.json	\n<Orobas>How did you get here before I did?!
+www/data/Map036.json	\n<Orobas>Hey! Don't ignore me!
+www/data/Map036.json	\n<Orobas>Who are you?! And how did you get here so quickly?!
+www/data/Map036.json	\n<Kushiel>The Angel, Kushiel.
+www/data/Map036.json	\n<Orobas>Wait what??
+www/data/Map036.json	\n<Kushiel>Are you\.\.\. afraid?
+www/data/Map036.json	\n<Kushiel>An interesting personality, yet all outcomes
+www/data/Map036.json	remain the same in the end...
+www/data/Map036.json	\n<Kushiel>Other Demons that have passed by, have all been
+www/data/Map036.json	felled by my blade.
+www/data/Map036.json	\n<Kushiel>Will you prove to be any different...?
+www/data/Map036.json	\n<Orobas>Other Demons that pass by huh...
+www/data/Map036.json	\n<Orobas>I'll tell you what.
+www/data/Map036.json	\n<Orobas>I won't just be passing by your sorry ass.
+www/data/Map036.json	\n<Orobas>I'll blow right past you- straight to that
+www/data/Map036.json	Statue, and straight to Pandaemonium!
+www/data/Map036.json	\n<Kushiel>Admirable words from someone still caught in my
+www/data/Map036.json	slipstream.
+www/data/Map036.json	(That Statue is probably up ahead...)
+www/data/Map036.json	(Maybe I can steal a little extra power for myself
+www/data/Map036.json	and make my flames a bit hotter, fufufu~)
+www/data/Map036.json	Proceed?
+www/data/Map036.json	Areas of Limbo will become inaccessible beyond this
+www/data/Map036.json	point.
+www/data/Map036.json	Are you absolutely sure?
+www/data/Map036.json	(I can sense the Statue, just a few paces forward!)
+www/data/Map036.json	(We'd do well to prepare before proceeding to
+www/data/Map036.json	the next Circle.)
+www/data/Map036.json	(Haaah...)
+www/data/Map036.json	(Something smells funny up there...)
+www/data/Map036.json	(Oh! That Statue's up ahead, isn't it?)
+www/data/Map036.json	(My legs are soooo tired...)
+www/data/Map036.json	(Maybe I can sneak some extra power to fix myself
+www/data/Map036.json	up?)
+www/data/Map036.json	\n<Kushiel>upon your deathbed.
+www/data/Map036.json	\n<Zepar>I am Zepar. Numbered 16th among Infernal Spirits.
+www/data/Map036.json	\n<Kushiel>Will you prove to be any different?
+www/data/Map036.json	\n<Haures>*Huff*\.\.\. *Huff*\.\.\. *Huff*\.\.\.
+www/data/Map036.json	\n<Haures>W-We done yet,\.\. Angel?
+www/data/Map036.json	\n<Haures>Hey...!
+www/data/Map036.json	\n<Haures>Say somethin' won't ya?
+www/data/Map036.json	\n<Kushiel>Enough.
+www/data/Map036.json	\n<Kushiel>It's\.\.\. all the same.
+www/data/Map036.json	\n<Kushiel>Blood spilled upon this field...
+www/data/Map036.json	\n<Kushiel>Whether it be that of Angel or Demon-
+www/data/Map036.json	\n<Kushiel>I've seen enough of it.
+www/data/Map036.json	(Aaah, today is sooo not my day...)
+www/data/Map036.json	(I don't have enough energy left to cast any flame!)
+www/data/Map036.json	(Argh! I can't believe that wasn't enough to beat them!)
+www/data/Map036.json	(A little bit more...!)
+www/data/Map036.json	(I'll strangle that loser if I gotta!)
+www/data/Map036.json	\n<Haures>That\.\.\. can't be any good...
+www/data/Map036.json	\n<Haures>Wait- Do the other Demons know about this?
+www/data/Map036.json	\n<Haures>I- I gotta get outta here!
+www/data/Map036.json	\n<Ipos>I'd prostrate myself, if I were in your position.
+www/data/Map036.json	\n<Ipos>In that way, it'd be much less painful for you as I
+www/data/Map036.json	cleave that head off your shoulders.
+www/data/Map036.json	(This one still has the energy to talk...!)
+www/data/Map036.json	(A strike with my talon is too predictable...)
+www/data/Map036.json	(Just one more decisive blow with my dagger should
+www/data/Map036.json	finish it!)
+www/data/Map036.json	\n<Ipos>It seems\.\.\. grave trouble has found its way into
+www/data/Map036.json	the Inferno...
+www/data/Map036.json	\n<Glasya-Labolas>Haaahhh...\.\.\. Haaahhh\.\.\....
+www/data/Map036.json	\n<Kushiel>Have you had your fill, Demon?
+www/data/Map036.json	\n<Glasya-Labolas>M\.\.ore...
+www/data/Map036.json	\n<Glasya-Labolas>Hey...
+www/data/Map036.json	\n<Glasya-Labolas>You're still alive...?
+www/data/Map036.json	\n<Glasya-Labolas>That's good.
+www/data/Map036.json	\n<Glasya-Labolas>Even though I want you all for myself...
+www/data/Map036.json	\n<Glasya-Labolas>Big brother would be sooo happy to see what I caught.
+www/data/Map036.json	Hmm.\.\. Hmm.\.\. Hah.
+www/data/Map036.json	\n<Glasya-Labolas>I \.\.\.can't smell her...?
+www/data/Map036.json	\n<Glasya-Labolas>Where...
+www/data/Map036.json	\n<Glasya-Labolas>did \.\.you \.\.go...?
+www/data/Map036.json	\n<Kushiel>You hesitate to strike me down.
+www/data/Map036.json	\n<Zepar>There is no honor in striking one without the
+www/data/Map036.json	energy to stand on their own.
+www/data/Map036.json	\n<Zepar>...You must concede.
+www/data/Map036.json	\n<Zepar>If possible, I would like to avoid any more
+www/data/Map036.json	of the unnecessary bloodshed that you speak of.
+www/data/Map036.json	\n<Zepar>For your own sake.
+www/data/Map036.json	\n<Zepar>Let these sickles drink their final drops.
+www/data/Map036.json	\n<Zepar>The situation in the Inferno grows yet stranger.
+www/data/Map036.json	\n<Zepar>I must hasten.
+www/data/Map036.json	\n<Orobas>O-Oooow!
+www/data/Map036.json	\n<Orobas>That hurts!
+www/data/Map036.json	\n<Orobas>You're done now, right?
+www/data/Map036.json	\n<Orobas>I've got you beat!
+www/data/Map036.json	\n<Orobas>I'll run right past you now and\^
+www/data/Map036.json	\n<Orobas>...So you're done?
+www/data/Map036.json	\n<Orobas>It sucks we never got a proper race...
+www/data/Map036.json	\n<Orobas>But I can't just let Angels run around down here!
+www/data/Map036.json	\n<Orobas>You played a good game, but I've gotta stomp
+www/data/Map036.json	your head out now, if you don't mind~
+www/data/Map036.json	\n<Orobas>A-Ah...
+www/data/Map036.json	\n<Orobas>I-
+www/data/Map036.json	\n<Orobas>I can't lose another race to an Angel!
+www/data/Map036.json	\n<Orobas>I've gotta get to Pandaemonium as soon as I can!
+www/data/Map036.json	Angel Down was obtained.
+www/data/Map037.json	\n<???>FERRYMAN'S FIRST RULE:
+www/data/Map037.json	\n<???>GOOD PAYING CUSTOMERS MUST ALWAYS RETURN
+www/data/Map037.json	\n<???>MUCH PREFERRED IF NOT IN IN AN AN URN
+www/data/Map037.json	\n<???>THIS WAY, WANDERER
+www/data/Map037.json	\n<???>ER
+www/data/Map037.json	\n<???>GRAMPS
+www/data/Map037.json	\n<???>ARE YOU THERE?
+www/data/Map037.json	\n<???>I THINK I'M I'M LOST.
+www/data/Map037.json	\n<???>Boo!
+www/data/Map039.json	Thanks for playing!
+www/data/Map039.json	Absolutely zero use of Generative AI was involved in any
+www/data/Map039.json	part of the game's development.
+www/data/Map039.json	All art, music and writing were drawn, composed and
+www/data/Map039.json	cooked by me. Check out my Instagram at @not.sumiee for
+www/data/Map039.json	more cool stuff!
+www/data/Map039.json	Development was done entirely within RPGMaker MV.
+www/data/Map039.json	Credit goes to SumRndmDude, Yanfly, Galv, and HimeWorks
+www/data/Map039.json	whose plugins were utilized extensively for PAN-DAE-MON-IUM.
+www/data/Map039.json	Credit to ATT_Turan, Caethyril, and Andar on the forums
+www/data/Map039.json	whose posts and solutions to other inquiries seriously
+www/data/Map039.json	helped me in developing the game as well.
+www/data/Map039.json	Thanks to @satsuki_i_9 for being my guinea pig (playtester).
+www/data/Map039.json	For future updates and OST releases, please check out
+www/data/Map039.json	the official Instagram (@goetia_project) and YouTube (@PANDAEMONIUM5)
+www/data/Map039.json	accounts I made for the game!
+www/data/Map039.json	I hope you enjoyed PAN-DAE-MON-IUM's first part!
+www/data/Skills.json	A basic attack on 1 enemy. 
+www/data/Skills.json	Reduce incoming damage and recover HP/MP.
+www/data/Skills.json	Defend
+www/data/Skills.json	CRITICAL HIT TEST
+www/data/Skills.json	ALMOST INSTA KILL
+www/data/Skills.json	FIRE ATTACKS
+www/data/Skills.json	Low damage Burning magic.
+www/data/Skills.json	Burning
+www/data/Skills.json	High damage Burning magic.
+www/data/Skills.json	Hi Burning
+www/data/Skills.json	Low damage Burning magic.
+Stronger when targets are inflicted with DEF/M.DEF Down.
+www/data/Skills.json	Spite Burning
+www/data/Skills.json	Low damage Burning magic to all enemies.
+www/data/Skills.json	Spread Burning
+www/data/Skills.json	ELECTRIC ATTACKS
+www/data/Skills.json	Spark
+www/data/Skills.json	PHYSICAL ATTACKS
+www/data/Skills.json	3 brutal strikes that have a chance to inflict Rattled.
+www/data/Skills.json	Blooming Dance
+www/data/Skills.json	Low damage slash at 1 enemy.
+www/data/Skills.json	Talon
+www/data/Skills.json	Low damage slashes at 3 random enemies.
+www/data/Skills.json	Tri-Axis Slash
+www/data/Skills.json	WHIFF MOVE
+www/data/Skills.json	WHIFFER
+www/data/Skills.json	INVISIBLE SKILLS BELOW
+www/data/Skills.json	BUFFS/DEBUFFS
+www/data/Skills.json	Decreases all enemies' DEF/M.DEF for 3 turns.
+www/data/Skills.json	Curse: Defense
+www/data/Skills.json	Raises all allies' stats for 3 turns.
+www/data/Skills.json	Invoke: Omni
+www/data/Skills.json	Raises the Critical hit chance of an ally for 3 turns.
+(Cannot use on Sneering allies.)
+www/data/Skills.json	Invoke: Critical
+www/data/Skills.json	Reduces all enemies' stats for 3 turns.
+www/data/Skills.json	Curse: Omni
+www/data/Skills.json	Raises Tension.
+www/data/Skills.json	Heat Riser
+www/data/Skills.json	Apply Sneer to all allies, but disables Canto for this turn. 
+www/data/Skills.json	Go Go Goetia!!
+www/data/Skills.json	Sleep inducing magic.
+www/data/Skills.json	Ensomna
+www/data/Skills.json	Dodge all incoming attacks for 1 turn.
+If an attack is dodged, increase user ATK.
+www/data/Skills.json	Chimera's Foresight
+www/data/Skills.json	Applies Target and increases user's ATK.
+www/data/Skills.json	I Fear Not the Jaws of Death!
+www/data/Skills.json	stockpile test
+www/data/Skills.json	STOCKPILE
+www/data/Skills.json	kills bleed, multiplies dmg
+www/data/Skills.json	DOT KILLER
+www/data/Skills.json	APPLY BLEED
+www/data/Skills.json	APPLY DOT PROXY
+www/data/Skills.json	DEBUGGING
+www/data/Skills.json	RUN AWAY!
+www/data/Skills.json	ESCAPE
+www/data/Skills.json	Immediately ends the combat tutorial session.
+www/data/Skills.json	Skip Tutorial
+www/data/Skills.json	TEST
+www/data/Skills.json	BEAT UP
+www/data/Skills.json	hp cut in half
+www/data/Skills.json	HALF
+www/data/Skills.json	TP SKILLS
+www/data/Skills.json	All allies' next attack will be Critical, and enables user Canto.
+(Cannot use on Sneering allies.)
+www/data/Skills.json	Ultionis Flamma
+www/data/Skills.json	Critically stab an enemy repeatedly, dealing max damage and inflicting Poison.
+Enables user Canto.
+www/data/Skills.json	Turpis Pugionem
+www/data/Skills.json	Focused slash at all enemies that inflicts Bloody Wounds.
+Enables user Canto.
+www/data/Skills.json	Acue, Sine Amor X
+www/data/Skills.json	Max damage slash at all enemies that inflicts Bloody Wounds.
+Enables user Canto.
+www/data/Skills.json	Acue, Sine Amor
+www/data/Skills.json	A multi-hit slash attack that instantly kills if any connect.
+www/data/Skills.json	Penance and Regrets
+www/data/Skills.json	Critically stab an enemy repeatedly and inflict Poison.
+Enables user Canto.
+www/data/Skills.json	Turpis Pugionem X
+www/data/Skills.json	Ultionis Flamma X
+www/data/Skills.json	HEALING
+www/data/Skills.json	Steal HP from 1 ally.
+www/data/Skills.json	Power Siphon
+www/data/Skills.json	Cures all status ailments from all allies.
+www/data/Skills.json	Utter Restoration
+www/data/Skills.json	Low damage Holy magic to all enemies.
+Forcibly reduces all enemies' stats.
+www/data/Skills.json	Seventh Horn
+www/data/Skills.json	Captivating magic.
+www/data/Skills.json	Enswoon
+www/data/Skills.json	3 low damage Rocking kicks on one enemy.
+www/data/Skills.json	Dirt Runner
+www/data/Skills.json	Protects allies against all ailments for 3 turns.
+www/data/Skills.json	Barrier: Safeguard
+www/data/Skills.json	Forcibly removes any Barrier effects.
+www/data/Skills.json	Null Barrier
+www/data/Skills.json	Forcibly removes any Buffs.
+www/data/Skills.json	Null Invocation
+www/data/Skills.json	INVISIBLE SKILLS
+www/data/Skills.json	Poisoning magic.
+www/data/Skills.json	Entoxify
+www/data/Skills.json	Max damage sickle slash to 1 enemy. Chance to inflict Captivated.
+(Enables user Canto.)
+www/data/Skills.json	Venereum Falcem X
+www/data/Skills.json	Venereum Falcem
+www/data/Skills.json	Raises user's ATK/M.ATK before dealing low damage. 
+Struck targets will also have their ATK/M.ATK raised. (Can target Allies.)
+www/data/Skills.json	Play
+www/data/Skills.json	Fully heal an ally while applying Sneer.
+(Enables user Canto.)
+www/data/Skills.json	Stella Mortua
+www/data/Skills.json	Raises the user's Dodge chance by 30%
+www/data/Skills.json	Lesser Foresight
+www/data/Skills.json	Raises all allies' ATK/M.ATK for 3 turns.
+www/data/Skills.json	Invoke: Attack
+www/data/Skills.json	Raises all allies' DEF/M.DEF for 3 turns.
+www/data/Skills.json	Invoke: Defense
+www/data/Skills.json	Decreases all enemies' ATK/M.ATK for 3 turns.
+www/data/Skills.json	Curse: Attack
+www/data/Skills.json	Decreases all enemies' SPD for 3 turns.
+www/data/Skills.json	Curse: Speed
+www/data/Skills.json	Raises all allies' SPD for 3 turns.
+www/data/Skills.json	Invoke: Speed
+www/data/Skills.json	The user becomes Targeted.
+www/data/Skills.json	Commoner's Tongue
+www/data/Skills.json	Low damage Rocking kick at 1 enemy.
+www/data/Skills.json	Hooved Kick
+www/data/Skills.json	Low damage grabbing attack on 1 enemy that Ruptures Bloody Wounds.
+www/data/Skills.json	Fetch
+www/data/Skills.json	High damage grabbing attack on 1 enemy.
+Chance to inflict Bloody Wounds.
+www/data/Skills.json	Maul
+www/data/Skills.json	Low damage slash at 1 enemy.
+Inflicts SPD Down.
+www/data/Skills.json	Heel Cutter
+www/data/Skills.json	Heals a low amount of HP for 1 ally.
+www/data/Skills.json	Enrestore
+www/data/Skills.json	Enpurify
+www/data/Skills.json	Sickle
+www/data/Skills.json	2 Low damage slash at 1 enemy.
+www/data/Skills.json	Double Sickle
+www/data/Skills.json	High damage slash at 1 enemy.
+Chance to inflict Captivated
+www/data/Skills.json	Lovesickle
+www/data/Skills.json	Cleanses and heals the user for 20% of their max HP.
+www/data/Skills.json	R & R
+www/data/Skills.json	Fully heal and cleanse an ally while applying Sneer.
+(Enables user Canto.)
+www/data/Skills.json	Stella Mortua X
+www/data/Skills.json	Heals the user for 10% of their max HP and nulls all stat changes including Rattled.
+(Enables user Canto.)
+www/data/Skills.json	Baptism and Clear Mind
+www/data/Skills.json	High damage strike that inflicts Blody Wounds and DEF/M.DEF Down.
+www/data/Skills.json	Blood and Body
+www/data/Skills.json	Increases all of the user's stats.
+www/data/Skills.json	Confer and Realize
+www/data/Skills.json	High damage pinching attack.
+Chance to inflict Bloody Wounds.
+www/data/Skills.json	Pincer
+www/data/Skills.json	Instantly kills the target(?).
+www/data/Skills.json	Hand of Styx
+www/data/Skills.json	Revives the fallen Demon in the form of The Dredged
+www/data/Skills.json	Sinner's Crossing
+www/data/Skills.json	Dredge up a fallen spirit from the River Styx
+www/data/Skills.json	Ferryman's Dredge
+www/data/Skills.json	Low damage Drowning magic to all enemies.
+www/data/Skills.json	Anchor Shot
+www/data/Skills.json	Increases the user's Crit Rate by 5%. (Passive Skill)
+www/data/Skills.json	Bloodhound I
+www/data/Skills.json	Reduce incoming damage to 0 for the turn. (CD: 3)
+www/data/Skills.json	Gehenna's Guard
+www/data/Skills.json	Increases the user's Max HP by 10%. (Passive Skill)
+www/data/Skills.json	HP Bonus I
+www/data/Skills.json	Increases the user's Max MP by 10%. (Passive Skill)
+www/data/Skills.json	MP Bonus I
+www/data/Skills.json	Increases the user's DEF by 10%. (Passive Skill)
+www/data/Skills.json	DEF Bonus I
+www/data/Skills.json	Increases the user's ATK by 10%. (Passive Skill)
+www/data/Skills.json	ATK Bonus I
+www/data/Skills.json	Increases the user's M.DEF by 10%. (Passive Skill)
+www/data/Skills.json	M.DEF Bonus I
+www/data/Skills.json	Increases the user's M.ATK by 10%. (Passive Skill)
+www/data/Skills.json	M.ATK Bonus I
+www/data/Skills.json	Restores 5% of the user's max HP every turn. (Passive Skill)
+www/data/Skills.json	Regen I
+www/data/Skills.json	Increases the user's evasion by 5%. (Passive Skill)
+www/data/Skills.json	Evasion Bonus I
+www/data/States.json	Fallen
+www/data/States.json	Guarding
+www/data/States.json	Immortal
+www/data/States.json	Poisoned
+www/data/States.json	Blind
+www/data/States.json	Silenced
+www/data/States.json	Enraged
+www/data/States.json	Dizzy
+www/data/States.json	Captivated
+www/data/States.json	Asleep
+www/data/States.json	SNEER ADDER
+www/data/States.json	REMOVE CANTO
+www/data/States.json	Intent to Kill
+www/data/States.json	Target
+www/data/States.json	ATK/M.ATK Down
+www/data/States.json	ATK down greater
+www/data/States.json	DEF/M.DEF Down
+www/data/States.json	DEF down greater
+www/data/States.json	SPD Down
+www/data/States.json	SPD down greater
+www/data/States.json	ATK/M.ATK Up
+www/data/States.json	ATK up greater
+www/data/States.json	DEF/M.DEF Up
+www/data/States.json	DEF up greater
+www/data/States.json	SPD Up
+www/data/States.json	SPD up greater
+www/data/States.json	REFLECT
+www/data/States.json	Foresight
+www/data/States.json	DEBUFF FIXER
+www/data/States.json	OMNI UP
+www/data/States.json	OMNI DOWN
+www/data/States.json	BUFF FIXER
+www/data/States.json	OUCH
+www/data/States.json	HIT FACE
+www/data/States.json	Rattled
+www/data/States.json	CRIT RATE 100%
+www/data/States.json	LOW HP FACE
+www/data/States.json	TEST STACKING STAT DEBUFF
+www/data/States.json	CRIT RATE 0%
+www/data/States.json	Bloody Wounds
+www/data/States.json	oops
+www/data/States.json	Sneering BAADDDDD
+www/data/States.json	CRIT RATE 50%
+www/data/States.json	Perceptive
+www/data/States.json	Shocked
+www/data/States.json	Burned
+www/data/States.json	ACCURACY 100%
+www/data/States.json	SEAL SKILLS
+www/data/States.json	ENEMY CANTO 1
+www/data/States.json	ENEMY CANTO 2
+www/data/States.json	ENEMY CANTO 3
+www/data/States.json	READY TO PLAY KUSHIEL
+www/data/States.json	test
+www/data/States.json	SEAL SPECIAL KUSHIEL
+www/data/States.json	Chacha Transform!!
+www/data/States.json	SINNERS CROSSING
+www/data/States.json	Intent to Kill 2
+www/data/States.json	99% HP GONE
+www/data/States.json	USE REVIVE SKILL
+www/data/States.json	DREDGE BASE
+www/data/States.json	PS CRIT RATE 5%
+www/data/States.json	GUARANTEE CRIT + HIT
+www/data/States.json	GUARANTEE CRIT
+www/data/States.json	Affinity
+www/data/States.json	PS DODGE 5%
+www/data/States.json	PS HP 10%
+www/data/States.json	PS MP 10%
+www/data/States.json	PS DEF 10%
+www/data/States.json	PS ATK 10%
+www/data/States.json	PS M.DEF 10%
+www/data/States.json	PS M.ATK 10%
+www/data/States.json	PS HP REGEN 5%
+www/data/System.json	PAN-DAE-MON-IUM
+www/data/System.json	Level
+www/data/System.json	Lv
+www/data/System.json	HP
+www/data/System.json	MP
+www/data/System.json	TP
+www/data/System.json	TENSION
+www/data/System.json	EXP
+www/data/System.json	Fight
+www/data/System.json	Escape
+www/data/System.json	Items
+www/data/System.json	Skill
+www/data/System.json	Equipment
+www/data/System.json	Status
+www/data/System.json	Order
+www/data/System.json	Save
+www/data/System.json	Options
+www/data/System.json	Key Item
+www/data/System.json	Equip
+www/data/System.json	Optimize
+www/data/System.json	Remove All
+www/data/System.json	New Game
+www/data/System.json	Continue
+www/data/System.json	To Title
+www/data/System.json	Cancel
+www/data/System.json	Buy
+www/data/System.json	Sell
+www/data/System.json	Max HP
+www/data/System.json	Max MP
+www/data/System.json	ATK
+www/data/System.json	DEF
+www/data/System.json	M.ATK
+www/data/System.json	M.DEF
+www/data/System.json	PRIORITY
+www/data/System.json	LCK
+www/data/System.json	Accuracy
+www/data/System.json	Evasion
+www/data/System.json	It didn't work...
+www/data/System.json	%1 took %2 damage.
+www/data/System.json	%1 had %2 %3 drained.
+www/data/System.json	%1 gained %2 %3.
+www/data/System.json	%1 lost %2 %3.
+www/data/System.json	Huh? Nothing happened...
+www/data/System.json	Miss!
+www/data/System.json	%1 recovered %2 %3.
+www/data/System.json	Always Dash
+www/data/System.json	BGM Volume
+www/data/System.json	BGS Volume
+www/data/System.json	%1's %2 went up!
+www/data/System.json	%1's %2 returned to normal!
+www/data/System.json	Command Remember
+www/data/System.json	%1 counterattacked!
+www/data/System.json	A Critical hit!
+www/data/System.json	%1's %2 went down!
+www/data/System.json	The party's leader was left behind...
+www/data/System.json	%1 is looking for a fight!
+www/data/System.json	%1 was drained of %2 %3.
+www/data/System.json	...It was no use!
+www/data/System.json	%1 tried to escape!
+www/data/System.json	To Next %1
+www/data/System.json	Current %1
+www/data/System.json	File
+www/data/System.json	%2 up! (%1 Lv%3)
+www/data/System.json	Choose a save file:
+www/data/System.json	The attack was reflected!
+www/data/System.json	ME Volume
+www/data/System.json	%1 %2 gained.
+www/data/System.json	%1\G was found.
+www/data/System.json	%1 obtained!
+www/data/System.json	%1 is now usable. 
+www/data/System.json	%1's Party
+www/data/System.json	Possession
+www/data/System.json	%1 got the upper hand!
+www/data/System.json	Save to a file:
+www/data/System.json	SE Volume
+www/data/System.json	%1 protected %2.
+www/data/System.json	%1 was surprised!
+www/data/System.json	%1 used %2.
+www/data/System.json	Keep going.
+www/data/Weapons.json	(M.ATK+2)
+www/data/Weapons.json	Torn Grimoire
+www/data/Weapons.json	(ATK+4) (DEF/M.DEF-2)
+www/data/Weapons.json	Rusty Dagger
+www/data/Weapons.json	(ATK+2)
+www/data/Weapons.json	Rusty Bagh Nakh
+www/data/Weapons.json	(ATK+1) (Crit Rate+5%)
+www/data/Weapons.json	Rusty Sickle
+www/data/Weapons.json	(ATK+2) (Accuracy +25%)
+www/data/Weapons.json	Lucky Horseshoe

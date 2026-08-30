@@ -1,0 +1,1264 @@
+#!/usr/bin/env python3
+"""Rebuild player-visible targets from the original source strings.
+
+This is intentionally self-contained and offline.  It does not attempt to
+translate editor metadata, resource names, or plugin code; the visible
+whitelist remains the final authority.
+"""
+from __future__ import annotations
+
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+from filter_visible_targets import json_allowed
+
+DEV = Path(__file__).resolve().parents[1]
+
+# Names and game terms that are deliberately consistent throughout the game.
+NAMES = {
+    "Pandaemonium": "潘德莫尼乌姆", "Haures": "哈乌瑞斯", "Ipos": "伊波斯",
+    "Glasya-Labolas": "格拉西亚-拉博拉斯", "G.Labolas": "格拉西亚-拉博拉斯",
+    "Zepar": "泽帕尔", "Orobas": "奥罗巴斯", "Kushiel": "库席耶尔",
+    "Chacha": "恰恰", "Mors": "莫尔斯", "Charon": "卡戎", "Gramps": "爷爷",
+    "Ashmadai": "阿斯莫代", "Gehenna": "欣嫩谷", "Limbo": "边狱", "Inferno": "地狱",
+    "Styx": "冥河", "Angel": "天使", "Angels": "天使们", "Demon": "恶魔",
+    "Demons": "恶魔们", "Sinner": "罪人", "Sinners": "罪人们", "Human": "人类",
+    "Humans": "人类", "Boss": "老大", "Ferryman": "摆渡人", "Priest": "祭司",
+    "Goetia": "魔典", "Ars": "魔典", "Canto": "咏唱", "Sneer": "冷笑",
+    "Sneering": "冷笑中", "Tension": "紧张度", "Circle": "圆环", "Circles": "圆环",
+    "HP": "生命值", "MP": "魔法值", "TP": "技术值", "EXP": "经验值",
+    "ATK": "攻击", "DEF": "防御", "M.ATK": "魔攻", "M.DEF": "魔防", "SPD": "速度",
+    "LCK": "幸运", "Accuracy": "命中率", "Evasion": "闪避率", "Regen": "再生",
+    "Buff": "增益", "Buffs": "增益", "Debuff": "减益", "Debuffs": "减益",
+}
+
+# Complete strings take precedence over token substitutions.  These include
+# the tutorial, system prompts, recurring reactions, and the screenshot lines.
+PHRASES = {
+    "Do you recall how it goes?": "你还记得该怎么说吗？",
+    "Just tell me what you remember.": "把你记得的告诉我就好。",
+    "Return to Title": "返回标题画面",
+    "Would you like to save your progress?": "要保存当前进度吗？",
+    "Are you absolutely sure?": "你确定要这样做吗？",
+    "Save data": "保存数据",
+    "Enter Lower Limbo?": "要进入下层边狱吗？",
+    "Return to the Human realm": "返回人界",
+    "The party's HP and MP was restored.": "队伍的生命值和魔法值已恢复。",
+    "The Demon has left the area.": "恶魔离开了这片区域。",
+    "The Demon has left the party...": "恶魔离开了队伍……",
+    "The enemy got away...": "敌人逃走了……",
+    "Nothing happened...": "什么也没有发生……",
+    "Later, losers...": "回头见，失败者们……",
+    "So that's how it is, huh...": "原来是这样啊……",
+    "Well I'll show ya!": "那我就让你看看！",
+    "I'm gettin' to Pandaemonium on my own!": "我会独自抵达潘德莫尼乌姆！",
+    "I... I'm the best! I don't need no one else": "我……我是最强的！我不需要任何人",
+    "with me...!": "陪着我……！",
+    "Wh-Huh?": "什、什么？", "Well then...": "既然如此……", "Suit yourselves!": "随你们便！",
+    "As if you lot deserve to be around a": "就凭你们也配待在",
+    "Demon of my stature!": "像我这样的大恶魔身边！",
+    "Don't expect me to help if we're to cross": "下次再见面时别指望我会帮忙，",
+    "paths again.": "如果我们还会再次相遇的话。",
+    "I'll kill you if I see you again,": "下次再见到你，我就杀了你，",
+    "y'know?": "明白吗？",
+    "I'm sure Boss won't mind a few": "我想老大不会介意几个",
+    "no-shows...": "缺席者……",
+    "Then it shall be so.": "那就这样吧。",
+    "Huh? Are we racing to Pandaemonium now?!": "咦？现在要比赛去潘德莫尼乌姆吗？！",
+    "O-oh... you wanted me to go": "哦……你是想让我",
+    "...on my own?": "……独自前往？", "Did I-": "我做错了什么——",
+    "What did I do wrong...?": "我做错了什么……？",
+    "The Demon scowls at you.": "恶魔对你怒目而视。",
+    "The Demon seems very flustered.": "恶魔显得十分慌乱。",
+    "The Demon glares at you for a second.": "恶魔瞪了你一眼。",
+    "The Demon remains unmoving.": "恶魔一动不动。",
+    "The Demon's eyes are racing.": "恶魔的双眼飞快转动。",
+    "Please select": "请选择", "PLEASE SELECT A DEMON TO SEND ON THEIR WAY:": "请选择要送走的恶魔：",
+    "WARNING:": "警告：", "FOR THE SAFETY OF INFERNAL SPIRITS TRAVERSING THROUGH": "为了穿越地狱的灵魂安全",
+    "THE INFERNO": "地狱", "THE BOSS DEMANDS THAT A PILGRIMAGE TO PANDAEMONIUM ": "老大要求前往潘德莫尼乌姆的队伍",
+    "MUST CONTAIN NO MORE THAN THREE PARTY MEMBERS": "最多只能有三名成员",
+    "CHACHA TRANSFER SYSTEM": "恰恰转移系统", "HOW TO ADD A NEW CHARACTER": "如何添加新角色",
+    "THINGS TO REMEMBER FOR NEW CIRCLES": "新圆环注意事项", "CIRCLE EVENT PLACEMENTS ": "圆环事件位置",
+    "WEAPONS AND GEAR": "武器与装备", "SPRITES": "精灵图", "TILES": "图块", "SKILLS": "技能",
+    "HOW MY STATES WORK": "我的状态如何运作",
+    "Yes": "是", "No": "否", "Exit": "退出", "Save": "保存", "Cancel": "取消",
+    "Confirm": "确认", "Nothing": "什么也没有", "No idea": "不知道", "No comment": "无可奉告",
+    "The same": "一样", "Super advanced": "非常先进", "You could use some boots": "你该穿双靴子",
+    "I've got nothing to say": "我没什么好说的", "I feel bad for them": "我为他们感到难过",
+    "I don't believe you": "我不相信你", "I don't want to": "我不想这样", "I hope not": "希望不会",
+    "A feeling": "一种感觉", "It doesn't matter to me": "对我来说无所谓", "Yes, it's worth it": "是，值得。",
+    "No, not worth it.": "不，不值得。", "Faster than you": "比你快", "Hold \"Shift\" to run": "按住“Shift”键奔跑",
+    "Read it?": "要读吗？", "A sign.": "一块告示牌。", "It reads as follows:": "上面写着：",
+    "The party's leader was left behind...": "队伍首领被落在后面了……",
+    "Keep going.": "继续前进。", "Miss!": "未命中！", "Always Dash": "始终冲刺",
+    "I can do that!": "我能做到！", "Here's a cool trick Gramps taught me!": "这是爷爷教我的厉害技巧！",
+    "Need something?": "需要什么吗？", "We meet again!": "我们又见面了！", "Be careful out there!": "外面小心！",
+    "Promise you'll come back, okay?": "答应我会回来，好吗？", "Hiya!": "你好！", "Oh!": "哦！", "Oh, okay~~~": "哦，好吧~~~",
+    "I see.": "我明白了。", "I see!": "我明白了！", "Curious!": "真奇怪！", "Solace.": "慰藉。", "Enough.": "够了。",
+    "Ridiculous...": "荒谬……", "Wh-": "什——", "Wha!": "哇！", "Yo.": "哟。", "Hey!": "嘿！", "Yeah?": "怎么？",
+    "Huh?": "咦？", "...What?": "……什么？", "Uhhh-": "呃——", "Uh-": "呃——", "Ah-": "啊——", "I uh-": "我呃——",
+    "Hmph.": "哼。", "Tch.": "啧。", "Damn!": "可恶！", "Phew! Easy enough.": "呼！还挺简单。",
+    "Mine now.": "现在归我了。", "Thank you.": "谢谢。", "It looks like he left me some gifts!": "看来他给我留下了礼物！",
+    "What was the Sinner holding?": "罪人拿着什么？", "I wonder...": "我想知道……", "I wonder?": "我想知道？",
+    "I don't mumble...": "我才没有嘟囔……", "It's subjective.": "这很主观。", "N-Nevermind!": "没、没什么！",
+    "I don't have an issue with bugs": "我不怕虫子", "Care to explain why?": "能解释一下为什么吗？",
+    "They made things better in the end ": "他们最后让事情变好了", "Nobody else knows the bad things": "没有其他人知道那些坏事",
+    "Some actions are inexcusable": "有些行为不可原谅", "Some \"villains\" operate exactly the same": "有些“恶人”的做法完全一样",
+    "Not another step, Demon.": "恶魔，不许再靠近一步。", "You'd do well to heed my words, Demon.": "恶魔，你最好听从我的话。",
+    "to the words of an Angel.": "听从天使的话。", "Are you... afraid?": "你……害怕吗？",
+    "You're no different from the rest of them.": "你和他们没有区别。", "Will you show me... something new...?": "你会给我看看……新东西吗……？",
+    "The Circles seem pretty stable right now,": "现在圆环似乎很稳定，", "so I can take you there and back in a flash!": "我可以带你瞬间往返那里！",
+    "It's snowing, but the statue appears to be untouched...": "正在下雪，但雕像似乎完好无损……",
+    "This one won't work.": "这个不行。", "There's another Statue here.": "这里还有另一座雕像。",
+    "I wonder if big brother found it yet...": "不知道哥哥找到它没有……", "Especially not that Angel...": "尤其是那个天使……",
+    "A respectable answer.": "还算体面的回答。", "Seriously what a weirdo!": "真是个怪人！", "A waste of my time.": "浪费我的时间。",
+    "I feel rancid just standing near her.": "光是站在她旁边我就觉得恶心。", "You can talk after all!": "原来你会说话！",
+    "You seem uh, pretty happy there eh?": "你看起来……挺高兴的嘛？", "It's all the same.": "都一样。",
+    "...": "……", "Mmh...": "嗯……", "Mmrh.": "唔。", "Mmmrh.": "唔嗯……", "Hmm...": "嗯……",
+    "Hmm.": "嗯。", "Hmmrh.": "嗯哼。", "Hah...": "哈……", "Hah.": "哈。", "Mmmh.": "嗯……",
+    "*Ahem*": "*咳咳*", "*Huff*": "*喘气*", "Siiiiiiiigh...": "唉——……", "O-Oooow!": "啊——好痛！",
+    "Why're you starin' at me like that?": "你干嘛那样盯着我看？", "At least put on proper attire before we reach": "至少在我们抵达之前穿得体面些，",
+    "Even the Stygian garb is much less of an eyesore!": "就连冥河的服饰都没这么碍眼！", "If you ain't got anything nice to say about me then": "如果你没什么好话可说，那就",
+    "shut up, loser!": "闭嘴，失败者！", "Besides- I doubt Boss or anyone else that shows": "再说了，我不觉得老大或其他人会在意",
+    "up would even care.": "有人出现。", "Tsk! What an impressive lack of decorum!": "啧！真是毫无礼数！",
+    "Such behavior would look much better on someone with": "这种举止放在地位更高的人身上会好看得多，", "a better standing than you!": "而不是你这种人！",
+    "...What? What does that even mean? You're not even": "……什么？你这话到底什么意思？根本就",
+    "makin' any sense now!": "说不通嘛！", "Sorry, you spooked me ya big lump of metal!": "抱歉，你吓到我了，你这个大铁块！",
+    "Thanks, I know. I'll make sure they're even": "谢谢，我知道。我以后会让它们更加",
+    "prettier for ya in the future!": "漂亮！", "Also, I didn't even know you had eyes til now,": "而且说真的，我直到现在才知道你有眼睛，",
+    "to be honest.": "说实话。", "Your flames look quite astonishing, I must say.": "你的火焰相当惊人，我得说。",
+    "What's the conversion rate on float speed,": "漂浮速度和奔跑速度之间的换算关系是怎样的，",
+    "do you think? Is there any correlation between it and": "你觉得呢？它和",
+    "grounded travel?": "在地面移动有关联吗？", "Like, do you think how fast you can run has": "比如，你觉得奔跑速度是否会影响",
+    "anything to do with how fast you can fly?": "飞行速度？", "Probably not.": "大概不会。",
+    "Like, I can run about as fast as anyone else,": "我跑得和其他人差不多快，", "but I'm still kinda terrible at flying, y'know?": "可我飞得还是很差，你懂吧？",
+    "An arduous road is ahead indeed...": "前方确实是条艰难的路……", "Does it not bother you to wander about barefoot?": "光着脚到处走不会觉得难受吗？",
+    "I can hover when I want, I'll have you know!": "我想悬浮就能悬浮，告诉你吧！", "We may be companions on the road to Pandaemonium,": "我们也许会结伴走上前往潘德莫尼乌姆的路，",
+    "but I'd advise you keep your mumbling around me limited.": "但我建议你在我身边少嘟囔几句。", "Your cravat is quite impressive.": "你的领巾相当漂亮。",
+    "Though I must ask, how do you put it on?": "不过我想问问，你是怎么戴上的？", "Without tearing it to shreds, I mean.": "我是说，怎么做到不把它撕碎？",
+    "Oh this?": "哦，这个？", "It's just a clip on, as those Humans would call it.": "这只是人类所说的夹式领巾。",
+    "Quite impressive, no?": "很漂亮吧？", "It makes me look and feel more noble, without having": "它让我看起来更高贵，也不用",
+    "to worry about tying it.": "担心怎么打结。", "I've been wanting to ask since I saw you...": "我从见到你起就一直想问……",
+    "But can you fly with that thing?": "你戴着那东西能飞吗？", "Obviously not!": "当然不能！",
+    "You'd be a fool to think I'd be one to spend time alone": "你要是以为我会独自花时间",
+    "trying to do so!": "尝试那种事，就太蠢了！", "How'd ya feel if I take charge on the way to": "去潘德莫尼乌姆的路上让我带队，你觉得怎样？",
+    "Pandaemonium, that cool with you?": "潘德莫尼乌姆，没问题吧？", "What'd ya say?": "你说什么？",
+    "Gonna find big brother...": "我要去找哥哥……", "Will he be mad at me?": "他会生我的气吗？",
+    "Okay! I think I will probably avoid interacting": "好吧！我想我会暂时避免和你接触",
+    "with you for a little while!": "一阵子！", "(Seriously what a weirdo!)": "（真是个怪人！）",
+    "SKILL HOLDER": "技能持有者", "The Dredged": "溺亡者", "Dredged Sinner": "溺亡罪人",
+    "Strange Demon": "奇异恶魔", "Limbo: Statue Clearing": "边狱：雕像清除区", "Lower Limbo": "下层边狱",
+    "Engage in Combat": "进入战斗", "Return the coin": "归还硬币", "Hang on to it": "留下它",
+    "Something else": "其他事情", "Beasts of Claw and Dagger": "爪与匕首之兽", "Beasts of Tongue and Grimoire": "舌与魔导书之兽",
+    "A way to beat Angels": "击败天使的方法", "Proceed to next area": "前往下一区域", "Stay here": "留在这里",
+    "A coin from Chacha that once belonged to the Ferryman Charon.\nOpens the Save screen only once in between Circle depths.": "这枚硬币来自恰恰，曾属于摆渡人卡戎。\n每穿过一层圆环，只能用它打开一次保存画面。",
+    "A coin from a currency long out of print.\nMaybe the Ferryman would know more about it?": "这枚硬币属于早已停止流通的货币。\n也许摆渡人知道更多？",
+    "A teal feather that must have flown off during your\ndance with the Angel Kushiel. It's soft to the touch.": "一根青绿色羽毛，应该是在你与天使库席耶尔共舞时脱落的。\n摸起来很柔软。",
+    "Read it": "阅读", "How so?": "怎么说？", "How could this happen?": "怎么会这样？", "What happens next?": "接下来会发生什么？",
+    "But then...": "但是后来……", "Do you hate them?": "你讨厌他们吗？", "Do you care about them?": "你在乎他们吗？",
+    "I feel bad for them": "我为他们感到难过", "They made things better in the end ": "他们最后让事情变好了",
+    "Nobody else knows the bad things": "没有其他人知道那些坏事", "Some actions are inexcusable": "有些行为不可原谅",
+    "Some \"villains\" operate exactly the same": "有些“恶人”的做法完全一样", "I'll make it": "我能做到", "I won't make it": "我做不到",
+    "A feeling": "一种感觉", "No comment": "无可奉告", "Faster than you": "比你快", "Super advanced": "非常先进", "No idea": "不知道",
+    "Head of Ashmadai: Vita": "阿斯莫代之首：维塔", "Fell Sinner": "堕落罪人", "Fell Lynx": "堕落猞猁",
+    "Fell Gecko": "堕落壁虎", "Fell Claw": "堕落爪兽", "Red String": "红线", "evil_ball": "邪恶之球",
+    "(ATK+2) (Accuracy +25%)": "（攻击+2）（命中率+25%）",
+    "32.": "32。", "!!": "！！",
+    "QUEM QUAERITIS?": "你们寻找谁？", "CRITICAL HIT TEST": "暴击测试", "ALMOST INSTA KILL": "几乎立即击杀",
+    "FIRE ATTACKS": "火焰攻击", "ELECTRIC ATTACKS": "雷电攻击", "PHYSICAL ATTACKS": "物理攻击", "INVISIBLE SKILLS BELOW": "下方为隐藏技能",
+    "BUFFS/DEBUFFS": "增益/减益", "TP SKILLS": "技术值技能", "HEALING": "治疗", "INVISIBLE SKILLS": "隐藏技能",
+    "SNEER ADDER": "冷笑附加", "REMOVE CANTO": "移除咏唱", "Intent to Kill": "杀意", "Target": "目标",
+    "Bloody Wounds": "血腥伤口", "Barrier: Safeguard": "屏障：守护", "Captivated": "着迷", "Perceptive": "敏锐",
+    "Shocked": "震惊", "Burned": "灼伤", "Affinity": "亲和", "Rattled": "动摇", "Foresight": "预见",
+    "Guarding": "防御中", "Fallen": "倒下", "Poisoned": "中毒", "Silenced": "沉默", "Enraged": "狂怒", "Dizzy": "眩晕", "Asleep": "睡着",
+}
+
+# The earlier local pass contains a substantial set of individually reviewed
+# full sentences.  Reuse only literal entries whose Chinese output is already
+# complete; regex-like fragments and mixed-language values are excluded.
+try:
+    from translate_local import PHRASES as _LEGACY_PHRASES
+    for _src, _dst in _LEGACY_PHRASES.items():
+        _residual = re.sub(r"<[^>]+>|\\\\?[A-Za-z]+(?:\[[^]]*\])?|%\d+", "", _dst)
+        if ("\\" not in _src or _src.startswith("\\n<")) and not re.search(r"\b[A-Za-z]{2,}\b", _residual) and "�" not in _dst:
+            PHRASES.setdefault(_src, _dst)
+except Exception:
+    pass
+
+# High-impact UI/database wording.  These entries override any older partial
+# substitutions and keep placeholders exactly where RPG Maker expects them.
+PHRASES.update({
+    "PAN-DAE-MON-IUM": "潘德莫尼乌姆", "Level": "等级", "Lv": "等级", "TENSION": "紧张度", "EXP": "经验值",
+    "Fight": "战斗", "Escape": "逃跑", "Attack": "攻击", "Defend": "防御", "Items": "道具", "Skill": "技能",
+    "Equipment": "装备", "Status": "状态", "Order": "队形", "Save": "保存", "Return to Title": "返回标题画面", "Options": "选项",
+    "Key Item": "关键道具", "Equip": "装备", "Optimize": "最优装备", "Remove All": "全部卸下", "New Game": "新游戏", "Continue": "继续",
+    "To Title": "返回标题", "Cancel": "取消", "Buy": "购买", "Sell": "出售", "Max HP": "最大生命值", "Max MP": "最大魔法值",
+    "M.ATK": "魔攻", "M.DEF": "魔防", "PRIORITY": "优先度", "LCK": "幸运", "Accuracy": "命中率", "Evasion": "闪避率",
+    "It didn't work...": "没有成功……", "%1 took %2 damage.": "%1受到了%2点伤害。", "%1 had %2 %3 drained.": "%1的%3被吸取了%2点。",
+    "%1 gained %2 %3.": "%1获得了%2点%3。", "%1 lost %2 %3.": "%1失去了%2点%3。", "Huh? Nothing happened...": "咦？什么也没有发生……",
+    "%1 recovered %2 %3.": "%1恢复了%2点%3。", "...It was no use!": "……没有用！", "%1 tried to escape!": "%1试图逃跑！",
+    "To Next %1": "距离下一级还需%1", "Current %1": "当前%1", "File": "文件", "%2 up! (%1 Lv%3)": "%2升级了！（%1 等级%3）",
+    "Choose a save file:": "请选择存档：", "The attack was reflected!": "攻击被反射了！", "BGM Volume": "背景音乐音量", "BGS Volume": "背景音效音量",
+    "%1's %2 went up!": "%1的%2上升了！", "%1's %2 returned to normal!": "%1的%2恢复正常！", "Command Remember": "记住指令",
+    "%1 counterattacked!": "%1进行了反击！", "A Critical hit!": "会心一击！", "%1's %2 went down!": "%1的%2下降了！",
+    "%1 is looking for a fight!": "%1想要战斗！", "%1 was drained of %2 %3.": "%1被吸取了%2点%3。", "%1 %2 gained.": "%1获得了%2。",
+    "%1\\G was found.": "发现了%1\\G。", "%1 obtained!": "获得了%1！", "%1 is now usable. ": "%1现在可以使用了。",
+    "%1's Party": "%1的队伍", "Possession": "持有数", "%1 got the upper hand!": "%1占据了上风！", "Save to a file:": "保存到文件：",
+    "ME Volume": "音乐效果音量", "SE Volume": "音效音量", "%1 protected %2.": "%1保护了%2。", "%1 was surprised!": "%1受到了突袭！", "%1 used %2.": "%1使用了%2。",
+    "Recovers 20HP.": "恢复20点生命值。", "Recovers 50HP.": "恢复50点生命值。", "Recovers 100HP.": "恢复100点生命值。",
+    "Recovers 20MP.": "恢复20点魔法值。", "Recovers 50MP.": "恢复50点魔法值。", "Recovers 100MP.": "恢复100点魔法值。",
+    "Revives a Fallen ally with 1HP and 0MP.": "复活一名倒下的盟友，生命值为1、魔法值为0。", "Revives a Fallen ally with full HP and MP.": "完全复活一名倒下的盟友。",
+    "Cures an Ailment from one ally.": "治愈一名盟友的异常状态。", "Fully restores an ally's HP and MP.": "完全恢复一名盟友的生命值和魔法值。",
+    "Raises Tensions by 50%.": "提升紧张度50%。", "Nulls all stat changes on the field.": "使场上所有属性变化无效。",
+    "A basic attack on 1 enemy. ": "对一名敌人进行普通攻击。", "A basic attack on 1 enemy.": "对一名敌人进行普通攻击。",
+    "Reduce incoming damage and recover HP/MP.": "降低受到的伤害并恢复生命值和魔法值。", "Low damage Burning magic.": "低伤害的火焰魔法。",
+    "High damage Burning magic.": "高伤害的火焰魔法。", "Low damage Burning magic to all enemies.": "对全体敌人造成低伤害的火焰魔法。",
+    "Sleep inducing magic.": "使目标陷入睡眠的魔法。", "Steal HP from 1 ally.": "吸取一名盟友的生命值。", "Captivating magic.": "令人着迷的魔法。",
+    "3 low damage Rocking kicks on one enemy.": "对一名敌人施展3次低伤害的岩石踢。", "Low damage Rocking kick at 1 enemy.": "对一名敌人施展低伤害的岩石踢。",
+    "Low damage slash at 1 enemy.": "对一名敌人施展低伤害斩击。", "2 Low damage slash at 1 enemy.": "对一名敌人施展2次低伤害斩击。",
+    "Low damage slashes at 3 random enemies.": "对3名随机敌人施展低伤害斩击。", "3 brutal strikes that have a chance to inflict Rattled.": "施展3次猛烈打击，有几率施加动摇。",
+    "Protects allies against all ailments for 3 turns.": "使盟友免疫所有异常状态，持续3回合。", "Forcibly removes any Barrier effects.": "强制移除所有屏障效果。",
+    "Forcibly removes any Buffs.": "强制移除所有增益。", "Poisoning magic.": "施加中毒的魔法。", "Immediately ends the combat tutorial session.": "立即结束战斗教程。",
+    "Low damage Burning magic.\nStronger when targets are inflicted with DEF/M.DEF Down.": "低伤害的火焰魔法。\n目标处于防御/魔防下降状态时威力更强。",
+    "Decreases all enemies' DEF/M.DEF for 3 turns.": "降低全体敌人的防御和魔防，持续3回合。", "Raises all allies' stats for 3 turns.": "提升全体盟友的属性，持续3回合。",
+    "Raises the Critical hit chance of an ally for 3 turns.\n(Cannot use on Sneering allies.)": "提升一名盟友的暴击率，持续3回合。\n（无法对冷笑中的盟友使用。）",
+    "Reduces all enemies' stats for 3 turns.": "降低全体敌人的属性，持续3回合。", "Raises Tension.": "提升紧张度。",
+    "Apply Sneer to all allies, but disables Canto for this turn. ": "对全体盟友施加冷笑，但本回合无法咏唱。",
+    "Dodge all incoming attacks for 1 turn.\nIf an attack is dodged, increase user ATK.": "一回合内闪避所有攻击。\n成功闪避后提升自身攻击。",
+    "Applies Target and increases user's ATK.": "施加目标状态并提升自身攻击。", "All allies' next attack will be Critical, and enables user Canto.\n(Cannot use on Sneering allies.)": "全体盟友的下一次攻击必定暴击，并使自身可以咏唱。\n（无法对冷笑中的盟友使用。）",
+    "Critically stab an enemy repeatedly, dealing max damage and inflicting Poison.\nEnables user Canto.": "连续以暴击刺击敌人，造成最大伤害并施加中毒。\n使自身可以咏唱。",
+    "Focused slash at all enemies that inflicts Bloody Wounds.\nEnables user Canto.": "对全体敌人施展集中斩击，施加血腥伤口。\n使自身可以咏唱。",
+    "Max damage slash at all enemies that inflicts Bloody Wounds.\nEnables user Canto.": "对全体敌人施展最大伤害斩击，施加血腥伤口。\n使自身可以咏唱。",
+    "A multi-hit slash attack that instantly kills if any connect.": "多段斩击，只要有一击命中就会立即击杀。",
+    "Cures all status ailments from all allies.": "治愈全体盟友的所有异常状态。", "Low damage Holy magic to all enemies.\nForcibly reduces all enemies' stats.": "对全体敌人施展低伤害神圣魔法。\n强制降低全体敌人的属性。",
+    "Fully heal an ally while applying Sneer.\n(Enables user Canto.)": "完全治愈一名盟友并施加冷笑。\n使自身可以咏唱。",
+    "Raises the user's Dodge chance by 30%": "提升自身闪避率30%。", "Raises all allies' ATK/M.ATK for 3 turns.": "提升全体盟友的攻击和魔攻，持续3回合。",
+    "Raises all allies' DEF/M.DEF for 3 turns.": "提升全体盟友的防御和魔防，持续3回合。", "Decreases all enemies' ATK/M.ATK for 3 turns.": "降低全体敌人的攻击和魔攻，持续3回合。",
+    "Decreases all enemies' SPD for 3 turns.": "降低全体敌人的速度，持续3回合。", "Raises all allies' SPD for 3 turns.": "提升全体盟友的速度，持续3回合。",
+    "The user becomes Targeted.": "使自身成为目标。", "Low damage grabbing attack on 1 enemy that Ruptures Bloody Wounds.": "对一名敌人施展低伤害擒拿攻击，并撕裂血腥伤口。",
+    "High damage grabbing attack on 1 enemy.\nChance to inflict Bloody Wounds.": "对一名敌人施展高伤害擒拿攻击。\n有几率施加血腥伤口。",
+    "Low damage slash at 1 enemy.\nInflicts SPD Down.": "对一名敌人施展低伤害斩击。\n施加速度下降。", "Heals a low amount of HP for 1 ally.": "少量恢复一名盟友的生命值。",
+    "High damage slash at 1 enemy.\nChance to inflict Captivated": "对一名敌人施展高伤害斩击。\n有几率施加着迷。", "Cleanses and heals the user for 20% of their max HP.": "解除自身异常状态，并恢复最大生命值的20%。",
+    "Fully heal and cleanse an ally while applying Sneer.\n(Enables user Canto.)": "完全治愈一名盟友并解除其异常状态，同时施加冷笑。\n使自身可以咏唱。",
+    "Heals the user for 10% of their max HP and nulls all stat changes including Rattled.\n(Enables user Canto.)": "恢复自身最大生命值的10%，并使包括动摇在内的所有属性变化无效。\n使自身可以咏唱。",
+    "High damage strike that inflicts Blody Wounds and DEF/M.DEF Down.": "施展高伤害打击，施加血腥伤口和防御/魔防下降。", "Increases all of the user's stats.": "提升自身所有属性。",
+    "High damage pinching attack.\nChance to inflict Bloody Wounds.": "施展高伤害钳击。\n有几率施加血腥伤口。", "Instantly kills the target(?).": "立即击杀目标（？）。",
+    "Revives the fallen Demon in the form of The Dredged": "以溺亡者的形态复活倒下的恶魔。", "Dredge up a fallen spirit from the River Styx": "从冥河中挖出倒下的灵魂。",
+    "Low damage Drowning magic to all enemies.": "对全体敌人施展低伤害溺水魔法。", "Increases the user's Crit Rate by 5%. (Passive Skill)": "提升自身暴击率5%。（被动技能）",
+    "Reduce incoming damage to 0 for the turn. (CD: 3)": "本回合受到的伤害降为0。（冷却：3）", "Increases the user's Max HP by 10%. (Passive Skill)": "提升自身最大生命值10%。（被动技能）",
+    "Increases the user's Max MP by 10%. (Passive Skill)": "提升自身最大魔法值10%。（被动技能）", "Increases the user's DEF by 10%. (Passive Skill)": "提升自身防御10%。（被动技能）",
+    "Increases the user's ATK by 10%. (Passive Skill)": "提升自身攻击10%。（被动技能）", "Increases the user's M.DEF by 10%. (Passive Skill)": "提升自身魔防10%。（被动技能）",
+    "Increases the user's M.ATK by 10%. (Passive Skill)": "提升自身魔攻10%。（被动技能）", "Restores 5% of the user's max HP every turn. (Passive Skill)": "每回合恢复自身最大生命值的5%。（被动技能）",
+    "Increases the user's evasion by 5%. (Passive Skill)": "提升自身闪避率5%。（被动技能）",
+    # Frequently repeated character dialogue and scene narration.
+    "You see those weirdos out there right?": "你看到外面那些怪人了吗？",
+    "They say based on how awful a person they": "据说一个人生前有多糟糕，",
+    "were in life, they get sent into different parts of hell.": "死后就会被送往地狱的不同地方。",
+    "freaks.": "怪人们。", "To be honest I couldn't give less of a shit about": "说实话，我一点也不在乎",
+    "those guys wanderin' about.": "那些到处游荡的家伙。", "head-holes leak gunk wherever they go- eugh!": "那些脑袋上的洞一路漏着黏液，呃！",
+    "You were the one who came to see lil ol' me,": "是你来找我这个小人物，",
+    "much rather you gimme some Bones instead.": "还不如给我几根骨头。", "Happy to know we're in a safe space here.": "知道这里很安全，我就放心了。",
+    "I've left you speechless, is that it~": "我让你无话可说了，对吧~", "Listen, I ain't some fashion model or whatever": "听着，我又不是什么时装模特，",
+    "There's literally no way in Hell you'd": "你绝不可能在地狱里",
+    "see me in those stuffy ass stompers.": "看到我穿那种闷热的破鞋。", "Whaddya think the Human world's gonna be like?": "你觉得人界会是什么样？",
+    "to come up with anything strong enough to withstand": "找出足够坚固、能够抵挡",
+    "Not even in a million years~": "就算一百万年也不可能~", "Nah, none in particular.": "不，没什么特别的。",
+    "fault.": "过错。", "Doubly so for everyone who loves me~": "尤其是那些爱着我的人~",
+    "Guess I'm kinda neutral on it, in a sense.": "某种意义上说，我对这事有点中立。",
+    "Like I'll help ya out if I see you're in a pinch,": "要是看到你陷入困境，我会帮你，",
+    "Not a single Infernal soul down here can": "这里没有任何一个地狱灵魂能",
+    "Back then, nothing brought me a bigger smile": "那时候，没有什么能让我笑得更开心",
+    "It's been real quiet since the Angels cut us": "自从天使切断我们之后，这里一直很安静",
+    "You wanna travel together dont'cha?": "你想一起旅行，对吧？", "Prove to me you can be someone I can count": "证明你是一个值得我依靠的人，",
+    "-after you show me you're not a total pushover!": "——先证明你不是个任人欺负的软蛋！",
+    "Pitiable creatures they are...": "真是可怜的生物……", "Hm? Ah, I reference the \"Sinners,\" as they are": "嗯？啊，我指的是“罪人”，他们",
+    "A bit heartless, but that just comes naturally": "有点无情，不过那是自然而然的事",
+    "I can empathize your with disgust at erm,": "我能理解你对……呃，",
+    "Refreshing. It's not often another Demon shares": "真清爽。很少有恶魔会和我分享",
+    r"my \.\.respect for lowly, pathetic creatures.": r"我对卑微可怜生物的\.\.尊重。",
+    "Do you think a \"hero\" can be redeemed?": "你觉得“英雄”能够得到救赎吗？",
+    "Apologies, that might have sounded a bit": "抱歉，这听起来可能有点",
+    "confusing.": "令人困惑。", "result of their actions...": "他们行为的结果……",
+    "Despite some of those actions being reprehensible-": "尽管其中一些行为令人不齿——",
+    "But what's \"better\" is purely a subjective matter,": "但什么是“更好”纯粹是主观问题，",
+    "Hundreds of infant children could be culled": "数百名婴儿可以被牺牲",
+    "to improve food shortages for impoverished communities.": "以缓解贫困社区的食物短缺。",
+    "Personally, I revel in that kind of secrecy.": "就我个人而言，我很享受这种秘密。",
+    "Personally, I find it extremely intriguing to": "就我个人而言，我觉得看到",
+    "see such noble figures stoop to such lows...": "如此高贵的人物堕落到这种地步，实在耐人寻味……",
+    "It makes for much more interesting and nuanced": "这让性格变得更加有趣而细腻",
+    "personalities, wouldn't you agree?~": "，你不觉得吗？~", "How confident are you in completing the journey?": "你有多大把握走完这段旅程？",
+    "The Boss spares no qualms as far as attendance": "只要是出席，老大从不容许任何顾虑",
+    "is concerned.": "。", "We'd do well to make the rendezvous-": "我们最好按约碰面——",
+    "As it stands with the current state of Hell,": "以地狱目前的状况来看，", "Though I still find it unbelievable...": "不过我还是觉得难以置信……",
+    "The bottom four Circles falling out..?": "最下方四个圆环崩溃了……？",
+    "It's certainly worrying what else might have changed": "其他还有什么发生变化，确实令人担忧",
+    "With that outlook, you may very well be right.": "照这个观点看，你很可能是对的。",
+    "I've utmost respect for my fellow Demons in arms...": "我非常尊敬并肩作战的恶魔同伴……",
+    "Save for that red-haired freak.": "那个红发怪人除外。", "The same uniforms worn in that great battle": "就是那场伟大战斗中穿过的同样制服",
+    "about a decade ago.": "大约十年前。", "I'm sure you know whom I'm referencing.": "我相信你知道我指的是谁。",
+    "That girl gets off on pain- inflicted and recieved.": "那个女孩以施加和承受痛苦为乐。", "that girl is senseless!": "那个女孩毫无理智！",
+    "degenerate as she is...": "她已经堕落至此……", "There is a type of strength in solidarity that": "团结中蕴含着一种力量，",
+    "I am attracted to.": "吸引着我。", "predator and prey.": "捕食者与猎物。", "I've piqued your interest?": "我引起你的兴趣了？",
+    "me to be quite orderly.": "我一向很有秩序。", "breaking order from time to time~": "偶尔打破秩序~",
+    "To follow!": "跟上！", "It's all so fascinating!": "这一切真是太迷人了！",
+    "Being able to witness and feel it firsthand": "能够亲眼见证并亲身感受",
+    "is one of my greatest joys!~": "是我最大的乐趣之一！~",
+    "If we were to duel, who do you think would prevail?": "如果我们决斗，你觉得谁会胜出？",
+    "A faint glimmer appears in the corner of your vision.": "你的视野角落闪过一丝微光。",
+    "A pity. You seeing it spoils the fun.": "真遗憾。被你看到就没意思了。", "A poor attempt at flattery.": "拙劣的奉承。",
+    "If you wish to travel together, I'd suggest": "如果你想一起旅行，我建议",
+    "And I don't like the way they taste.": "而且我不喜欢它们的味道。", "The mess makes me crazy.": "这片混乱让我发疯。",
+    "clean it up...": "把它清理干净……", "Nothing but worthless bugs.": "全都是毫无价值的虫子。",
+    "The shambling ones that bleed...": "那些蹒跚而行、会流血的家伙……", "I like how it feels between my fingers,": "我喜欢它们在指间的感觉，",
+    "Have you ever wondered-": "你有没有想过——", "I'm just kidding, you know...": "我只是开玩笑，你知道的……",
+    "No one except me, and big brother.": "除了我和哥哥，没人知道。", "Some of them call me names.": "他们有些人会骂我。",
+    "Do you like games?": "你喜欢游戏吗？", "Humans made it up. It's called \"Chicken.\"": "人类发明的，叫作“鸡”。",
+    "We had talked not too long ago, have we not...": "我们不久前才聊过，不是吗……", "Surely it must get more cumbersome towards the lower": "到了更下层应该会更费劲吧，",
+    "What I will say is that I am relieved that the Capitol": "我要说的是，我很庆幸首都", "is moated by the river Styx, and not burning lava.": "四周环绕的是冥河，而不是燃烧的熔岩。",
+    "I like your armor, sir.": "先生，我喜欢你的铠甲。", "Do you think I could pierce it in a single": "你觉得我能一击刺穿它吗，",
+    "You may be my guest.": "请便。", "I cannot muster anything more than a": "我最多只能做到", "overtaking other Demons.": "超过其他恶魔。",
+    "Uhh, nah it's not that.": "呃，不是那样。", "Are you\\.\\.\\. in some kinda costume?": "你……是穿着某种服装吗？", "my own racer...": "我自己的赛车手……",
+    "Yeesh, if you say so...": "好吧，既然你这么说……", "The sign broke immediately after reading it.": "读完告示后，它立刻碎裂了。", "The party was healed.": "队伍已治愈。",
+    "Are you sure? (Unsaved data CANNOT be recovered!)": "确定吗？（未保存的数据无法恢复！）", "Mmhm!": "嗯哼！", "Mmmmmrh.": "唔嗯……",
+    "The Demon is picking at her shackles.": "恶魔正在摆弄她的镣铐。", "The Demon is studying your figure.": "恶魔正在打量你的身形。",
+    "She and her brother still elect to wear the old": "她和哥哥仍选择穿着旧的", "I um, can attest to indulging in violence, but": "呃，我承认自己沉溺于暴力，但",
+    "Suddenly, the Demon is brandishing a dagger in her": "突然，恶魔手中挥舞着匕首，", "I've tried eating them before, to try and": "我以前试过吃掉它们，想要",
+    "But I'll puke up every time, and big brother": "但我每次都会吐出来，哥哥", "Big brother would yell at me if he knew I": "要是哥哥知道我",
+    "Big brother told me I shouldn't make jokes": "哥哥告诉我不该开这种玩笑", "That's how much the Boss trusts us, ": "老大就是这样信任我们的，",
+    "If there's something bothering me, big brother": "如果有什么事让我烦恼，哥哥", "They celebrate the death of one party caused": "他们庆祝一方造成的死亡",
+    "I wonder if they realise\\.\\. Humans can't make": "不知道他们是否意识到……人类无法制造", "messes like that...": "那样的混乱……",
+    "The first Demon who gets scared and runs": "第一个被吓到并逃跑的恶魔", "away loses. Does it sound fun?": "就输了。听起来有趣吗？", "You start then.": "那你先开始。",
+    "I wasn't actually expecting you to answer.": "我其实没指望你会回答。", "At least you aren't patronizing me.": "至少你没有对我摆架子。",
+    "If there's nothing else, I shall depart.": "如果没有别的事，我就告辞了。", "To sin and to be loved cannot be mutually exclusive.": "犯罪与被爱并不互相排斥。",
+    "are now residing here, in the same Circles.": "如今都居住在这里，同一个圆环之中。", "or pure indifference.": "还是纯粹的漠不关心。",
+    "may be an appropriate definition.": "或许是合适的定义。", "opinion on these matters.": "意见本身就是个错误。",
+    "Allow me to be frank.": "容我直言。", "Would you care to spar with me?": "愿意和我切磋吗？",
+})
+
+# Map031 is a single narrated scene.  Translate its fragments together so the
+# storyteller's tense, imagery, and recurring terms remain consistent.
+PHRASES.update({
+    r"Po\.\.\. po\.\.\. po\.\.\....": r"噗\.\.\. 噗\.\.\. 噗\.\.\....",
+    "Can you hear me?": "你听得见吗？", "I want you to tell me that story again.": "我想让你再给我讲一遍那个故事。",
+    r"To see if it's\.\. really you.": r"只是想确认\.\.你还是不是原来的你。",
+    "It's okay.": "没关系。", "We can go over it together.": "我们可以一起回顾。", "In the kingdom...": "从前，在一座王国里……",
+    "A beggar sat on the roadside.": "一个乞丐坐在路边。", "A farmer was digging a hole.": "一个农夫正在挖洞。",
+    "A new face walked the streets.": "一张陌生的面孔走过街道。", "Regular life for those who lived in the kingdom.": "这就是王国居民的日常生活。",
+    "The King whom they lived under had not one, but many": "统治他们的国王建造的并非一座，而是许多座",
+    "temples established throughout this kingdom.": "遍布王国各处的神殿。", "Each one dedicated to certain deities that watched": "每一座都供奉着特定的神祇，守望着",
+    "over the land.": "这片土地。", "People came and went, finding peaceful respite": "人们来来往往，在神殿中找到宁静的慰藉",
+    "within the temples.": "。", "Thanks to the King, the kingdom found itself in a golden": "多亏了国王，王国迎来了一个",
+    "age of peace that was impossible to deny.": "无可否认的黄金和平时代。", "But then...": "然而，后来……",
+    "There was a mess at the market...": "市场上出了乱子……", "A wild mutt made off with the baker's bread": "一只野狗叼走了面包师的面包",
+    "The mutt ran wildly, startling the market goers.": "野狗狂奔而去，吓坏了市场里的行人。", "But not once did it attack them.": "但它一次也没有攻击他们。",
+    "It was a mess nonetheless, but the baker didn't mind it": "场面确实一团糟，可面包师一点也不在意",
+    "one bit.": "。", "So long as the mutt was fed and pleased, it could": "只要喂饱这只野狗、让它满意，它就可以",
+    "come into his bakery along with the rest of his customers.": "和其他客人一起走进他的面包店。", "A little boy had burst into tears": "一个小男孩突然哭了起来",
+    "As it happens, he had lost his mother in the waves": "原来，他在熙攘的人群中和母亲走散了",
+    "of people.": "。", "He cried and he cried, until the sun went down.": "他哭啊哭，直到太阳落山。",
+    "Fortunately, his mother had not stopped searching": "幸运的是，他的母亲从未停止寻找",
+    "from the moment he left her side.": "从男孩离开她身边的那一刻起。",
+    "Rather than eyeing the newly opened markets, she walked": "她没有去看新开张的市场，而是",
+    "step after step among the crowd": "一步一步穿过人群",
+    "until she and the boy were reunited at dusk.": "直到黄昏时分，母子二人终于重逢。",
+    "The musician's guitar strings snapped": "音乐家的琴弦崩断了",
+    "A shame, as droves of people gathered to hear him perform.": "真可惜，成群的人正聚集起来听他演奏。",
+    "His heart raced.": "他的心怦怦直跳。", "What would he do now?": "他现在该怎么办？",
+    "It was then he realized, his lips never stopped moving.": "就在那时，他意识到自己的嘴唇从未停下。",
+    "The poem he had been reciting had continued to spill": "他一直吟诵的诗篇仍在不断流淌，",
+    "out of himself and into the crowd.": "从他口中流出，融入人群。",
+    "Bewilderingly, the crowd began to sing along.": "令人不解的是，人群开始跟着唱起来。",
+    "Rather than driving them away, his snapped string": "那根断掉的琴弦非但没有把他们赶走，",
+    "seems to have brought him closer to his audience.": "反而似乎让他和听众更加亲近。",
+    "Of course, life in the kingdom is not perfect,": "当然，王国的生活并不完美，",
+    "but the King's wisdom helped establish the kingdom's age": "但国王的智慧帮助王国建立了这段",
+    "of peace.": "和平时代。", "This was in addition to the watchful eyes of the": "此外，还有",
+    "temple's deities.": "神殿神祇的注视。", "Each one had a unique trait about them...": "每一位神祇都有独特的特质……",
+    "For example, one would bring bountiful harvests,": "比如，有的带来丰收，",
+    "while another could grant swift victories in war...": "有的则能赐予战争中的迅速胜利……",
+    r"I'm\.\. curious.": r"我\.\.有点好奇。", "If I had a temple,": "如果我拥有一座神殿，",
+    "what kind of deity do you think I would be?": "你觉得我会是哪一种神祇？", "Wrathful": "愤怒的", "Gentle": "温和的", "Weak": "弱小的",
+    "I see...": "我明白了……", "In the kingdom, there lived more than just the King": "王国里生活的不只有国王",
+    "and his subjects.": "和他的臣民。", "More than just the insects, the animals, and even the": "不只是昆虫、动物，甚至连",
+    "temple deities.": "神殿里的神祇也不例外。", "...Do you recall them?": "……你还记得它们吗？",
+    "In the underbelly of the kingdom's waking world,": "在王国清醒世界的阴暗角落，",
+    "slumbered a dreadful presence known as \"Demons.\"": "沉睡着一种名为“恶魔”的可怕存在。",
+    "Little did the subjects know that the deities they": "臣民们并不知道，他们所",
+    "worshipped, the temples they prayed in-": "崇拜的神祇、祈祷的神殿——",
+    "or even the golden age they had been blessed with": "甚至他们蒙受恩赐的黄金时代",
+    r"were only made possible\.\. through these Demons.": r"都只是\.\.靠这些恶魔才得以实现。",
+    "In truth, the King harnessed the power of Demons to": "事实上，国王借助恶魔的力量",
+    "construct his many temples.": "建造了众多神殿。", "They would guard his mind- Grant him knowledge of all things.": "它们守护他的心智——赐予他知晓万物的知识。",
+    r"The many deities the people worshipped\.\. did not": r"人们崇拜的众多神祇\.\.其实并不",
+    "exist.": "存在。", "Then why would he construct so many temples?": "那他为什么要建造这么多神殿？",
+    "Quite inquisitive.": "真是好奇。", "Perhaps it was to satisfy the subjects, giving them": "也许是为了满足臣民，给他们",
+    "something more to believe in...": "一个可以信仰的东西……", "Or perhaps to him, these deities truly did exist.": "又或者在他心中，这些神祇确实存在。",
+    "There is no true answer.": "没有真正的答案。", "However, it would soon become truth that the kingdom's": "然而，王国的",
+    "golden age would come to an end...": "黄金时代很快就会走向终结……", "How so?": "怎么会？",
+    "Corruption had begun to run rampant in the kingdom.": "腐败开始在王国肆虐。",
+    "A starving man with no coin to his name had come": "一个身无分文、饥肠辘辘的男人",
+    "and slain the mutt for the loaf it had stolen.": "杀死了那只野狗，只为夺回它偷走的面包。",
+    "A stranger had robbed a mother's home as she was out": "一个陌生人在母亲外出",
+    "looking for her boy.": "寻找孩子时，洗劫了她的家。",
+    "And the musician was stoned as soon as his show had": "音乐家的演出一结束，便被人用石头砸死，",
+    "ended.": "。", "In fact, he had been no musician at all.": "事实上，他根本不是音乐家。",
+    "For the public soon discovered that his work": "因为公众很快发现，他的作品",
+    "belonged to someone else...": "属于另一个人……", "Someone he'd buried in a farm before taking": "那个人在他取代其身份、进入",
+    "his place in the market.": "市场之前，就被他埋在了农场里。",
+    "Alas, this too was undoubtedly the work of Demons,": "唉，这无疑也是恶魔的手笔，",
+    "capable of inciting unrest and unruly behavior.": "它们能够煽动动乱与失序的行为。",
+    "Having grown tired of living in the kingdom's shadows,": "恶魔们厌倦了躲在王国的阴影里，",
+    "it seems the Demons intended to make the world their own...": "似乎打算把这个世界据为己有……",
+    "by having the humans tear themselves apart.": "让人类自相残杀。", "Ah, I didn't realize I had taken the role of": "啊，我都没意识到自己已经扮演起了",
+    "storyteller now...": "讲故事的人……", r"The Demons\.\. ruined the kingdom.": r"恶魔们\.\.毁掉了王国。",
+    "The growing chaos would lead to a revolution,": "不断扩大的混乱最终引发了革命，",
+    "one that would see to the end of the King's life.": "并终结了国王的生命。",
+    "And after having thoroughly razed the kingdom, the": "彻底摧毁王国之后，",
+    "Demons would retreat into the shadows to prepare for their": "恶魔们退回阴影之中，为它们的",
+    "next undertaking...": "下一步行动做准备……", "An assault to humanity itself-": "向全人类发起的袭击——",
+    "and a grand war against Angels to assert the Demons'": "以及一场针对天使的大战，以确立恶魔在",
+    "place in the world.": "世界中的地位。", r"\.\.\.To establish their own": r"\.\.\.建立属于它们自己的",
+    "\"golden age.\"": "“黄金时代”。",
+    # Repeated travel and confrontation scenes in Maps 022/036.
+    "Chacha snatched the coin before you could even react!": "你还没反应过来，恰恰就把硬币抢走了！",
+    "Have you learned how to fly yet, witch?": "女巫，你学会飞了吗？", "Hey, knock it off already wouldja!": "喂，差不多得了，行不行！",
+    "I don't wanna hear anything about flight, especially": "我不想听任何关于飞行的事，尤其是",
+    "not from you bird-brains!": "不想听你们这些鸟脑袋说！", "D-don't stick your tongue out at me like that!": "别、别那样对我吐舌头！",
+    "Surely you're prepared for what's ahead?": "你应该已经准备好面对前路了吧？",
+    r"...An empty satchel at your side leads me to believe": r"……你身旁空空的行囊让我觉得",
+    "Besides, I'm more of a book and curse kinda Demon.": "再说了，我是更喜欢书本和诅咒的恶魔。",
+    "Fair. So long as you know your limits.": "也好，只要你知道自己的极限。",
+    "Now that ya mention it, it'd probably be a good": "你这么一说，带上一两瓶",
+    "idea to stock up on a healing tonic or two.": "治疗药剂似乎是个好主意。",
+    "Are there any potions in that bag of yours?": "你的包里有药水吗？", "Um, in all honesty, nah not at all.": "呃，说实话，一瓶也没有。",
+    "So you've got nothing to enhance performance?": "所以你没有任何提升能力的东西？", "Boost muscle growth, focus-": "比如促进肌肉成长、集中精神——",
+    "Besides some scrounged up Human Blood rations, I've": "除了搜刮来的几份人血口粮，我还",
+    "I never took ya for the kinda athlete to be into": "我没想到你这种运动员会喜欢",
+    "If I found out you were peddling performance enhancers": "要是让我发现你在兜售兴奋剂，",
+    "I'd have probably stomped your brains out by now.": "我现在大概已经把你的脑浆踩出来了。",
+    "What's up with that dagger o' yours?": "你那把匕首是怎么回事？", "I mean, how does it stay all nasty-like after": "我是说，它怎么在",
+    "Chimera's spit is quite potent you know.": "奇美拉的唾液很有威力，你知道吗。",
+    "It's simply much more cost effective than purchasing": "这比购买",
+    "And much more hygenic than certain \"other\" methods": "而且比某些“其他”方法更卫生，",
+    "of tainting a piercing weapon.": "用来污染刺击武器。", "Our final destination grows nearer.": "我们的最终目的地越来越近了。",
+    "Have you any thoughts on the journey thus far?": "到目前为止，你对这段旅程有什么想法？",
+    "I suppose I am glad to have found at least one": "我想我很庆幸至少找到了一位",
+    "travelling companion who hasn't been so unruly.": "不那么桀骜的旅伴。", "No, \"annoying\" is a much more fitting word.": "不，“烦人”才更合适。",
+    "\"unruly\" versus being \"annoying.\"": "“桀骜”和“烦人”的区别。",
+    "Thankfully, you fit none of those criteria, Zepar.": "谢天谢地，你不符合其中任何一条，泽帕尔。",
+    "Respectfully, I am not racing you to the Statue": "恕我直言，我不会和你比赛去雕像那里",
+    "Please understand that it was exhausting enough": "请理解，光是",
+    "just to arrive here...": "抵达这里就已经够累了……", "Since we can't effectively study tactica at the moment": "既然现在没法有效研究战术，",
+    "I figured a game of Roshambo would do the trick.": "我想玩一局猜拳应该正合适。",
+    "I'll probably sound like a total jerk for sayin'": "我这么说可能听起来很混蛋，",
+    "this, but do you have any actual friends?": "但你真的有朋友吗？", "Like anybody to hang out with that isn't": "比如可以一起玩、不是",
+    "your big bro?": "你哥哥的人？", "The dogs in the Human world were nice to me.": "人界的狗对我很好。",
+    "And their hearts beat so fast.": "而且它们的心跳得好快。", "R-Right on!": "没、没错！",
+    "their shoulders would know to keep wary around you,": "它们的肩膀会提醒自己小心你，",
+    "That wasn't a compliment.": "那不是在夸你。", "The Statue is but a few paces north.": "雕像就在北边几步远。",
+    "But big brother isn't anywhere near here...": "可是哥哥根本不在附近……", "I take it he's quite the remarkable man.": "看来他是个很了不起的人。",
+    "How fast do you think you can run on all fours?": "你觉得自己四肢着地能跑多快？",
+    "She's totally lying to me right now!": "她现在肯定是在骗我！", "Ugh, my legs are killin' me...": "呃，我的腿快疼死了……",
+    "Don'tcha get all sore walking around in this thing?": "穿着这身东西到处走不会酸痛吗？", "Yes. Truthfully.": "会。说实话。",
+    "Perhaps beneath all this crimson is a little goblin": "也许这片深红之下藏着一只小妖精",
+    "Hmm. Maybe it's about time we get a peek at that": "嗯。也许我们该看看那",
+    "I like the color red.": "我喜欢红色。", "Crimson is quite the striking shade.": "深红是非常醒目的色调。",
+    "make shockwaves with a big jump,": "通过大跳跃制造冲击波，", "Indeed it would drastically improve my combat": "那确实会大幅提升我的战斗",
+    "Unfortunately, while the weight of my armor allows me": "遗憾的是，铠甲的重量虽然让我",
+    "to excel at taking hits, it is quite restrictive in movement.": "更擅长承受攻击，却严重限制了行动。",
+    "Ah poo...": "啊，糟糕……", "I'm not too big on meat myself.": "我自己不太喜欢肉。",
+    "But I love colorful veggies!": "但我喜欢色彩鲜艳的蔬菜！", "The bright orange carrots are the best!": "鲜橙色的胡萝卜最好吃！",
+    "They sorta remind me of your hair.": "它们有点像你的头发。", "H-Hey! Back off!": "喂、喂！离远点！",
+    "Would you mind raising your bangs for me a bit?": "能请你把刘海稍微撩起来一点吗？",
+    "Hm. It really is just as I suspected...": "嗯。果然和我猜的一样……",
+    "A perfectly smooth plane on either side of your face.": "你脸的两侧是完全光滑的平面。",
+    "Naturally, since your ears are atop your head.": "当然，毕竟你的耳朵长在头顶。",
+    "Your hair accessories are quite striking.": "你的发饰相当醒目。",
+    "I made them myself out of Human world shells!": "这是我用人界的贝壳亲手做的！",
+    "The whole outfit actually was put together by": "其实整套服装都是由",
+    "Can't hog all that statue-power for yourself": "你不能把雕像的力量全都占为己有",
+    "Huh? Awfully sleepy looking fella...": "咦？这家伙看起来困得厉害……",
+    "How'd you even manage to make it down here with": "你到底是怎么带着这副模样来到这里的，",
+    "Hey, relax! We can be buddies, right?": "喂，放松点！我们可以做朋友，对吧？",
+    "Oh, speakin' of, I don't think I've met another": "哦，说到这个，我好像还没遇到过另一个",
+    "still half asleep, talking all that gibberish~": "半睡半醒还说着那些胡话的家伙~",
+    "H-huh?!": "什、什么？！", "W-what are you talking about...?": "你、你在说什么……？",
+    "Oh, it seems I have company here.": "哦，看来这里有客人。", "Hm? Is everything alright?": "嗯？一切还好吗？",
+    "Though if it'd mean putting someone so sickly out of": "不过，如果这意味着让一个病弱之人",
+    "their misery, I'm more than willing to oblige.": "摆脱痛苦，我非常愿意效劳。",
+    "To breathe the same air...": "和你呼吸同样的空气……",
+    "You're\\.\\.\\. responsible for the deaths of other": "你……要为其他人的死亡负责",
+    "Perhaps you're unaware that in only mere years,": "也许你不知道，仅仅几年之内，",
+    "If your duty is a culling, Angel, your God has": "天使，如果你的职责是屠杀，那么你的神明已经",
+    "placed quite the \"punishment\" upon you.": "给你施加了相当重的“惩罚”。",
+    "Such is only befitting of one called": "这正配得上被称为",
+    "I've smelled something like this before...": "我以前闻过类似的气味……", "despicable, Glasya-Labolas.": "卑鄙的格拉西亚-拉博拉斯。",
+    "I've tasted it before-": "我以前尝过这种味道——", "to share...": "与你分享……",
+    "Savages like you don't deserve God's mercy.": "像你这样的野蛮人不配得到神的怜悯。",
+    "the vastness that exists between mere beasts and Angels.": "那横亘在野兽与天使之间的巨大鸿沟。",
+    "How perceptive...": "真敏锐……", "How does an Angel as gentle-faced as": "像你这样面容温和的天使，",
+    "you find themself in this place?": "怎么会来到这种地方？",
+    "Who are you?! And how did you get here so quickly?!": "你是谁？！怎么这么快就到这里了？！",
+    "An interesting personality, yet all outcomes": "有趣的性格，但所有结果",
+    "I won't just be passing by your sorry ass.": "我不会就这样放过你这个可怜虫。",
+    "Admirable words from someone still caught in my": "一个仍被我的力量困住的人能说出这种话，真令人佩服",
+    "upon your deathbed.": "在你的临终之时。", "in your final hours.": "在你最后的时刻。",
+    r"W-We done yet,\.\. Angel?": r"还、还没结束吗，\.\.天使？",
+    "Aaah, today is sooo not my day...": "啊，今天真是倒霉透顶……", "I don't have enough energy left to cast any flame!": "我已经没有力气再施放火焰了！",
+    "I'll strangle that loser if I gotta!": "必要的话我就掐死那个失败者！",
+    "I'd prostrate myself, if I were in your position.": "如果我是你，我会跪地求饶。",
+    "In that way, it'd be much less painful for you as I": "这样一来，当我",
+    "cleave that head off your shoulders.": "把你的脑袋从肩膀上砍下来时，你会少受些痛苦。",
+    "This one still has the energy to talk...!": "这家伙居然还有力气说话……！", "A strike with my talon is too predictable...": "用利爪攻击太容易被预判了……",
+    "Just one more decisive blow with my dagger should": "只要再用匕首给出致命一击，就应该能",
+    "finish it!": "结束这一切！", "Have you had your fill, Demon?": "恶魔，你吃够了吗？",
+    "Big brother would be sooo happy to see what I caught.": "哥哥看到我抓到的东西一定会高兴死。",
+    "You hesitate to strike me down.": "你在犹豫要不要杀我。", "There is no honor in striking one without the": "攻击一个连",
+    "energy to stand on their own.": "站起来的力气都没有的人，毫无荣誉可言。",
+    "...You must concede.": "……你必须认输。", "For your own sake.": "这是为了你好。",
+    "Let these sickles drink their final drops.": "让这些镰刀饮尽最后几滴血。", "The situation in the Inferno grows yet stranger.": "地狱的状况变得更加诡异了。",
+    "That hurts!": "好痛！", "It sucks we never got a proper race...": "真可惜我们一直没能好好比一场……",
+    "You played a good game, but I've gotta stomp": "你比赛打得不错，但我得把你",
+    "A-Ah...": "啊——……",
+    "as the road winds down?": "随着道路向下延伸？", "It'd be a shame to come here just to die and miss": "要是专程来到这里送死、错过",
+    "Just siphon the power from it and you'll be": "只要从它那里吸取力量，你就会",
+    "I'll make some rounds around this Circle in case": "我会在这个圆环附近转转，以防",
+    "any other Demons need my help navigating.": "其他恶魔需要我帮忙带路。",
+    r"\"Passengers yet to ride are as loose coin on the ": r"“尚未上船的乘客，就像船上的散币，",
+    "O-Oh, you came back!": "哦、哦，你回来了！", r"It \.\.it belonged-": r"它 \.\.曾经属于——",
+    "making top dollar out of his possessions": "从他的所有物中赚取大钱",
+    "should be the second priority for the Charon family...": "应该是卡戎家族的第二要务……",
+    "lest their accumen grow meek, as poor aged booze": "免得他们的判断力像陈年劣酒一样变得衰弱",
+    "on the shelf.\"": "被搁在架子上。”", "...I forget which Rule this is.": "……我忘了这是第几条规则。",
+    "(Yikes, she's gettin' all fiesty...)": "（糟糕，她变得越来越凶了……）",
+    "(Maybe I don't have it in me to hurt this kid's feelings...)": "（也许我不忍心伤害这孩子的感情……）",
+    "(The Ferryman is acting quite strangely over this coin...)": "（摆渡人因为这枚硬币表现得很奇怪……）",
+    "(Normally I'd find this kind of jaded behavior amusing, but": "（平时我会觉得这种玩世不恭的举止很有趣，但",
+    "(I feel a great urge to return this coin.)": "（我强烈地想归还这枚硬币。）",
+    "(Whoah, the Ferrier is super bummed...)": "（哇，摆渡人郁闷坏了……）",
+    "(This must be their version of losing first place": "（这一定是他们失去第一名的方式",
+    "by a neck's length...)": "，只差一点点……）", "I'll f-fight you for it!": "我、我要为它和你战斗！",
+    "Maybe I was a little greedy, hehe...": "也许我有点贪心了，嘿嘿……",
+    "It should be the last of its kind since that currency": "既然那种货币",
+    "went out of print a long time ago...": "很久以前就停止流通了，它应该是最后一枚……",
+    "Passed between hands and travelling across the world...": "它在人们手中流转，穿越了整个世界……",
+    "Well if I had to describe her, she's quite boisterous": "如果要我描述她，她相当活泼",
+    "and has pretty white hair!": "，还长着漂亮的白发！", "Oh! And she always carries puppets with her!": "哦！而且她总是带着人偶！",
+    "Maybe you'll bump into her on your way to Pandaemonium!": "也许你去潘德莫尼乌姆的路上会遇到她！",
+    "Haaaah...": "哈啊……", "Maybe I can steal a little extra power for myself": "也许我能偷取一点额外力量",
+    "and make my flames a bit hotter, fufufu~": "，让我的火焰更旺一点，呵呵呵~",
+    "I can sense the Statue, just a few paces forward!": "我能感觉到雕像，就在前面几步远！",
+    "We'd do well to prepare before proceeding to": "在继续前往之前，我们最好先准备好",
+    "(Something smells funny up there...)": "（上面飘来一股奇怪的味道……）",
+    "Maybe I can sneak some extra power to fix myself": "也许我能偷偷吸取一点额外力量来修复自己",
+    r"It seems\.\.\. grave trouble has found its way into": r"看来\.\.\.严重的麻烦已经闯入",
+    "of the unnecessary bloodshed that you speak of.": "你所说的那些不必要的流血。",
+})
+
+# Database names and descriptions are mostly formulaic; these patterns are
+# intentionally clearer than a word-by-word pass.
+ITEM_NAMES = {
+    "Big Hat":"大帽子", "Cravat":"领巾", "Plated Jacket":"板甲外套", "Red Greaves":"红色护胫",
+    "Weighted Dress":"加重裙装", "Type O Blood":"O型血", "Type A Blood":"A型血", "Type AB Blood":"AB型血",
+    "Stimulant":"兴奋剂", "Tension Booster":"紧张度增幅剂", "Cursed Poems A":"诅咒诗篇 A", "Cursed Poems B":"诅咒诗篇 B",
+    "Sickening Poems A":"恶心诗篇 A", "Sickening Poems B":"恶心诗篇 B", "Unholy Drop":"亵渎之滴", "Unholy Essence":"亵渎精华",
+    "Unholy Manifest":"亵渎显现", "Human Flesh":"人肉", "Preserved Human Flesh":"腌制人肉", "Demon's Blood":"恶魔之血",
+    "Stygian Water":"冥河之水", "Invocative Poems A":"祈唤诗篇 A", "Invocative Poems B":"祈唤诗篇 B",
+    "Chacha's Obol Coin":"恰恰的奥波尔硬币", "Charon's Obol Coin":"卡戎的奥波尔硬币", "Gehenna's Poems A":"欣嫩谷诗篇 A",
+    "Null Spirit":"虚无灵魂", "Angel's Blood":"天使之血", "Angel Down":"天使羽饰", "Fortifying Incense I":"强健香 I",
+    "Prolonged Incense I":"延寿香 I", "Bulk Incense I":"厚重香 I", "Spiked Incense I":"尖刺香 I", "Mindful Incense I":"专注香 I",
+    "Keen Incense I":"敏锐香 I", "Soothing Incense I":"舒缓香 I", "Elusive Incense I":"隐逸香 I", "Low-Grade Incense Burner":"低级香炉",
+    "Torn Grimoire":"残破魔导书", "Rusty Dagger":"生锈匕首", "Rusty Bagh Nakh":"生锈虎爪", "Rusty Sickle":"生锈镰刀", "Lucky Horseshoe":"幸运马蹄铁",
+}
+
+WORD_MAP = {
+    **NAMES,
+    "the":"", "a":"一个", "an":"一个", "and":"和", "or":"或", "but":"但是", "if":"如果", "then":"那么",
+    "is":"是", "are":"是", "was":"是", "were":"是", "be":"是", "been":"已经", "being":"正在",
+    "to":"到", "of":"的", "in":"在", "on":"在", "for":"为了", "from":"从", "with":"和", "without":"没有",
+    "you":"你", "your":"你的", "yours":"你的", "we":"我们", "our":"我们的", "they":"他们", "their":"他们的", "them":"他们",
+    "it":"它", "it's":"它是", "this":"这", "that":"那", "these":"这些", "those":"那些", "can":"可以", "could":"可以",
+    "will":"会", "would":"会", "shall":"将", "has":"有", "have":"有", "had":"有过", "do":"做", "does":"会", "did":"做了",
+    "not":"不", "no":"不", "yes":"是", "all":"全部", "one":"一个", "two":"两个", "three":"三个", "more":"更多", "less":"更少",
+    "left":"离开", "right":"右边", "up":"上方", "down":"下方", "next":"下一个", "back":"返回", "new":"新的", "old":"旧的",
+    "open":"打开", "close":"关闭", "ready":"准备好", "used":"使用了", "use":"使用", "uses":"使用", "learned":"学会了", "learn":"学习",
+    "joined":"加入了", "join":"加入", "leave":"离开", "level":"等级", "damage":"伤害", "missed":"未命中", "failed":"失败", "success":"成功",
+    "critical":"暴击", "weakness":"弱点", "resist":"抵抗", "immune":"免疫", "turn":"回合", "turns":"回合", "party":"队伍", "member":"成员", "members":"成员",
+    "enemy":"敌人", "enemies":"敌人", "item":"道具", "items":"道具", "weapon":"武器", "armor":"防具", "nothing":"什么也没有", "happened":"发生",
+    "select":"选择", "selected":"已选择", "please":"请", "thank":"感谢", "thanks":"谢谢", "sorry":"抱歉", "why":"为什么", "what":"什么", "where":"哪里", "when":"什么时候", "who":"谁", "how":"如何",
+    "oh":"哦", "ah":"啊", "hey":"嘿", "hiya":"你好", "yo":"哟", "huh":"咦", "hmm":"嗯", "hm":"嗯", "hah":"哈", "tch":"啧", "phew":"呼", "ouch":"好痛",
+    "just":"只是", "really":"真的", "very":"非常", "quite":"相当", "pretty":"挺", "much":"很", "enough":"足够", "again":"再次", "always":"总是", "never":"从不",
+    "now":"现在", "here":"这里", "there":"那里", "away":"离开", "around":"周围", "before":"之前", "after":"之后", "still":"仍然", "already":"已经", "ever":"曾经",
+    "think":"想", "thought":"想过", "know":"知道", "knew":"知道过", "see":"看见", "look":"看", "looks":"看起来", "feel":"感觉", "care":"在乎", "mean":"意思是", "say":"说", "tell":"告诉", "talk":"交谈", "speak":"说话",
+    "make":"做", "made":"做了", "get":"得到", "got":"得到", "give":"给", "take":"拿走", "find":"找到", "found":"找到", "come":"来", "coming":"到来", "go":"去", "going":"前往", "run":"跑", "fly":"飞", "travel":"旅行", "return":"返回", "reach":"到达", "cross":"穿过", "hold":"拿着", "holding":"拿着",
+    "want":"想要", "need":"需要", "like":"喜欢", "hate":"讨厌", "love":"喜爱", "believe":"相信", "hope":"希望", "try":"尝试", "help":"帮助", "keep":"保持", "leave":"离开", "work":"起作用", "happen":"发生", "seem":"似乎", "appears":"看起来",
+    "big":"大", "small":"小", "good":"好", "bad":"坏", "better":"更好", "best":"最强", "easy":"容易", "hard":"困难", "different":"不同", "same":"相同", "another":"另一个", "other":"其他", "only":"只有", "first":"第一", "second":"第二", "third":"第三", "last":"最后", "little":"一点", "few":"几个", "many":"许多", "each":"每个", "all":"全部",
+    "power":"力量", "strong":"强大", "weak":"弱小", "fast":"快", "slow":"慢", "hot":"热", "cold":"冷", "happy":"高兴", "sad":"难过", "scary":"可怕", "nice":"友善", "weird":"奇怪", "funny":"有趣", "cool":"酷", "sure":"确定", "sorry":"抱歉", "wrong":"错误", "right":"正确",
+    "attack":"攻击", "attacks":"攻击", "defense":"防御", "magic":"魔法", "physical":"物理", "fire":"火焰", "ice":"冰", "thunder":"雷电", "wind":"风", "water":"水", "holy":"神圣", "dark":"黑暗", "light":"光", "poison":"毒", "sleep":"睡眠", "blind":"失明", "silence":"沉默", "stun":"眩晕", "heal":"治疗", "healing":"治疗", "revive":"复活", "fallen":"倒下", "blood":"血", "spirit":"灵魂", "stat":"属性", "stats":"属性", "chance":"几率", "target":"目标", "targets":"目标", "effect":"效果", "effects":"效果",
+    "world":"世界", "realm":"界域", "road":"道路", "way":"道路", "area":"区域", "place":"地方", "thing":"事情", "things":"事情", "someone":"某人", "everyone":"所有人", "nobody":"没人", "person":"人", "people":"人们", "friend":"朋友", "brother":"哥哥", "angel":"天使", "sinner":"罪人", "loser":"失败者", "losers":"失败者们",
+    "don't":"不", "cant":"不能", "can't":"不能", "won't":"不会", "wouldn't":"不会", "should":"应该", "shouldn't":"不应该", "i'm":"我", "ive":"我已经", "i've":"我已经", "ill":"我会", "i'll":"我会", "id":"我会", "i'd":"我会", "you're":"你是", "you'd":"你会", "theyre":"他们是", "they're":"他们是", "there's":"有", "that's":"那是", "what's":"什么是", "whats":"什么是", "wh're":"",
+    "okay":"好吧", "alright":"好吧", "whatever":"随便", "nevermind":"没事", "farewell":"再见", "welcome":"欢迎", "promise":"保证", "probably":"可能", "surely":"一定", "maybe":"也许", "actually":"其实", "especially":"尤其", "because":"因为", "though":"不过", "while":"虽然", "until":"直到", "about":"关于", "into":"进入", "over":"超过", "under":"在……下方", "through":"穿过", "without":"没有",
+    "obtained":"获得", "restored":"恢复", "recovers":"恢复", "raises":"提升", "raised":"提升了", "reduces":"降低", "reduced":"降低了", "increases":"增加", "increased":"增加了", "decreases":"降低", "applies":"施加", "applied":"施加了", "inflict":"施加", "inflicts":"施加", "restores":"恢复", "removes":"移除", "remove":"移除", "revives":"复活", "teaches":"使学会", "fully":"完全", "low":"低", "high":"高", "max":"最大", "allies":"盟友", "ally":"盟友", "user":"使用者", "incoming":"受到的", "every":"每个", "per":"每", "damage":"伤害",
+    "old":"旧", "man":"男人", "kid":"孩子", "girl":"女孩", "boy":"男孩", "face":"脸", "eyes":"眼睛", "eye":"眼睛", "head":"头", "hand":"手", "hands":"双手", "heart":"内心", "mind":"心智", "body":"身体", "mouth":"嘴", "voice":"声音", "words":"话语", "word":"话", "name":"名字", "called":"叫作", "called":"叫作", "wear":"穿着", "wearing":"穿着", "lookin":"看着", "looking":"看着", "standing":"站着", "alone":"独自", "together":"一起", "around":"周围", "away":"离开", "lost":"迷路", "racing":"赛跑", "race":"比赛", "fighting":"战斗", "fight":"战斗", "battle":"战斗", "battles":"战斗", "training":"训练", "power":"力量",
+    "sneer":"冷笑", "sneering":"冷笑", "captivated":"着迷", "rattled":"动摇", "shocked":"震惊", "burned":"灼伤", "poisoned":"中毒", "silenced":"沉默", "enraged":"狂怒", "dizzy":"眩晕", "asleep":"睡着", "immortal":"不死", "guarding":"防御中", "barrier":"屏障", "foresight":"预见", "bloody":"血腥", "wounds":"伤口", "wound":"伤口",
+}
+
+WORD_MAP.update({
+    "i":"我", "me":"我", "my":"我的", "mine":"我的", "as":"如同", "at":"在", "by":"被", "s":"是", "t":"了", "m":"我", "re":"是", "ll":"会", "ve":"已经", "d":"了", "y":"你",
+    "something":"某件事", "some":"一些", "so":"所以", "out":"出来", "even":"甚至", "he":"他", "she":"她", "her":"她的", "his":"他的", "us":"我们", "any":"任何", "anything":"任何事", "well":"那么", "may":"可能", "since":"自从", "yet":"还", "off":"离开", "end":"结尾", "times":"时候", "guess":"猜想", "curious":"好奇", "races":"比赛", "running":"奔跑", "win":"获胜", "respect":"尊重", "meet":"见面", "careful":"小心", "inside":"里面", "such":"如此", "kind":"种类", "between":"之间", "step":"一步", "absolutely":"绝对", "myself":"我自己", "sense":"道理", "call":"称呼", "matter":"事情", "talking":"说话", "point":"要点", "show":"展示", "cannot":"不能", "sign":"告示", "interesting":"有趣", "passive":"被动", "skills":"技能", "poems":"诗篇", "exit":"退出", "shop":"商店", "incense":"香", "ya":"你", "else":"其他", "than":"比", "statue":"雕像", "bones":"骨头", "yeah":"是啊", "bit":"一点", "too":"也", "descend":"下降", "beat":"击败", "wonder":"想知道", "own":"自己", "kinda":"有点", "must":"必须", "trick":"技巧", "taught":"教过", "save":"保存", "hell":"地狱", "doubt":"怀疑", "gonna":"要", "least":"至少", "skill":"技能", "mmrh":"唔", "bugs":"虫子", "looooser":"失败者", "mess":"混乱", "don":"不", "won":"不会", "she":"她", "gifts":"礼物", "guess":"猜想", "races":"比赛", "faster":"更快", "soon":"很快", "lower":"下层", "also":"也", "ask":"问", "title":"标题", "listen":"听", "idea":"想法", "kingdom":"王国", "upon":"在……之上", "besides":"此外", "speed":"速度", "burning":"燃烧", "number":"编号", "data":"数据", "remain":"保持", "ass":"屁股", "burn":"燃烧", "prove":"证明", "actions":"行为", "villains":"恶人", "ones":"那些人", "behind":"后面", "game":"游戏", "combat":"战斗", "rest":"休息", "felled":"击倒", "dagger":"匕首", "future":"未来", "capitol":"首都", "stand":"站立", "met":"见过", "most":"大多数", "damn":"可恶", "annoying":"烦人", "none":"没有", "despite":"尽管", "either":"任一", "status":"状态", "let":"让", "solace":"慰藉", "slash":"斩击", "enables":"使能够", "bold":"大胆", "spirits":"灵魂", "lot":"一伙人", "remember":"记得", "invoke":"祈唤", "certain":"某个", "flames":"火焰", "rate":"比率", "having":"拥有", "joke":"玩笑", "hmmm":"嗯", "nah":"不", "beatrice":"贝阿特丽丝", "chat":"聊天", "super":"非常", "possible":"可能", "consider":"考虑", "feet":"脚", "sound":"声音", "fufufu":"呵呵呵", "life":"生命", "case":"情况", "deal":"交易", "cost":"花费", "course":"路线", "whether":"是否", "sometimes":"有时", "play":"演奏", "stay":"停留", "directions":"方向", "areas":"区域", "inaccessible":"无法进入", "suit":"服装", "rusty":"生锈的", "lucky":"幸运的", "sickening":"恶心的", "gear":"装备", "ago":"以前", "river":"河流", "however":"然而", "true":"真实", "flash":"瞬间", "progress":"进度", "cut":"切割", "gets":"得到", "interested":"感兴趣", "rather":"宁愿", "mutt":"杂种狗", "huff":"喘气", "tough":"艰难", "creatures":"生物", "hero":"英雄", "exactly":"完全", "journey":"旅程", "arms":"手臂", "strength":"力量", "solve":"解决", "wasn":"不是", "loved":"喜爱过", "numbered":"编号的", "passed":"经过", "borne":"带来", "otherwise":"否则", "stuff":"东西", "hehe":"呵呵", "hit":"击中", "blade":"刀刃", "ps":"被动", "type":"类型", "curse":"诅咒", "shut":"闭上", "eh":"吧", "wander":"游荡", "warm":"温暖", "somewhere":"某处", "parody":"模仿", "winning":"获胜", "stable":"稳定", "him":"他", "anyways":"总之", "totally":"完全", "rule":"规则", "buddy":"伙伴", "convince":"说服", "easier":"更容易", "force":"武力", "parts":"部分", "comes":"到来", "trouble":"麻烦", "fair":"公平", "far":"远", "interest":"兴趣", "seeing":"看见", "witness":"见证", "making":"制作", "past":"过去", "among":"在……之中", "days":"日子", "bye":"再见", "walking":"行走", "keh":"哼", "hair":"头发", "comin":"来到", "sucked":"耗尽", "snowing":"下雪", "untouched":"未受触碰", "kill":"杀死", "grimoire":"魔导书", "sickle":"镰刀", "dredged":"溺亡", "enter":"进入", "garb":"服饰", "float":"漂浮", "uhhh":"呃", "bother":"困扰", "noble":"高贵", "saw":"看见", "near":"附近", "whoah":"哇", "subjective":"主观", "bothered":"困扰", "single":"单个", "stop":"停止", "supposed":"应该", "putting":"放置", "certainly":"当然", "problem":"问题", "special":"特殊", "heard":"听说", "reading":"阅读", "follows":"如下", "begin":"开始", "recovered":"恢复", "wait":"等待", "whom":"谁", "hang":"挂", "fine":"好", "stupid":"愚蠢", "came":"来了", "ugly":"丑陋", "boots":"靴子", "suck":"吸走", "advanced":"先进", "invoked":"祈唤了", "ways":"方式", "features":"特征", "often":"经常", "explain":"解释", "personally":"亲自", "secret":"秘密", "intriguing":"耐人寻味", "agree":"同意", "qualms":"顾虑",
+})
+
+WORD_MAP.update({
+    "wouldn":"不会", "mmmrh":"唔嗯", "soooo":"非常", "affinity":"亲和", "n-nevermind":"没、没什么", "talked":"聊过", "cumbersome":"费劲", "relieved":"庆幸", "moated":"环绕护城河", "lava":"熔岩", "sir":"先生", "pierce":"刺穿", "guest":"客人", "muster":"聚集", "steady":"稳定", "march":"前进", "overtaking":"超过", "uhh":"呃", "costume":"服装", "racer":"赛车手", "yeesh":"好吧", "led":"引导", "obsession":"痴迷", "beating":"击败", "absolute":"绝对的", "earned":"凭实力赢得", "victory":"胜利", "commend":"赞赏", "passion":"热情", "clearing":"清除区", "strange":"奇异", "taken":"拿走", "family":"家族", "practically":"几乎", "sleepy":"困倦", "yell":"大喊", "whenever":"每当", "saying":"说", "broke":"碎裂", "healed":"治愈", "unsaved":"未保存", "land":"土地", "truth":"真相", "horn":"号角", "pain":"痛苦", "oooooh":"哦哦哦", "woah":"哇", "suggests":"建议", "wary":"警惕", "wherever":"无论哪里", "safe":"安全", "fashion":"时装", "picking":"摆弄", "brought":"带来", "known":"知道", "public":"公开", "nonetheless":"尽管如此", "confident":"自信", "concerned":"相关", "four":"四", "falling":"崩溃", "inflicted":"施加", "order":"秩序", "greatest":"最大的", "poor":"拙劣", "taste":"味道", "tried":"尝试过", "start":"开始", "mutually":"彼此", "considered":"被视为", "possession":"持有物", "bring":"带来", "amount":"数量", "thinking":"思考", "question":"问题", "grow":"成长", "foot":"脚", "dirt":"泥土", "money":"金钱", "ground":"地面", "souls":"灵魂", "ferrier":"摆渡人", "sorts":"种类", "walked":"走过", "assured":"放心", "uhm":"呃", "friends":"朋友们", "ages":"很久", "pick":"挑选", "tired":"疲惫", "becomes":"变成", "lies":"谎言", "argh":"啊", "pass":"通过", "pitiful":"可怜", "squishy":"软绵绵", "potions":"药水", "performance":"表现", "sorta":"有点", "spit":"吐出", "final":"最终", "understand":"理解", "roshambo":"猜拳", "atop":"在顶端", "paces":"步伐", "jump":"跳跃", "carrots":"胡萝卜", "tutorial":"教程", "golden":"黄金", "market":"市场", "musician":"音乐家", "today":"今天", "blow":"打击", "caught":"抓到", "omni":"全能", "volume":"音量", "solemnly":"庄严地", "drop":"掉落", "torn":"破损", "bagh":"虎爪", "nakh":"虎爪", "null":"无效", "jumping":"跳跃", "looked":"看过", "boost":"提升", "idiot":"笨蛋", "dyin":"死去", "faces":"脸孔", "lately":"最近", "sort":"种类", "traverse":"穿越", "weirdos":"怪人们", "based":"根据", "sent":"送往", "shit":"屁话", "wanderin":"游荡", "head-holes":"脑袋上的洞", "leak":"泄漏", "gunk":"黏液", "eugh":"呃", "lil":"小小的", "ol":"老", "gimme":"给我", "instead":"反而", "space":"空间", "speechless":"无话可说", "model":"模特", "literally":"确实", "stuffy":"闷热", "stompers":"笨重的鞋", "whaddya":"你觉得什么", "booooring":"无聊", "withstand":"抵挡", "million":"百万", "shackles":"镣铐", "particular":"特别", "doubly":"加倍", "loves":"喜爱", "neutral":"中立", "pinch":"困境", "soul":"灵魂", "bigger":"更大的", "smile":"笑容", "quiet":"安静", "feather-brains":"羽毛脑袋", "dont":"不", "cha":"你", "count":"依靠", "pushover":"软蛋", "boring":"无聊", "picky":"挑剔", "guy":"家伙", "reference":"指代", "heartless":"无情", "empathize":"理解", "disgust":"厌恶", "erm":"呃", "refreshing":"清爽", "shares":"分享", "lowly":"卑微", "pathetic":"可怜", "redeemed":"救赎", "sounded":"听起来", "purely":"纯粹", "hundreds":"数百", "infant":"婴儿", "children":"孩子们", "culled":"牺牲", "food":"食物", "shortages":"短缺", "impoverished":"贫困的", "communities":"社区", "revel":"享受", "secrecy":"秘密", "extremely":"极其", "figures":"人物", "stoop":"堕落", "lows":"低谷", "nuanced":"细腻", "personalities":"性格", "completing":"完成", "expected":"期待", "spares":"容忍", "attendance":"出席", "rendezvous":"会面", "stands":"处于", "state":"状态", "unbelievable":"难以置信", "worrying":"令人担忧", "outlook":"观点", "red-haired":"红发的", "elect":"选择", "uniforms":"制服", "worn":"穿过", "decade":"十年", "referencing":"指代", "attest":"证明", "indulging":"沉溺", "senseless":"无理智", "degenerate":"堕落", "solidarity":"团结", "attracted":"吸引", "predator":"捕食者", "prey":"猎物", "piqued":"激起",
+})
+
+WORD_MAP.update({
+    "am":"是", "time":"时间", "didn":"没有", "uh":"呃", "mmh":"嗯", "hmmrh":"嗯哼", "doesn":"不", "coin":"硬币", "once":"曾经", "seen":"见过", "cute":"可爱", "become":"变成", "told":"告诉过", "long":"很久", "ain":"不是", "anyone":"任何人", "suppose":"想来", "feeling":"感觉", "isn":"不是", "guys":"大家", "punishment":"惩罚", "years":"年", "wanna":"想要", "beyond":"超过", "infernal":"地狱的", "field":"场地", "ahead":"前方", "crush":"碾碎", "worth":"值得", "seems":"似乎", "bonus":"加成", "put":"放置", "impressive":"惊人", "honest":"诚实", "makes":"使", "seriously":"说真的", "hear":"听见", "outta":"从……出来", "afraid":"害怕", "might":"可能", "able":"能够", "real":"真正", "perhaps":"也许", "great":"伟大", "answer":"回答", "gotta":"必须", "proceed":"前进", "strike":"打击", "um":"呃", "shift":"Shift", "stygian":"冥河的", "somethin":"什么", "crit":"暴击", "burden":"负担", "customers":"客人", "striking":"打击", "read":"阅读", "tongue":"舌头", "legs":"腿", "total":"总计", "changed":"改变", "luck":"幸运", "part":"部分", "knows":"知道", "done":"完成", "difference":"区别", "meek":"温顺", "wandering":"游荡", "knowing":"知道", "top":"顶部", "opinion":"看法", "against":"对抗", "extra":"额外", "lose":"失去", "beneath":"下方", "fastest":"最快", "bet":"打赌", "straight":"直接", "beasts":"野兽", "haaah":"哈啊", "busted":"坏掉", "siiiiiiigh":"叹气", "cravat":"领巾", "proxy":"代理", "flesh":"肉", "cursed":"诅咒的", "invocative":"祈唤的", "quem":"谁", "quaeritis":"寻找", "proper":"合适", "behavior":"举止", "indeed":"确实", "hmph":"哼", "advise":"建议", "obviously":"显然", "listening":"听着", "nothin":"没什么", "means":"意味着", "haha":"哈哈", "definitely":"肯定", "story":"故事", "outfit":"服装", "getting":"变得", "reads":"写着", "em":"呃", "couldn":"不能", "inexcusable":"不可原谅", "operate":"行事", "heroes":"英雄们", "attempt":"尝试", "studying":"学习", "fellow":"家伙", "disgusting":"恶心", "apart":"分开", "admit":"承认", "favorite":"最喜欢的", "fun":"有趣", "wish":"希望", "skitter":"疾走", "issue":"问题", "anymore":"再也不", "promises":"保证", "tries":"尝试", "problems":"问题", "hostile":"敌对", "pretend":"假装", "noise":"声音", "aren":"不是", "destiny":"命运", "comment":"评论", "asking":"询问", "willing":"愿意", "respectable":"体面", "demonic":"恶魔的", "paying":"支付", "cheating":"作弊", "stamina":"耐力", "guts":"勇气", "wit":"智慧", "challenge":"挑战", "upset":"沮丧", "bunch":"一群", "took":"拿走", "exist":"存在", "which":"哪个", "meaningless":"毫无意义", "meaning":"意义", "itself":"它自己", "munch":"咀嚼", "king":"国王", "temples":"神殿", "deities":"神祇", "heed":"留意", "carefully":"仔细地", "bearing":"带着", "news":"消息", "joy":"喜悦", "unto":"给", "vanquish":"消灭", "evil":"邪恶", "duty":"职责", "mere":"仅仅", "god":"神", "executioner":"刽子手", "greater":"更强", "flame":"火焰", "awful":"糟糕", "peculiar":"奇特", "crimson":"深红", "personality":"性格", "red":"红色", "stature":"身材", "unholy":"不洁", "fell":"堕落", "terrible":"糟糕", "trying":"尝试", "charge":"带队", "avoid":"避免", "waste":"浪费", "heat":"热量", "towards":"朝向", "bottom":"底部", "business":"生意", "impossible":"不可能", "immediately":"立即", "broken":"损坏", "anew":"重新", "dirty":"肮脏", "tryna":"试图", "buddies":"伙伴们", "service":"服务", "duel":"决斗", "jerk":"混蛋", "catch":"抓住", "gal":"女孩", "bright":"明亮", "naturally":"自然地", "apologies":"道歉", "improve":"改善", "simply":"简单地", "current":"当前", "attitude":"态度", "bleed":"流血", "feels":"感觉", "hmh":"嗯哼", "takes":"拿走", "death":"死亡", "goes":"进行", "tall":"高大", "shame":"耻辱", "instantly":"立即", "watching":"注视", "basic":"基本", "along":"沿着", "yourself":"你自己", "destination":"目的地", "within":"在……之内", "miss":"未命中", "went":"去了", "lust":"欲望", "side":"一边", "chimera":"奇美拉", "unruly":"桀骜", "foolish":"愚蠢", "age":"年龄", "peace":"和平", "ignore":"忽略", "spoke":"说过", "jibber":"胡言", "jabber":"乱语", "half":"一半", "spilled":"洒落", "x":"X", "violence":"暴力", "pilgrimage":"朝圣", "deserve":"配得上", "remains":"保持", "unmoving":"不动", "wanted":"想要", "full":"完整", "during":"在……期间", "recieved":"获得", "starin":"盯着", "ridiculous":"荒谬", "attire":"服饰", "eyesore":"碍眼", "wh":"什么", "shows":"出现", "tsk":"啧", "lack":"缺乏", "decorum":"礼数", "makin":"做", "startin":"开始", "creep":"吓到", "astonishing":"惊人", "wha":"哇", "spooked":"吓到", "lump":"块头", "metal":"金属", "prettier":"更漂亮", "til":"直到", "conversion":"换算", "correlation":"关联", "grounded":"地面", "flying":"飞行", "ooohh":"哦哦", "arduous":"艰难", "barefoot":"光脚", "hover":"悬浮", "companions":"同伴", "mumbling":"嘟囔", "limited":"有限", "mumble":"嘟囔", "tearing":"撕裂", "shreds":"碎片", "clip":"夹子", "worry":"担心", "tying":"打结", "wanting":"想要", "fool":"傻瓜", "spend":"花费", "mad":"生气", "interacting":"接触", "weirdo":"怪人", "rancid":"恶心", "commendable":"值得称赞", "grin":"笑容", "wide":"宽", "confidence":"自信"})
+
+# Reviewed dialogue fragments from the ferry, travel, and racing scenes.
+PHRASES.update({
+    "as the Inferno's transport.": "作为地狱的交通工具。",
+    r"\n<Chacha>Thanks to me and the Beatrice Statues": r"\n<Chacha>多亏了我和贝阿特丽丝雕像，",
+    "though, Demons can still travel freely throughout": "不过，恶魔们仍然可以自由穿梭于",
+    "trinkets or help moving around!": "各处，寻找小饰品或寻求帮助！",
+    r"\n<Chacha>Some pits have been opening up all over": r"\n<Chacha>最近到处都出现了新的坑洞，",
+    r"\n<Chacha>Ah, and if you see these Skullies lying": r"\n<Chacha>啊，如果你看到这些躺在周围的骷髅，",
+    "around you should try opening them!": "不妨试着打开它们！",
+    r"\n<Chacha>They're real pretty, and the critters": r"\n<Chacha>它们真的很漂亮，而且里面的小家伙",
+    "inside like to hoard all sorts of stuff!": "喜欢囤积各种各样的东西！",
+    r"\n<Chacha>Gramps was amazing!": r"\n<Chacha>爷爷真是太厉害了！",
+    r"\n<Chacha>I heard Gramps once helped that Man": r"\n<Chacha>我听说爷爷曾经帮助过那位先生，",
+    r"\n<Chacha>I'm still not as good at ferrying as": r"\n<Chacha>我的摆渡本领还是比不上",
+    r"\n<Chacha>The Demons are usually nice to me,": r"\n<Chacha>恶魔们通常都对我很好，",
+    "and I get to collect any trinkets they leave behind!": "还能收集他们留下的各种小饰品！",
+    "I can sell. Simple!": "拿去卖钱。就这么简单！",
+    r"\n<Chacha>Other than that, I'm not a toootal cheapskate": r"\n<Chacha>除此之外，我也不是那种彻头彻尾的吝啬鬼，",
+    r"\n<Chacha>I'm totally cool with ferrying Demons free": r"\n<Chacha>免费摆渡恶魔我完全没意见，",
+    "buy something from my shop every now and again.": "只要他们偶尔来我的店里买点东西就好。",
+    r"\n<Chacha>C'mon! My collection's full of stuff from": r"\n<Chacha>来嘛！我的收藏里全是来自",
+    r"\n<Chacha>Limbo is the first of the nine Circles of Hell.": r"\n<Chacha>边狱是地狱九个圆环中的第一层。",
+    "all tired-like.": "看起来都疲惫不堪。",
+    r"\n<Chacha>Quite sad really, but much more relaxed than the": r"\n<Chacha>说真的，虽然有点悲伤，却比",
+    "had two party hats strapped to the sides of their": "两边都绑着派对帽的那位",
+    r"\n<Chacha>I've ferried loads of Demons before but": r"\n<Chacha>我以前摆渡过很多恶魔，不过",
+    "you could recommend them to my shop~": "你可以把他们推荐到我的店里来~",
+    r"\n<Chacha>After the war with the Angels, Hell also": r"\n<Chacha>和天使的战争结束后，地狱也",
+    "took a pretty big toll once the Demons were": "付出了相当惨重的代价，恶魔们",
+    r"\n<Chacha>Basically, the bottom four Circles ended up": r"\n<Chacha>简单来说，最下方的四个圆环最终",
+    "falling out, and the whole landscape of Hell": "崩溃了，地狱的整个地貌也",
+    "started to shift around too...": "随之开始不断变动……",
+    r"\n<Chacha>I don't blame you if it gets hard to": r"\n<Chacha>如果你觉得行动变得困难，我不会怪你，",
+    "trouble getting around as efficiently...": "毕竟想像以前那样高效地穿行……",
+    r"\n<Chacha>Luckily Pandaemonium is still safe in the ": r"\n<Chacha>幸运的是，潘德莫尼乌姆依然安全地位于",
+    "5th Circle, but I wonder how much longer it'll": "第五圆环，不过我不知道这样的状况还能维持多久。",
+    r"\n<Chacha>Boss Beelzebub is probably thinking the same": r"\n<Chacha>老大别西卜大概也在想同样的事，",
+    r"\n<Chacha>I bet it's why he's calling everyone": r"\n<Chacha>我敢说这就是他召集所有人",
+    "over to the Capitol so urgently in the first place.": "赶往首都的真正原因。",
+    r"\n<Chacha>B-but you can keep whatever was inside": r"\n<Chacha>不、不过里面的东西你可以留着，",
+    "since you opened it first!": "毕竟是你先打开的！",
+    r"\n<Kushiel>My legs\.\.\. have given out.": r"\n<Kushiel>我的腿……已经没力气了。",
+    r"\n<???>Sitting there all sad doesn't suit you at all.": r"\n<???>坐在那里垂头丧气可一点也不像你。",
+    r'\n<???>"Off your knees and onto shore," ': r"\n<???>“别跪着了，上岸吧，”",
+    r'\n<???>"the strongest Ferrymen are always ready for more!" ': r"\n<???>“最强的摆渡人随时都能再接着干！”",
+    "(Boss suggests that we travel in threes on": "（老大建议我们三人一组旅行，",
+    "(My memories of this Circle are too hazy for me to": "（我对这一圆环的记忆太模糊，无法安全地",
+    "traverse safely...)": "穿越这里……）",
+    r"\n<???>Huh? Leaving already?": r"\n<???>咦？这么快就要走了？",
+    r"\n<???>I ain't the Demon you're lookin' for bud.": r"\n<???>伙计，我不是你要找的那个恶魔。",
+    r"\n<???>Don't even think about askin' me for directions.": r"\n<???>别想着向我问路。",
+    r"\n<???>I'm Mors. One of Ashmadai's heads.": r"\n<???>我是莫尔斯，阿斯莫代的首领之一。",
+    r"\n<Mors>Let me know when you're settin' off": r"\n<Mors>你们要出发时告诉我一声，",
+    r"\n<Mors>I'll be there just in time to pick the meat": r"\n<Mors>我会准时赶到，把你们骨头上的肉",
+    "off your bones whenever you lot die.": "等你们死后剔下来。",
+    r"\n<Mors>Goin' somewhere or what?": r"\n<Mors>要去哪儿，还是怎么着？",
+    r"\n<Chacha>Seems like you've had it pretty rough this time": r"\n<Chacha>看来你这次过得相当惨啊，",
+    r"\n<Chacha>The Demons\.\.\. have been exceptionally rude": r"\n<Chacha>那些恶魔……实在太没礼貌了。",
+    r"\n<Kushiel>Do you think\.\.\. it's still worth pursuing?": r"\n<Kushiel>你觉得……继续追寻下去还值得吗？",
+    r"\n<Chacha>In my travels, I've seen lots of Demons.": r"\n<Chacha>一路旅行以来，我见过许多恶魔。",
+    r"\n<Chacha>Heard lots of stories": r"\n<Chacha>听过许多故事，",
+    r"\n<Chacha>and experienced great loss.": r"\n<Chacha>也经历过巨大的失去。",
+    r"\n<Chacha>Does it sound familiar?": r"\n<Chacha>听起来熟悉吗？",
+    r"\n<Chacha>There's other experiences, too.": r"\n<Chacha>还有一些别的经历，",
+    r"\n<Chacha>The ones that exist only in my memories.": r"\n<Chacha>只存在于我的记忆中的经历。",
+    r"\n<Chacha>do you still have it in you to forsake these things?": r"\n<Chacha>你还舍得放下这些东西吗？",
+    r"\n<Chacha>Clearly, there's something on your mind.": r"\n<Chacha>很明显，你心里藏着什么事。",
+    r"\n<Chacha>It's something deeper than that, isn't it?": r"\n<Chacha>那件事比表面上更深，对吧？",
+    r"\n<Chacha>For the Charon family, it's very easy to spot": r"\n<Chacha>对卡戎家族来说，很容易看出",
+    r"\n<Chacha>Even after a thousand years of wandering,": r"\n<Chacha>即使游荡了上千年，",
+    r"\n<Kushiel>One thousand years passed.": r"\n<Kushiel>一千年过去了。",
+    r"\n<Kushiel>And one thousand years' worth of doubt has": r"\n<Kushiel>一千年来积累的疑惑，",
+    "begun to cloud my mind...": "已经开始蒙蔽我的心……",
+    r"\n<Kushiel>You can see it clear as day, Ferryman.": r"\n<Kushiel>摆渡人，你看得一清二楚。",
+    r"\n<Kushiel>Even my legs have grown tired...": r"\n<Kushiel>就连我的双腿也已经疲惫不堪……",
+    r"\n<Chacha>But this Angel keeps on marching, don't they?": r"\n<Chacha>可这位天使还在继续前进，不是吗？",
+    r"\n<Chacha>my dear passenger already has a destination in": r"\n<Chacha>我亲爱的乘客心中已经有了目的地，",
+    r"\n<Chacha>You still haven't told me, wanderer.": r"\n<Chacha>你还没告诉我呢，漫游者。",
+    r"\n<Chacha>What business does an Angel have pursuing the": r"\n<Chacha>一个天使追寻着",
+    r"\n<Haures>Why does navigatin' around here have": r"\n<Haures>为什么在这里找路",
+    "to be so damn difficult?!": "会难成这样？！",
+    r"\n<Haures>The Boss said he wants everyone to meet up": r"\n<Haures>老大说他要所有人集合，",
+    r"\n<Haures>W-Whatever!": r"\n<Haures>随、随便了！",
+    r"\n<Haures>I'll just go tag along with that Demon": r"\n<Haures>那我就跟着那个恶魔",
+    r"\n<Ipos>I must admit I am rather unfamiliar with": r"\n<Ipos>我必须承认，我对这里相当陌生。",
+    r"\n<Ipos>If my memory serves right, Pandaemonium": r"\n<Ipos>如果我没记错，潘德莫尼乌姆",
+    r"\n<Ipos>S-Surely!": r"\n<Ipos>当、当然！",
+    r"\n<???>You look kinda lost mister!": r"\n<???>先生，你看起来好像迷路了！",
+    "\"so bitter\"": "“如此苦涩”",
+    "\"tastes\"": "“味道”",
+    "Mirroring the fleeting nature of a transient world,": "映照着短暂世界转瞬即逝的本质，",
+    "the sign fell apart once you finished reading it.": "你读完告示后，它便随之碎裂。",
+    "Type O Blood was inside.": "里面是O型血。",
+    "Blunt Shards were inside.": "里面是钝化碎片。",
+    "A Leather Grimoire was inside.": "里面是一本皮革魔导书。",
+    "Invocative Poems B was inside.": "里面是《召唤诗篇B》。",
+    "Sickening Poems B was inside.": "里面是《恶心诗篇B》。",
+    "Cursed Poems B was inside.": "里面是《诅咒诗篇B》。",
+    r"\n<Glasya-Labolas>I can smell something strong": r"\n<Glasya-Labolas>我闻到了一股强烈的气味，",
+    "nearby...": "就在附近……",
+    r"\n<Zepar>I sense a challenger.": r"\n<Zepar>我感觉到挑战者的气息。",
+    "on a roll soon!": "马上就要大展身手了！",
+    r"\n<Orobas>Sorry sorry no autographs for today!": r"\n<Orobas>抱歉抱歉，今天不签名！",
+    "I really do have the best fans!": "我真的有全世界最棒的粉丝！",
+    r"\n<Haures>And I think you're a bitch.": r"\n<Haures>而且我觉得你就是个混蛋。",
+    r"\n<Ipos>Ah, Humans are my favorite creatures to tor-": r"\n<Ipos>啊，人类可是我最喜欢折磨的生物——",
+    "(The Demon smiles coldly at you.)": "（恶魔对你露出冰冷的微笑。）",
+    r"\n<Zepar>Sorrowful, how It has all been reduced to mindless": r"\n<Zepar>真令人悲哀，一切都沦为了没有思想的",
+    r"\n<Zepar>If none are to mourn them, then I shall shoulder": r"\n<Zepar>若无人为他们哀悼，那就由我来承担",
+    r"\n<Zepar>-Even if it is considered taboo amongst us Demons.": r"\n<Zepar>——即使这在恶魔之间被视为禁忌。",
+    r"\n<Zepar>I wonder if those words come from a place of hatred,": r"\n<Zepar>我想知道，那些话语是否源于憎恨，",
+    r'\n<Zepar>If it goes beyond words and expression, a "feeling"': r"\n<Zepar>如果它超越了言语和表达，成为一种“感觉”，",
+    r"\n<Zepar>Perhaps it was a mistake asking a Demon for their": r"\n<Zepar>也许向恶魔询问他们的",
+    r"\n<Zepar>If it would cost you your most prized possession": r"\n<Zepar>如果代价是失去你最珍视的东西，",
+    "you're unwilling to let go of, despite our Demonic status.": "即使我们身为恶魔，你也不愿放手。",
+    r"\n<Zepar>What I will tell you is that I have a mutual respect": r"\n<Zepar>我能告诉你的是，我与他们彼此尊重，",
+    r"\n<Zepar>Before our struggle against the Angels, I was commonly": r"\n<Zepar>在与天使的战争之前，我通常",
+    r"\n<Zepar>Needless to say, those days are long since passed.": r"\n<Zepar>不用说，那些日子早已一去不返。",
+    r'\n<Zepar>Their concept of "love" intrigues me greatly.': r"\n<Zepar>他们对“爱”的理解让我深感兴趣。",
+    r"\n<Zepar>It is important for us Demons to stay at the top": r"\n<Zepar>对我们恶魔而言，时刻保持能力的巅峰",
+    "of our ability at all times.": "至关重要。",
+    r"\n<Zepar>You should care more about upkeeping your skills": r"\n<Zepar>你应该更关心如何保持自己的实力，",
+    r"\n<???>No offense or anything, but I think I'm gonna practice": r"\n<???>别介意，不过我想我还是要练习",
+    r"\n<???>Oh, that reminds me!": r"\n<???>哦，这倒提醒我了！",
+    r"\n<???>How fast do you think those purple guys out there run?": r"\n<???>你觉得外面那些紫色家伙跑得有多快？",
+    r"\n<???>Nuh uh.": r"\n<???>才不是。",
+    "than those guys by like, a decent amount.": "至少比那些家伙快上一大截。",
+    r"\n<???>Don't tell me you weren't paying any attention...?": r"\n<???>别告诉我你刚才根本没在听……？",
+    r"\n<???>Like you'd have to be a dumbass to say otherwise.": r"\n<???>除非你是个蠢货，否则不可能得出别的结论。",
+    r"\n<???>If I didn't earn it, then I didn't win.": r"\n<???>如果不是靠自己赢来的，那就不算赢。",
+    r"\n<???>Do you get it, shit-for-brains?": r"\n<???>明白了吗，你这个没脑子的？",
+    r"\n<???>You're still dead ass wrong but I'll give it to": r"\n<???>你还是错得离谱，不过这次我就算你",
+    r"\n<???>Yeah, that was pretty obvious huh.": r"\n<???>对啊，这不是显而易见嘛。",
+    r"\n<???>In or out of races, nothing beats the feeling": r"\n<???>无论是在比赛中还是平时，没有什么比",
+    r"\n<???>It'd suck if I tuckered out in the middle of a bout!": r"\n<???>要是在较量中途累趴下，那可就糟了！",
+    r"\n<???>Making sure I can go the distance is definitely gonna": r"\n<???>确保自己能跑完全程，肯定能",
+    "help me win those types of races, at least!": "至少能帮我赢下那种比赛！",
+    r"\n<???>Because I'd need that extra oomph to break through,": r"\n<???>因为我需要那股额外的冲劲来突破，",
+    "level I could ramp it up instantly!": "这样我就能立刻把速度提升到那个等级！",
+    r"\n<???>I've been studying up on my contemporaries.": r"\n<???>我一直在研究和我同时代的竞争者。",
+    r"\n<???>Watching their techniques and how they handle certain": r"\n<???>观察他们的技巧，以及他们如何应对某些",
+    "situations is not only something I can absorb for myself...": "情况，不只是为了让我自己吸收经验……",
+    r"\n<???>But also something I can learn to counter.": r"\n<???>也能让我学会如何反制。",
+    r"\n<???>I wouldn't wanna race with a sorry excuse for a": r"\n<???>我可不想和一个可怜兮兮的",
+    r"\n<???>At least grow some balls and stand up to the challenge,": r"\n<???>至少拿出点胆量，站出来迎接挑战，",
+    "you coward.": "你这个胆小鬼。",
+    "(The Demon is bouncing from one foot to the other.)": "（恶魔不停地左右换脚蹦跳。）",
+    r'\n<???>Just because of some "hobby" that I have.': r"\n<???>就因为我有这么一个“爱好”。",
+    r"\n<???>Some Demons like to torment Sinners.": r"\n<???>有些恶魔喜欢折磨罪人。",
+    "beneath my feet on the tracks that I run on.": "在我奔跑的赛道上被我踩在脚下。",
+    r"\n<???>Sure, some of them participate in sports,": r"\n<???>当然，其中一些会参加体育运动，",
+    r"\n<???>But I can't stand the idea of betting money on racers.": r"\n<???>但我无法接受拿钱去赌赛车手。",
+    "them their cash.": "把钱输给他们。",
+    r"\n<???>*I* get upset that I didn't beat my competition into": r"\n<???>真正让我沮丧的是，我没能把对手打进",
+    "the ground where they belong.": "他们该待的地面。",
+    r"\n<Chacha>I'll get pretty worried if you guys end up": r"\n<Chacha>要是你们最后",
+    "at each other's throats later you know...": "自相残杀，我可是会很担心的……",
+    r"\n<Chacha>Didn't the Boss say to travel in threes?": r"\n<Chacha>老大不是说要三人同行吗？",
+    r"\n<Chacha>I know techically you don't HAVE to but-": r"\n<Chacha>我知道严格来说你们不一定非要这样，不过——",
+    r'\n<Chacha>"-but preferably not in a body sack!"': r"\n<Chacha>“——最好别最后装进尸袋里！”",
+    r"\n<Chacha>Oooh looks like I'm getting more passengers!": r"\n<Chacha>哦哦，看来我的乘客又变多了！",
+    r"\n<Chacha>Ready to move on?": r"\n<Chacha>准备继续上路了吗？",
+    r"\n<Chacha>The best ferry rides are always with happy": r"\n<Chacha>最棒的摆渡之旅，总是和快乐的",
+    r"\n<???>Ah, it seems we've both taken a similar": r"\n<???>啊，看来我们都走了相似的",
+    "route to the Capitol.": "前往首都的路线。",
+    "this mutt, but the Boss suggests traveling in groups.)": "这条蠢狗，不过老大建议结伴同行。）",
+    "(I can try and make it quick.)": "（我会尽量快一点。）",
+    "lightheaded...": "头晕……",
+    r"\n<???>It's kinda hard to see you through stars,": r"\n<???>透过这些星星看你还真有点困难，",
+    r"\n<???>Urk...": r"\n<???>呃……",
+    r"\n<???>Wah?!": r"\n<???>哇？！",
+    r"\n<Glasya-Labolas>Mmmmh.": r"\n<Glasya-Labolas>嗯……",
+    r"\n<Zepar>You've proven yourself to me.": r"\n<Zepar>你已经向我证明了自己。",
+    r"\n<Zepar>Consider me an acquaintance until we reach our": r"\n<Zepar>在抵达目的地之前，就把我当作熟人吧。",
+    r"\n<Orobas>Sorry if I get a bit heated sometimes...": r"\n<Orobas>有时情绪太激动，抱歉啦……",
+    "\"A wondrous journey cannot be\"": "“一场奇妙的旅程不能”",
+    r"\n<Haures>Be sure to protect me along the way,": r"\n<Haures>路上记得保护好我，",
+    r"\n<Haures>hand to hand combat isn't really my forte,": r"\n<Haures>近身战可不是我的强项，",
+    r"\n<Ipos>A trip like this would be much more manageable": r"\n<Ipos>这样的旅程要是有志同道合的灵魂相伴，",
+    "with kindred souls, no?": "是不是会轻松得多？",
+})
+
+PHRASES.update({
+    r"\n<Orobas>Ooohh I see (ToT)": r"\n<Orobas>哦哦，我明白了（ToT）",
+    r"\n<Chacha>Make sure you all take good care of yourselves,": r"\n<Chacha>大家一定要好好照顾自己，",
+    r"\n<Chacha>He's got a special connection with another Demon.": r"\n<Chacha>他和另一个恶魔之间有着特殊的联系。",
+    "since so many of you live here...": "毕竟你们这么多人都住在这里……",
+    r"\n<Chacha>But most Demons at least know Ash, number": r"\n<Chacha>不过大多数恶魔至少知道阿什，编号",
+    r'\n<Chacha>She\'s recently taken up the mantle as the "Wanderlust Demon"': r'\n<Chacha>她最近接过了“漫游恶魔”的名号，',
+    "and aided the Charon family business even before the battle": "甚至在那场战争之前就帮助过卡戎家族的生意。",
+    r'\n<Chacha>Actually, "aided" is a pretty bad way to put it,': r'\n<Chacha>其实，说“帮助”并不太准确，',
+    r"\n<Chacha>With how much experience she has in traversing": r"\n<Chacha>凭她穿越",
+    "the Inferno, she practically has the entire place charted in": "地狱的丰富经验，她几乎已经绘制出了整片地形图。",
+    r"\n<Chacha>She definitely did help ease the burden Gramps had": r"\n<Chacha>她确实帮爷爷减轻了不少",
+    "back then, but it's impossible not to notice that she also": "当时的负担，但也不能否认，她还",
+    "definitely stole some of our potential customers away!": "抢走了我们不少潜在的客人！",
+    r"\n<Chacha>Ah, you remembered my little story?~": r"\n<Chacha>啊，你还记得我那个小故事呀？~",
+    r"\n<Chacha>Their appearance was so striking, I'm sure you'd": r"\n<Chacha>他们的外表那么醒目，我相信你一定",
+    r"\n<Chacha>Just before jumping down one of those pits,": r"\n<Chacha>就在跳进其中一个坑洞之前，",
+    r"\n<Chacha>It was sooo serene and relaxed, they almost looked": r"\n<Chacha>那一幕宁静又放松，他们几乎看起来",
+    "after getting up late~": "像是睡了懒觉才起床~",
+    r"\n<Chacha>Ah, you mean that nasty face all you Demons make?": r"\n<Chacha>啊，你是说所有恶魔都会摆出的那张凶脸？",
+    r"\n<Chacha>Whenever Gramps and I ran into any rowdy Demons,": r"\n<Chacha>每当我和爷爷遇到那些闹腾的恶魔，",
+    "we never felt anything like that...": "我们从来没有那种感觉……",
+    "get a rise off of being particularly rude!": "反而会因为故意无礼而兴奋起来！",
+    r"\n<Chacha>I've even heard stories from some Demons, saying": r"\n<Chacha>我甚至听一些恶魔说过，",
+    "things like how the rush they got made them feel unkillable!": "那股刺激让他们觉得自己不死不灭！",
+    r"\n<Chacha>It's a really nasty trait but Gramps and I always": r"\n<Chacha>这确实是很糟糕的性格，但我和爷爷总是",
+    "fending those Sinners off...": "把那些罪人挡在外面……",
+    r"\n<Mors>Damn near clogging up the River Styx full of their": r"\n<Mors>真是快把冥河都堵满了他们的",
+    "corpses.": "尸体。",
+    r"\n<Mors>You'd think she'd notice by now...": r"\n<Mors>你以为她现在该注意到了吧……",
+    '"-even so, it is not the hollowness that rejects wonder"': '“——即便如此，也不是空洞拒绝了奇迹”',
+    '"but the rejection of wonder that births hollowness."': '“而是拒绝奇迹才孕育了空洞。”',
+    "I supppose it isn't too surprising to see ": "想来看到这种情形也并不令人意外，",
+    r"\n<???>To such a degree...": r"\n<???>竟然到了这种程度……",
+    r"\n<Haures>...Wait a sec-": r"\n<Haures>……等一下——",
+    r"\n<Haures>To be honest, I've been meeting a ": r"\n<Haures>老实说，我最近遇到了",
+    "lotta new faces lately.": "许多新面孔。",
+    r"\n<Haures>Have ya heard? Beelze is gathering": r"\n<Haures>听说了吗？别西卜正在召集",
+    "a buncha-": "一大群——",
+    r"\n<???>You'd best watch your tongue, ": r"\n<???>你最好注意你的言辞，",
+    "special privilege I alone possess...": "这是只有我才拥有的特殊特权……",
+    r"\n<Haures>then why don't ya just flutter": r"\n<Haures>那你为什么不直接扑腾着翅膀",
+    r"\n<???>I am well aware of your plans to ": r"\n<???>我很清楚你的计划是要",
+    r"\n<???>In truth, I have come to deliver a ": r"\n<???>事实上，我是来向大家传达一条",
+    "message to you all.": "消息的。",
+    r"\n<Kushiel>It hurts...": r"\n<Kushiel>好痛……",
+    r"\n<Kushiel>and every breath that blows through my horn...": r"\n<Kushiel>每一次气流穿过我的号角……",
+    r"\n<Kushiel>The pain only gets worse, and yet-": r"\n<Kushiel>痛苦只会越来越强烈，可是——",
+    r"\n<???>Grovelling doesn't suit you at all.": r"\n<???>卑躬屈膝一点也不适合你。",
+    r'\n<???>"Off your knees and on the shore," ': r'\n<???>“别跪着了，上岸吧，” ',
+    '"Tread the land and witness"': '“踏遍大地，亲眼见证”',
+    '"for the greatest cruelty is not to witness"': '“最深重的残酷并非亲眼见证”',
+    '"but to tread."': '“而是亲自踏过。”',
+    r"\n<???>Those who have wandered into Limbo...": r"\n<???>那些游荡到边狱的人……",
+    r"\n<???>How will you keep me enthralled this time?": r"\n<???>这次你要如何让我继续着迷？",
+    r"\n<???>Her flames have always burned in the prettiest": r"\n<???>她的火焰总是燃烧出最美丽的",
+    "of colors.": "色彩。",
+    r"\n<???>But as of late, it seems she's had some": r"\n<???>不过最近，她似乎在",
+    "trouble maintaining these flames she takes so much": "维持这些令她如此自豪的火焰时遇到了麻烦，",
+    "pride in.": "。",
+    r"\n<???>Of course it would be wise to keep in mind that": r"\n<???>当然，记住这一点会比较明智：",
+    r"the lives of these Demons\.\.\.\.\.\.\.": r"这些恶魔的生命………",
+    r"\n<???>\.\.\.Are ultimately meaningless.": r"\n<???>……终究毫无意义。",
+    "parse every sense of meaning that I can from these": "从这些经历中解读出我能理解的每一层意义，",
+    r"\n<???>Stoic, and not much for words, if I recall.": r"\n<???>如果我没记错，她沉着寡言，",
+    "troubled perception on the matter.": "却对这件事有着困惑的看法。",
+    r"\n<???>On the surface, she keeps a rather dignified": r"\n<???>表面上，她始终保持着相当庄重的",
+    r"\n<???>But this attitude doesn't appear to be true to her": r"\n<???>但这种态度似乎并不符合她的真实",
+    r"\n<???>Despite her eccentric nature, doubtless that ": r"\n<???>尽管她性格古怪，但毫无疑问，",
+    "she is always confident and self assured.": "她始终自信而坚定。",
+    r"\n<???>And so it begins anew.": r"\n<???>于是，一切重新开始。",
+    r"\n<???>Formless and empty.": r"\n<???>无形，无物。",
+    r"\n<???>I've grown \.\.\.accustomed to this story by now.": r"\n<???>我已经……习惯了这个故事。",
+    '"One day, malice incarnate-"': '“某一天，化身为恶意的存在——”',
+    '"the Demon called \'Beelzebub\'': '“名为‘别西卜’的恶魔',
+    'announced to the world:': '向世界宣告：”',
+    "'Soon cometh Infernus In Terra.'": "‘地狱将降临人间。’",
+    "'That which is above,'": "‘那至高之物，’",
+    "I will await.": "我会等待。",
+    "Past the gates": "越过大门",
+    "up ahead is definitely gonna be way tougher!)": "前方的路肯定会更加艰难！）",
+    r"\n<Haures>(Should I get a warmup in before setting off?)": r"\n<Haures>（出发前要不要先热身？）",
+    r"\n<Ipos>(Aaaaah it really is tiny!)": r"\n<Ipos>（啊啊啊，真的好小！）",
+    r"\n<Ipos>(I'd feel terrible having to hurt something so cute!)": r"\n<Ipos>（要伤害这么可爱的东西，我会很难过的！）",
+    r"\n<Ipos>(Of course that's an utter lie.)": r"\n<Ipos>（当然，这完全是谎话。）",
+    r"\n<Ipos>(It's just too cute\.\.\. I can hold on a little longer,": r"\n<Ipos>（只是太可爱了……我还能再忍一会儿，",
+    r"\n<Zepar>(Idle sickles only rust in time.)": r"\n<Zepar>（闲置的镰刀只会随时间生锈。）",
+    r"\n<Zepar>(Perhaps I can find better opportunities ahead.)": r"\n<Zepar>（也许前方会有更好的机会。）",
+    "In battles, Tensions will rise among your Demons whenever": "战斗中，每当你的恶魔们",
+    "When the Tension Meter is full, powerful Tension Skills": "紧张度计量条充满后，就能使用强大的紧张度技能。",
+    "can be performed.": "。",
+    "Please note that only the current party leader will have": "请注意，只有当前队伍首领能够",
+    "access to these Tension Skills, however.": "使用这些紧张度技能。",
+    r"\n<Chacha>Ooooh~": r"\n<Chacha>哦哦哦~",
+    r"\n<Chacha>This Sinner is just so kyuute!": r"\n<Chacha>这个罪人真是太可爱了！",
+    r"\n<Chacha>Sinners normally come in all sorts of": r"\n<Chacha>罪人通常有各种各样的",
+    "shapes and sizes but I've never seen one so small!": "形状和大小，但我从没见过这么小的！",
+    r"\n<Chacha>Were you planning on going on?": r"\n<Chacha>你打算继续前进吗？",
+    r"\n<Chacha>No problem! I'll be waiting right here!": r"\n<Chacha>没问题！我会在这里等着！",
+    "\"When was\\.\\. the first time you experienced death?\"": "“你第一次经历死亡是什么时候？”",
+    "\"Is that something\\.\\. you can still comprehend?\"": "“那种事……你现在还能理解吗？”",
+    '"Extras"': '“额外内容”',
+    '"BGM"': '“背景音乐”',
+    "WAILING": "哀号",
+    "FLAMEBOUND": "焰缚",
+    "DAEMOCIDIUM": "恶魔竞技场",
+    "HELLBOUND": "地狱之途",
+    "Thanks for playing!": "感谢游玩！",
+    "DOT KILLER": "持续伤害杀手",
+    "ESCAPE": "逃跑",
+    "Skip Tutorial": "跳过教程",
+    "Penance and Regrets": "忏悔与悔恨",
+    "Lesser Foresight": "较弱的预见",
+    "REFLECT": "反射",
+    "DEBUFF FIXER": "减益修正",
+    "BUFF FIXER": "增益修正",
+    "TEST STACKING STAT DEBUFF": "测试叠加属性减益",
+    "Sneering BAADDDDD": "冷笑中，坏——",
+    "SEAL SKILLS": "封印技能",
+    "SEAL SPECIAL KUSHIEL": "封印库席耶尔专技",
+    "Chacha Transform!!": "恰恰变身！！",
+    "SINNERS CROSSING": "罪人穿越中",
+    "99% HP GONE": "99%生命值已消失",
+    "DREDGE BASE": "溺亡者基础",
+})
+
+PHRASES.update({
+    "\n<Chacha>She's recently taken up the mantle as the \"Wanderlust Demon\"": "\n<Chacha>她最近接过了“漫游恶魔”的名号，",
+    "\n<???>In truth, I have come to deliver a": "\n<???>事实上，我是来向大家传达一条",
+    "It's broken, and the words are too faded to make out.": "它已经损坏，字迹也淡得无法辨认。",
+    '"█B█N███ ███ H███, ██ █H█ ██T██ ██R█."': '“█B█N███ ███ H███，██ █H█ ██T██ ██R█。”',
+    r"the lives of these Demons\.\.\..\.\.\..": "这些恶魔的生命……终究毫无意义。",
+    "\\n<???>...Are ultimately meaningless.": "\\n<???>……终究毫无意义。",
+    "\n<Ipos>(It's just too cute... I can hold on a little longer,": "\n<Ipos>（只是太可爱了……我还能再忍一会儿，",
+    "\n<Chacha>\"Passengers yet to ride are as loose coin on the ": "\n<Chacha>“尚未上船的乘客就像船上的散钱，",
+    "\n<Chacha>Something like that happening would only be perfectly": "\n<Chacha>发生这种事才完全符合",
+    "in character for the \"Wanderlust Demon\" hehe.": "“漫游恶魔”的性格，呵呵。",
+    "\n<Chacha>Compared to Limbo's wasteland, it's a big, dry canyon.": "\n<Chacha>和边狱的荒地相比，这里是一座干燥的巨大峡谷。",
+    "stormy wind that's blowing!": "狂风正在呼啸！",
+    "\n<Chacha>The Sinners there are much more active than the": "\n<Chacha>那里的罪人比这里的活跃得多，",
+    "clues behind that anybody smart enough should be able to": "聪明人应该都能从留下的线索中",
+    "\n<Chacha>Gramps told me they were to help guide anyone else": "\n<Chacha>爷爷说它们是用来引导其他人的，",
+    "\n<Chacha>I\\.\\. still haven't been able to Ferry people": "\n<Chacha>我……还没能像爷爷那样把人们",
+    "directly from Circle to Circle like Gramps did,\\.\\. hehe...": "直接从一个圆环摆渡到另一个圆环……呵呵……",
+    "\"When was\\.\\. the first time you experienced death?\"": "“你第一次经历死亡是什么时候？”",
+    "\"Is that something\\.\\. you can still comprehend?\"": "“那种事……你现在还能理解吗？”",
+    '"I should know better than to pester one who has just': '“我应该知道，不该去打扰一个刚刚',
+    "Welcome to Purgatorio, the place in between that which": "欢迎来到炼狱，这里位于",
+    "is above, and that which lies beneath.": "上方与下方之间。",
+    "If you're seeing this, then that means the next major": "如果你能看到这段话，就意味着下一次重大",
+    "The next time you load up this File, you can go straight": "下次读取这个存档时，你可以直接",
+    "into the new content with all your goodies": "带着所有物品进入新内容，",
+    "...Otherwise you can still enjoy what's currently available": "……否则，你仍然可以享受目前已有的内容，",
+    "in new Save Files from the title screen.": "只需从标题画面开始新的存档。",
+    "Extras": "额外内容",
+    "BGM": "背景音乐",
+    "What kind of music did you want to listen to?": "你想听哪种音乐？",
+    "\n<???>...To establish their own": "\n<???>……建立属于它们自己的",
+    "The critter inside this Skully seems to be running": "这个骷髅头里的小家伙似乎正在奔跑，",
+    "Take a peek inside?": "要看看里面吗？",
+    "\n<???>GRAMPS, I THINK THIS CLOAK IS TOO BIG FOR ME.": "\n<???>爷爷，我觉得这件斗篷对我来说太大了。",
+    "\n<Ipos>It really bears a striking resemblance to-": "\n<Ipos>它和那东西真是惊人地相似——",
+    "\n<Orobas>What the heck!": "\n<Orobas>搞什么啊！",
+    "\n<Orobas>What is this freaky thing here for?": "\n<Orobas>这里为什么会有这种怪东西？",
+    "(Just run around out there like a dummy?)": "（就像个傻瓜一样在外面乱跑？）",
+    "(I'll look around for a little bit here where it's warmer...)": "（我先在这里暖和的地方待一会儿……）",
+    "(M-My feathers are frosted already?)": "（我、我的羽毛已经结霜了吗？）",
+    "\n<Glasya-Labolas>I can't catch big brother's scent in": "\n<Glasya-Labolas>我在这里闻不到哥哥的气味，",
+    "\n<Orobas>(My metaphorical sash may be on the line,": "\n<Orobas>（这下我的名誉可要悬了，",
+    "\n<Mors>But she's dumb as rocks when it really comes down": "\n<Mors>但真要说到关键时刻，她笨得像块石头，",
+    "\n<Haures>I-It's so\\.\\. damn\\.\\. cold allova sudden!": "\n<Haures>怎、怎么突然……这么……冷！",
+    "\n<Haures>Th-This must be the s-second circle, huh?": "\n<Haures>这、这里一定是第二圆环，对吧？",
+    "\n<Ipos>I-I'm shivering...": "\n<Ipos>我、我在发抖……",
+    "\n<Ipos>I-is this-": "\n<Ipos>这、这是——",
+    "\n<Ipos>No, this c-can't be right!": "\n<Ipos>不、不可能是这样！",
+    "\n<Ipos>Lust isn't supposed to be this f-frigid!": "\n<Ipos>欲望圆环不该冷、冷成这样！",
+    "\n<Orobas>Wh-why is it so c-cold now?": "\n<Orobas>为、为什么现在这么冷？",
+    "\n<Orobas>What the heck is that (ToT)": "\n<Orobas>那到底是什么（ToT）",
+    "\n<Orobas>A-Ah!": "\n<Orobas>啊、啊！",
+    "\n<Orobas>My hooves are sinking into the ground...!": "\n<Orobas>我的蹄子陷进地面了……！",
+    "\n<???>MUCH PREFERRED IF NOT IN IN AN AN URN": "\n<???>最好别装进、装进骨灰瓮里",
+    "\n<???>THIS WAY, WANDERER": "\n<???>走这边，漫游者",
+    "Thanks for playing!": "感谢游玩！",
+    "Absolutely zero use of Generative AI was involved in any": "游戏开发完全没有使用生成式人工智能，",
+    "part of the game's development.": "任何部分都没有。",
+    "All art, music and writing were drawn, composed and": "所有美术、音乐和文字都由我亲自绘制、创作并",
+    "cooked by me. Check out my Instagram at @not.sumiee for": "完成。欢迎在Instagram关注@not.sumiee，获取",
+    "Development was done entirely within RPGMaker MV.": "本作完全使用RPGMaker MV开发。",
+    "Credit goes to SumRndmDude, Yanfly, Galv, and HimeWorks": "特别感谢SumRndmDude、Yanfly、Galv和HimeWorks，",
+    "whose plugins were utilized extensively for PAN-DAE-MON-IUM.": "他们的插件为潘德莫尼乌姆提供了大量帮助。",
+    "Credit to ATT_Turan, Caethyril, and Andar on the forums": "感谢论坛上的ATT_Turan、Caethyril和Andar，",
+    "whose posts and solutions to other inquiries seriously": "他们的帖子和解决方案对其他问题以及",
+    "helped me in developing the game as well.": "游戏开发都提供了很大帮助。",
+    "Thanks to @satsuki_i_9 for being my guinea pig (playtester).": "感谢@satsuki_i_9担任我的测试员（试玩者）。",
+    "For future updates and OST releases, please check out": "未来更新和原声带发布请关注",
+    "the official Instagram (@goetia_project) and YouTube (@PANDAEMONIUM5)": "官方Instagram（@goetia_project）和YouTube（@PANDAEMONIUM5）",
+    "accounts I made for the game!": "上的游戏账号！",
+    "I hope you enjoyed PAN-DAE-MON-IUM's first part!": "希望你喜欢潘德莫尼乌姆的第一篇章！",
+    "Critically stab an enemy repeatedly and inflict Poison.\nEnables user Canto.": "连续以暴击刺击敌人并施加中毒。\n使自身可以咏唱。",
+    "Raises user's ATK/M.ATK before dealing low damage. \nStruck targets will also have their ATK/M.ATK raised. (Can target Allies.)": "造成低伤害前提升使用者的攻击/魔攻。\n被击中的目标也会提升攻击/魔攻。（可选择盟友。）",
+})
+
+PHRASES.update({
+    r'\n<Chacha>She\'s recently taken up the mantle as the "Wanderlust Demon"': r'\n<Chacha>她最近接过了“漫游恶魔”的名号，',
+    r'\n<???>In truth, I have come to deliver a': r'\n<???>事实上，我是来向大家传达一条',
+    r'the lives of these Demons.\.\.\..\.\.\..': r'这些恶魔的生命……终究毫无意义。',
+    r'\n<???>...Are ultimately meaningless.': r'\n<???>……终究毫无意义。',
+    r'\n<Ipos>(It\'s just too cute... I can hold on a little longer,': r'\n<Ipos>（只是太可爱了……我还能再忍一会儿，',
+    r'\n<Chacha>"Passengers yet to ride are as loose coin on the ': r'\n<Chacha>“尚未上船的乘客就像船上的散钱，',
+    r'\n<Chacha>Something like that happening would only be perfectly': r'\n<Chacha>发生这种事才完全符合',
+    r'in character for the "Wanderlust Demon" hehe.': r'“漫游恶魔”的性格，呵呵。',
+    r'\n<Chacha>Compared to Limbo\'s wasteland, it\'s a big, dry canyon.': r'\n<Chacha>和边狱的荒地相比，这里是一座干燥的巨大峡谷。',
+    r'\n<Chacha>The Sinners there are much more active than the': r'\n<Chacha>那里的罪人比这里的活跃得多，',
+    r'\n<Chacha>Gramps told me they were to help guide anyone else': r'\n<Chacha>爷爷说它们是用来引导其他人的，',
+    r'\n<Chacha>I\.\. still haven\'t been able to Ferry people': r'\n<Chacha>我……还没能像爷爷那样把人们',
+    r'\n<???>...To establish their own': r'\n<???>……建立属于它们自己的',
+    r'\n<???>GRAMPS, I THINK THIS CLOAK IS TOO BIG FOR ME.': r'\n<???>爷爷，我觉得这件斗篷对我来说太大了。',
+    r'\n<Ipos>It really bears a striking resemblance to-': r'\n<Ipos>它和那东西真是惊人地相似——',
+    r'\n<Orobas>What the heck!': r'\n<Orobas>搞什么啊！',
+    r'\n<Orobas>What is this freaky thing here for?': r'\n<Orobas>这里为什么会有这种怪东西？',
+    r'\n<Glasya-Labolas>I can\'t catch big brother\'s scent in': r'\n<Glasya-Labolas>我在这里闻不到哥哥的气味，',
+    r'\n<Orobas>(My metaphorical sash may be on the line,': r'\n<Orobas>（这下我的名誉可要悬了，',
+    r'\n<Mors>But she\'s dumb as rocks when it really comes down': r'\n<Mors>但真要说到关键时刻，她笨得像块石头，',
+    r"\n<Haures>I-It's so\.\. damn\.\. cold allova sudden!": r'\n<Haures>怎、怎么突然……这么……冷！',
+    r'\n<Haures>Th-This must be the s-second circle, huh?': r'\n<Haures>这、这里一定是第二圆环，对吧？',
+    r'\n<Ipos>I-I\'m shivering...': r'\n<Ipos>我、我在发抖……',
+    r'\n<Ipos>I-is this-': r'\n<Ipos>这、这是——',
+    r'\n<Ipos>No, this c-can\'t be right!': r'\n<Ipos>不、不可能是这样！',
+    r'\n<Ipos>Lust isn\'t supposed to be this f-frigid!': r'\n<Ipos>欲望圆环不该冷、冷成这样！',
+    r'\n<Orobas>Wh-why is it so c-cold now?': r'\n<Orobas>为、为什么现在这么冷？',
+    r'\n<Orobas>What the heck is that (ToT)': r'\n<Orobas>那到底是什么（ToT）',
+    r'\n<Orobas>A-Ah!': r'\n<Orobas>啊、啊！',
+    r'\n<Orobas>My hooves are sinking into the ground...!': r'\n<Orobas>我的蹄子陷进地面了……！',
+    r'\n<???>MUCH PREFERRED IF NOT IN IN AN AN URN': r'\n<???>最好别装进、装进骨灰瓮里',
+    r'\n<???>THIS WAY, WANDERER': r'\n<???>走这边，漫游者',
+})
+
+PHRASES.update({
+    "\\n<Chacha>She's recently taken up the mantle as the \"Wanderlust Demon\"": "\\n<Chacha>她最近接过了“漫游恶魔”的名号，",
+    "\\n<Ipos>(It's just too cute... I can hold on a little longer,": "\\n<Ipos>（只是太可爱了……我还能再忍一会儿，",
+    "\\n<Chacha>Compared to Limbo's wasteland, it's a big, dry canyon.": "\\n<Chacha>和边狱的荒地相比，这里是一座干燥的巨大峡谷。",
+    "\\n<Chacha>I\\.\\. still haven't been able to Ferry people": "\\n<Chacha>我……还没能像爷爷那样把人们",
+    "\\n<Glasya-Labolas>I can't catch big brother's scent in": "\\n<Glasya-Labolas>我在这里闻不到哥哥的气味，",
+    "\\n<Mors>But she's dumb as rocks when it really comes down": "\\n<Mors>但真要说到关键时刻，她笨得像块石头，",
+    "\\n<Ipos>I-I'm shivering...": "\\n<Ipos>我、我在发抖……",
+    "\\n<Ipos>No, this c-can't be right!": "\\n<Ipos>不、不可能是这样！",
+    "\\n<Ipos>Lust isn't supposed to be this f-frigid!": "\\n<Ipos>欲望圆环不该冷、冷成这样！",
+})
+
+def load_rows(path: Path):
+    return [json.loads(x) for x in path.read_text(encoding="utf-8-sig").splitlines() if x.strip()]
+
+def clean_existing(rows):
+    """Keep genuinely complete prior translations as reviewed seed data."""
+    out = {}
+    for row in rows:
+        target = row.get("target", "")
+        if not target or not json_allowed(row):
+            continue
+        if re.search(r"\b[A-Za-z]{2,}\b", target):
+            continue
+        # Do not preserve replacement-character/mojibake output.
+        if "�" in target or any(0x80 <= ord(c) < 0xA0 for c in target):
+            continue
+        out.setdefault(row.get("source", ""), target)
+    return out
+
+def stat_formula(source: str) -> str | None:
+    s = source.strip()
+    if re.fullmatch(r"\((?:M\.)?DEF[+-]\d+\)(?: \((?:ATK|HP|MP|DEF|M\.DEF)[/+ -]+\d+%?\))*", s):
+        return s.replace("M.DEF", "魔防").replace("DEF", "防御").replace("ATK", "攻击").replace("HP", "生命值").replace("MP", "魔法值")
+    if s.startswith("(") and re.fullmatch(r"[()A-Za-z0-9.%/+ -]+", s) and any(x in s for x in ("HP", "MP", "ATK", "DEF", "Evasion", "Crit")):
+        return (s.replace("M.ATK", "魔攻").replace("M.DEF", "魔防").replace("ATK", "攻击").replace("DEF", "防御")
+                .replace("HP", "生命值").replace("MP", "魔法值").replace("Evasion", "闪避率").replace("Crit Rate", "暴击率").replace("Passive", "被动").replace("Regen", "再生"))
+    return None
+
+def database_phrase(source: str) -> str | None:
+    """Translate the compact RPG database descriptions and names."""
+    s = source.strip()
+    profiles = {
+        "Demon #64 of the Ars Goetia.\nWhile quite bold in appearance and flame, her physicality is awful.": "《所罗门魔典》第64位恶魔。\n外表和火焰都十分张扬，但身体素质糟糕透顶。",
+        "Demon #22 of the Ars Goetia.\nSeemingly classy and elegant, at least at first glance.": "《所罗门魔典》第22位恶魔。\n至少第一眼看上去，她高贵而优雅。",
+        "Demon #25 of the Ars Goetia.\nHas a peculiar fascination with all forms of violence.": "《所罗门魔典》第25位恶魔。\n对各种形式的暴力有着奇特的迷恋。",
+        "Demon #16 of the Ars Goetia.\nSolemnly clad in crimson soldier's armor. Has a captivating... personality?": "《所罗门魔典》第16位恶魔。\n庄严地穿着深红士兵铠甲。拥有迷人的……性格？",
+        "Demon #55 of the Ars Goetia.\nFriendly enough, and is an aspiring track racing star.": "《所罗门魔典》第55位恶魔。\n相当友善，憧憬成为赛道明星。",
+    }
+    if source in profiles: return profiles[source]
+    m = re.fullmatch(r"Recovers (\d+)(HP|MP)\.", s)
+    if m:
+        return f"恢复{m.group(1)}{'生命值' if m.group(2) == 'HP' else '魔法值'}。"
+    m = re.fullmatch(r"Raises Tensions by (\d+)%\.", s)
+    if m:
+        return f"提升紧张度{m.group(1)}%。"
+    m = re.fullmatch(r"Raises Tension\.?", s)
+    if m: return "提升紧张度。"
+    if s == "Teaches the Skill Ensomna.": return "使学会技能：催眠。"
+    m = re.fullmatch(r"Teaches the (Passive )?Skill:?(?: |:)(.*)\.?", s)
+    if m:
+        skill = m.group(2).rstrip(".")
+        skill = (skill.replace("HP Bonus", "生命值加成").replace("MP Bonus", "魔法值加成")
+                 .replace("M.ATK Bonus", "魔攻加成").replace("M.DEF Bonus", "魔防加成")
+                 .replace("ATK Bonus", "攻击加成").replace("DEF Bonus", "防御加成")
+                 .replace("Evasion Bonus", "闪避率加成").replace("Curse", "诅咒")
+                 .replace("Invoke", "祈唤").replace("Attack", "攻击").replace("Defense", "防御")
+                 .replace("Entoxify", "施毒").replace("Regen", "再生"))
+        return f"使学会{'被动' if m.group(1) else ''}技能：{skill}。"
+    if s == "Cures an Ailment from one ally.": return "治愈一名盟友的异常状态。"
+    if s == "Revives a Fallen ally with 1HP and 0MP.": return "复活一名倒下的盟友，生命值为1、魔法值为0。"
+    if s == "Revives a Fallen ally with full HP and MP.": return "完全复活一名倒下的盟友。"
+    if s == "Fully restores an ally's HP and MP.": return "完全恢复一名盟友的生命值和魔法值。"
+    if s == "Nulls all stat changes on the field.": return "使场上所有属性变化无效。"
+    if s == "A certain random Incense will be recieved.": return "获得一种随机香。"
+    if s == "A basic attack on 1 enemy. ": return "对一名敌人进行普通攻击。"
+    if s == "Reduce incoming damage and recover HP/MP.": return "降低受到的伤害并恢复生命值/魔法值。"
+    if s == "Boosts Tension": return "提升紧张度。"
+    if s == "YOU WILL SNEER": return "你将施加冷笑。"
+    if s == "FORTUNE DEMANDS SACRIFICE.": return "命运要求牺牲。"
+    if s == "Immediately ends the combat tutorial session.": return "立即结束战斗教程。"
+    if s == "RUN AWAY!": return "快逃！"
+    if s == "hp cut in half": return "生命值减半。"
+    skill_names = {"Burning":"燃烧", "Hi Burning":"高级燃烧", "Spite Burning":"怨火", "Spread Burning":"扩散燃烧",
+                   "Spark":"火花", "Blooming Dance":"绽放之舞", "Talon":"利爪", "Tri-Axis Slash":"三轴斩",
+                   "Curse: Defense":"诅咒：防御", "Invoke: Omni":"祈唤：全能", "Invoke: Critical":"祈唤：暴击",
+                   "Curse: Omni":"诅咒：全能", "Heat Riser":"热力提升", "Go Go Goetia!!":"出发吧，魔典！！",
+                   "Ensomna":"催眠", "Chimera's Foresight":"奇美拉的预见", "I Fear Not the Jaws of Death!":"我不惧死亡之口！",
+                   "Power Siphon":"力量汲取", "Utter Restoration":"彻底复原", "Seventh Horn":"第七号角", "Enswoon":"神魂颠倒",
+                   "Dirt Runner":"泥地奔跑", "Barrier: Safeguard":"屏障：守护", "Null Barrier":"屏障无效", "Null Invocation":"祈唤无效",
+                   "Entoxify":"施毒", "Venereum Falcem":"毒镰", "Venereum Falcem X":"毒镰 X", "Play":"演奏",
+                   "Commoner's Tongue":"平民之舌", "Hooved Kick":"蹄踢", "Fetch":"取回", "Maul":"撕裂", "Heel Cutter":"割踵",
+                   "Enrestore":"强化恢复", "Enpurify":"强化净化", "Sickle":"镰刀", "Double Sickle":"双镰", "Lovesickle":"爱之镰",
+                   "R & R":"休息与恢复", "Stella Mortua":"死星", "Stella Mortua X":"死星 X", "Baptism and Clear Mind":"洗礼与澄明之心",
+                   "Blood and Body":"血与肉身", "Confer and Realize":"授予与觉悟", "Pincer":"钳击", "Hand of Styx":"冥河之手",
+                   "Sinner's Crossing":"罪人渡口", "Ferryman's Dredge":"摆渡人挖掘", "Anchor Shot":"锚击", "Bloodhound I":"寻血犬 I",
+                   "Gehenna's Guard":"欣嫩谷守护"}
+    if s in skill_names: return skill_names[s]
+    if s == "stockpile test": return "储备测试"
+    if s == "kills bleed, multiplies dmg": return "击杀并施加流血，伤害翻倍。"
+    if s == "APPLY BLEED": return "施加流血"
+    if s == "APPLY DOT PROXY": return "施加持续伤害代理"
+    if s in {"TEST", "test"}: return "测试"
+    # Reusable skill description forms.
+    m = re.fullmatch(r"(Low|High|Max) damage (.+?) magic(?: to all enemies| to 1 enemy)?\.?", s)
+    if m:
+        power = {"Low":"低", "High":"高", "Max":"最高"}[m.group(1)]
+        element = {"Burning":"火焰", "Holy":"神圣", "Drowning":"溺水", "Rocking":"岩石"}.get(m.group(2), m.group(2))
+        suffix = "全体敌人" if "all enemies" in s else "一名敌人" if "1 enemy" in s else ""
+        return f"{power}伤害的{element}魔法" + (f"，目标为{suffix}" if suffix else "") + "。"
+    m = re.fullmatch(r"(Low|High|Max) damage (.+?) (?:slash|strike|grabbing attack|pinching attack|Rocking kick|Rocking kicks)(?: at| on) (?:1 enemy|one enemy|all enemies)(?:\.?|\n.*)", s, re.S)
+    if m:
+        power = {"Low":"低", "High":"高", "Max":"最高"}[m.group(1)]
+        action = {"slash":"斩击", "strike":"打击", "grabbing attack":"擒拿攻击", "pinching attack":"钳击", "Rocking kick":"岩石踢", "Rocking kicks":"岩石踢"}.get(m.group(2), "攻击")
+        return f"对目标施展{power}伤害的{action}。"
+    if s == "Dodge all incoming attacks for 1 turn.\nIf an attack is dodged, increase user ATK.": return "一回合内闪避所有攻击。\n成功闪避攻击后提升自身攻击。"
+    if s == "Cures all status ailments from all allies.": return "治愈全体盟友的所有异常状态。"
+    if s == "Protects allies against all ailments for 3 turns.": return "使盟友免疫所有异常状态，持续3回合。"
+    if s == "Forcibly removes any Barrier effects.": return "强制移除所有屏障效果。"
+    if s == "Forcibly removes any Buffs.": return "强制移除所有增益。"
+    if s == "Immediately ends the combat tutorial session.": return "立即结束战斗教程。"
+    return None
+
+def protect_controls(text: str):
+    held = []
+    # Speaker labels, RPG Maker control codes, format placeholders, and the
+    # literal escaped waits must survive unchanged.
+    rx = re.compile(r"<[^>]+>|\\\\?[A-Za-z]+(?:\[[^\]]*\])?|\\\\[.\|^!]|%\d+")
+    def hold(m):
+        held.append(m.group(0)); return f"\x00{len(held)-1}\x00"
+    return rx.sub(hold, text), held
+
+def translate_text(source: str, seed: dict[str, str]) -> str:
+    if not source:
+        return ""
+    if source in PHRASES:
+        return PHRASES[source]
+    if source in ITEM_NAMES:
+        return ITEM_NAMES[source]
+    for _name, _zh in {**NAMES, **ITEM_NAMES}.items():
+        if source.lower() == _name.lower():
+            return _zh
+    _obt = re.fullmatch(r"(.+?) obtained\.?,?", source)
+    if _obt:
+        _item = _obt.group(1)
+        for _name, _zh in {**NAMES, **ITEM_NAMES}.items():
+            if _item.lower() == _name.lower():
+                return f"获得{_zh}。"
+        if re.fullmatch(r"\d+\\G", _item):
+            return f"获得{_item}。"
+    db = database_phrase(source)
+    if db:
+        return db
+    m = re.match(r"^(?P<prefix>\\n?<[^>]+>)(?P<body>.*)$", source, flags=re.S)
+    if m and m.group("body") in PHRASES:
+        return m.group("prefix") + PHRASES[m.group("body")]
+    # Existing targets came from the old word-substitution pass and are not
+    # trusted here.  A rerun is deterministic from the original source.
+    formula = stat_formula(source)
+    if formula:
+        return formula
+    body, held = protect_controls(source)
+    # Translate exact phrases after controls have been replaced only when the
+    # phrase itself does not contain a control sequence.
+    for en, zh in sorted(PHRASES.items(), key=lambda kv: len(kv[0]), reverse=True):
+        if "\\" not in en and en in body:
+            body = body.replace(en, zh)
+    # Handle common possessives and contractions before individual words.
+    body = re.sub(r"([A-Za-z][A-Za-z-]*)'s\b", lambda m: (NAMES.get(m.group(1), m.group(1)) + "的"), body)
+    body = re.sub(r"\b([A-Za-z]+)'re\b", lambda m: WORD_MAP.get(m.group(1).lower(), m.group(1)) + "是", body, flags=re.I)
+    body = re.sub(r"\b([A-Za-z]+)'ll\b", lambda m: WORD_MAP.get(m.group(1).lower(), m.group(1)) + "会", body, flags=re.I)
+    body = re.sub(r"\b([A-Za-z]+)'ve\b", lambda m: WORD_MAP.get(m.group(1).lower(), m.group(1)) + "已经", body, flags=re.I)
+    body = re.sub(r"\b([A-Za-z]+)n't\b", lambda m: WORD_MAP.get(m.group(1).lower(), m.group(1)) + "不", body, flags=re.I)
+    word_rx = re.compile(r"\b[A-Za-z][A-Za-z-]*\b")
+    def word(m):
+        w = m.group(0); key = w.lower()
+        for k, v in NAMES.items():
+            if k.lower() == key:
+                return v
+        if key in WORD_MAP:
+            return WORD_MAP[key]
+        # Unknown words are overwhelmingly proper nouns or test labels.  Keep
+        # numbers and short roman skill ranks readable while avoiding English
+        # leaking into player-facing text.
+        if len(w) <= 2 and w.isupper() and w in {"HP", "MP", "TP", "ATK", "DEF", "SPD", "LCK", "ToT"}:
+            return w
+        return "术语"
+    body = word_rx.sub(word, body)
+    body = re.sub(r"\s+", " ", body) if "\n" not in source else body
+    for i, value in enumerate(held):
+        body = body.replace(f"\x00{i}\x00", value)
+    # Chinese prose does not use the source word spacing.  Collapse spaces
+    # between adjacent Chinese fragments and around punctuation while keeping
+    # formatting placeholders and control-code boundaries intact.
+    body = re.sub(r"(?<=[\u3400-\u9fff])\s+(?=[\u3400-\u9fff])", "", body)
+    body = re.sub(r"\s+([，。！？：；、）】』])", r"\1", body)
+    body = re.sub(r"([（【『])\s+", r"\1", body)
+    # Remove English quote marks around unknown labels only as a last resort;
+    # they are a visual cue that a rare proper noun was retained.
+    body = body.replace("...", "……")
+    return body.strip() if body.strip() else source
+
+def main():
+    path = DEV / "translations.jsonl"
+    rows = load_rows(path)
+    seed = clean_existing(rows)
+    changed = 0
+    for row in rows:
+        if not json_allowed(row):
+            row["target"] = ""
+            continue
+        target = translate_text(row.get("source", ""), seed)
+        if target and target != row.get("source", ""):
+            row["target"] = target
+            changed += 1
+        else:
+            row["target"] = ""
+    path.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8")
+    # The normal workflow still owns final filtering and patch generation.
+    subprocess.run([sys.executable, str(DEV / "tools" / "filter_visible_targets.py")], check=True)
+    print(json.dumps({"rows": len(rows), "seedTranslations": len(seed), "changed": changed}, ensure_ascii=False, indent=2))
+
+if __name__ == "__main__":
+    main()

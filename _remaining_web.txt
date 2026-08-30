@@ -1,0 +1,41 @@
+- Google Chrome 46.0
+- Mozilla Firefox 41.0.2
+.IIV::-webkit-media-controls-play-button,
+1. KMS_SpiralEncount.js ���A�v���W�F�N�g�� js/plugins
+2. RPG �c�N�[�� MV �̃v���O�C���}�l�[�W������
+@font-face {
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+Copyright © 2015 TOMY
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+PAN-DAE-MON-IUM
+Permission is hereby granted, free of charge, to any person obtaining a copy
+RPG �c�N�[�� MV 1.3 �ȍ~
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+THE SOFTWARE.
+The MIT License
+The above copyright notice and this permission notice shall be included in
+Windows 8.1
+[Radius]
+[Show characters]
+[Speed]
+_/   - SpiralEncounterEffect v1.0.0
+_/ Author     : TOMY
+_/ Last update: 2016/12/23
+_/ RPG �c�N�[�� MV �p�v���O�C��
+all copies or substantial portions of the Software.
+copies of the Software, and to permit persons to whom the Software is
+font-family: GameFont;
+furnished to do so, subject to the following conditions:
+in the Software without restriction, including without limitation the rights
+of this software and associated documentation files (the "Software"), to deal
+opacity: 0;
+pointer-events: none;
+src: url("alagard.ttf");
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+video::-webkit-media-controls-start-playback-button {
+width: 5px;
+�uKMS_WaterMapEffect�v��ǉ����Ă��������B
+�� WebGL ���T�|�[�g���Ă��Ȃ����ł͓��삵�܂���B

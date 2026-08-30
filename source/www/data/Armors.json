@@ -1,0 +1,9 @@
+[
+null,
+{"id":1,"atypeId":1,"description":"(M.DEF+2) (ATK-1)","etypeId":2,"traits":[],"iconIndex":84,"name":"Big Hat","note":"","params":[0,0,-1,0,0,2,0,0],"price":180},
+{"id":2,"atypeId":1,"description":"(HP-4) (Evasion+15%)","etypeId":2,"traits":[{"code":22,"dataId":1,"value":0.15}],"iconIndex":84,"name":"Cravat","note":"","params":[-4,0,0,0,0,0,0,0],"price":300},
+{"id":3,"atypeId":1,"description":"(MP+5) (DEF/HP-2)","etypeId":2,"traits":[],"iconIndex":84,"name":"Plated Jacket","note":"","params":[-2,5,0,-2,0,0,0,0],"price":180},
+{"id":4,"atypeId":1,"description":"(DEF/HP+2) (ATK-1)","etypeId":2,"traits":[],"iconIndex":84,"name":"Red Greaves","note":"","params":[2,0,-1,2,0,0,0,0],"price":180},
+{"id":5,"atypeId":1,"description":"(HP/MP+5) (ATK-4) (Passive HP Regen)","etypeId":2,"traits":[{"code":22,"dataId":7,"value":0.05}],"iconIndex":84,"name":"Weighted Dress","note":"","params":[5,5,-4,0,0,0,0,0],"price":300},
+{"id":6,"atypeId":0,"description":"","etypeId":2,"traits":[{"code":22,"dataId":1,"value":0}],"iconIndex":0,"name":"","note":"","params":[0,0,0,0,0,0,0,0],"price":0}
+]

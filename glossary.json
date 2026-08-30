@@ -1,0 +1,3702 @@
+{
+  "version": 1,
+  "language": "zh-CN",
+  "entries": [
+    {
+      "source": "Pandaemonium",
+      "target": "潘德莫尼乌姆",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "PAN-DAE-MON-IUM",
+      "target": "潘德莫尼乌姆",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Haures",
+      "target": "哈乌瑞斯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ipos",
+      "target": "伊波斯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Glasya-Labolas",
+      "target": "格拉西亚-拉博拉斯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "G.Labolas",
+      "target": "格拉西亚-拉博拉斯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Zepar",
+      "target": "泽帕尔",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Orobas",
+      "target": "奥罗巴斯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Demon",
+      "target": "恶魔",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "demons",
+      "target": "恶魔们",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "demon",
+      "target": "恶魔",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Boss",
+      "target": "老大",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Inferno",
+      "target": "地狱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ars Goetia",
+      "target": "所罗门魔典",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Attack",
+      "target": "攻击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Guard",
+      "target": "防御",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Item",
+      "target": "道具",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Skill",
+      "target": "技能",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Weapon",
+      "target": "武器",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Armor",
+      "target": "防具",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shield",
+      "target": "盾牌",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Helmet",
+      "target": "头盔",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Accessory",
+      "target": "饰品",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Battle",
+      "target": "战斗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Victory",
+      "target": "胜利",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Defeat",
+      "target": "败北",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Level",
+      "target": "等级",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "HP",
+      "target": "生命值",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "MP",
+      "target": "魔法值",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "TP",
+      "target": "技术值",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Health",
+      "target": "生命",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Magic",
+      "target": "魔法",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Strength",
+      "target": "力量",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Defense",
+      "target": "防御",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Agility",
+      "target": "敏捷",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Luck",
+      "target": "幸运",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Experience",
+      "target": "经验值",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "EXP",
+      "target": "经验值",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Save",
+      "target": "保存",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Load",
+      "target": "读取",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Options",
+      "target": "选项",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Config",
+      "target": "设置",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cancel",
+      "target": "取消",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Confirm",
+      "target": "确认",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Yes",
+      "target": "是",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "No",
+      "target": "否",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "New Game",
+      "target": "新游戏",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Continue",
+      "target": "继续游戏",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Game End",
+      "target": "结束游戏",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Game Over",
+      "target": "游戏结束",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Title",
+      "target": "标题",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Menu",
+      "target": "菜单",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Status",
+      "target": "状态",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Formation",
+      "target": "队形",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Equip",
+      "target": "装备",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Optimize",
+      "target": "最优装备",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Clear",
+      "target": "卸下全部",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Party",
+      "target": "队伍",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Members",
+      "target": "成员",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Command",
+      "target": "指令",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Commands",
+      "target": "指令",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Buy",
+      "target": "购买",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sell",
+      "target": "出售",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shop",
+      "target": "商店",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gold",
+      "target": "金币",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "G",
+      "target": "G",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Obtained",
+      "target": "获得",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "obtained",
+      "target": "获得",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Nothing happened...",
+      "target": "什么也没有发生……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The enemy got away...",
+      "target": "敌人逃走了……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Demon has left the party...",
+      "target": "恶魔已离开队伍……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Please select",
+      "target": "请选择",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "PLEASE SELECT",
+      "target": "请选择",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "WARNING:",
+      "target": "警告：",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "For the safety of infernal spirits traversing through",
+      "target": "为了穿越地狱的灵魂安全",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "THE INFERNO",
+      "target": "地狱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Boss demands that a pilgrimage to Pandaemonium",
+      "target": "老大要求前往潘德莫尼乌姆的队伍",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "must contain no more than three party members",
+      "target": "最多只能有三名成员",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "to send them on their way",
+      "target": "让其离队",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Demon scowls at you.",
+      "target": "恶魔对你怒目而视。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Demon seems very flustered.",
+      "target": "恶魔显得十分慌乱。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Demon glares at you for a second.",
+      "target": "恶魔瞪了你一眼。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Demon remains unmoving.",
+      "target": "恶魔一动不动。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "The Demon's eyes are racing.",
+      "target": "恶魔的双眼飞快转动。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Later, losers...",
+      "target": "回头见， losers……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "So that's how it is, huh...",
+      "target": "原来是这样啊……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Well I'll show ya!",
+      "target": "那我就让你看看！",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "I'm gettin' to Pandaemonium on my own!",
+      "target": "我会独自抵达潘德莫尼乌姆！",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "I'm the best! I don't need no one else",
+      "target": "我是最强的！我不需要任何人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "with me...!",
+      "target": "陪着我……！",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wh-Huh?",
+      "target": "什、什么？",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Well then...",
+      "target": "既然如此……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Suit yourselves!",
+      "target": "随你们便！",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "As if you lot deserve to be around a",
+      "target": "就凭你们也配待在",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Demon of my stature!",
+      "target": "像我这样的大恶魔身边！",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Don't expect me to help if we're to cross",
+      "target": "下次再见面时别指望我会帮忙，",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "paths again.",
+      "target": "如果我们还会再次相遇的话。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "I'll kill you if I see you again,",
+      "target": "下次再见到你，我就杀了你，",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "y'know?",
+      "target": "明白吗？",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "I'm sure Boss won't mind a few",
+      "target": "我想老大不会介意几个",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "no-shows...",
+      "target": "缺席者……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Then it shall be so.",
+      "target": "那就这样吧。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Huh? Are we racing to Pandaemonium now?!",
+      "target": "咦？现在要比赛去潘德莫尼乌姆吗？！",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "O-oh... you wanted me to go",
+      "target": "哦……你是想让我",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "...on my own?",
+      "target": "……独自前往？",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Did I-",
+      "target": "我做错了什么——",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "But",
+      "target": "可是",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "What did I do wrong...?",
+      "target": "我做错了什么……？",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Type O Blood obtained.",
+      "target": "获得O型血。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Unholy Drop obtained.",
+      "target": "获得不洁之滴。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Human Flesh obtained.",
+      "target": "获得人肉。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stygian Water obtained.",
+      "target": "获得冥河之水。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Torn Grimoire obtained.",
+      "target": "获得残破魔导书。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rusty Dagger obtained.",
+      "target": "获得生锈的匕首。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rusty Bagh Nakh obtained.",
+      "target": "获得生锈的虎爪。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rusty Sickle obtained.",
+      "target": "获得生锈的镰刀。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lucky Horseshoe obtained.",
+      "target": "获得幸运马蹄铁。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Big Hat obtained.",
+      "target": "获得大帽子。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cravat obtained.",
+      "target": "获得领巾。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Plated Jacket obtained.",
+      "target": "获得板甲外套。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Red Greaves obtained.",
+      "target": "获得红色护胫。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Weighted Dress obtained.",
+      "target": "获得加重裙。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cursed Poems A obtained.",
+      "target": "获得诅咒诗篇A。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cursed Poems B obtained.",
+      "target": "获得诅咒诗篇B。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Invocative Poems A obtained.",
+      "target": "获得祈唤诗篇A。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Invocative Poems B obtained.",
+      "target": "获得祈唤诗篇B。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sickening Poems A obtained.",
+      "target": "获得恶心诗篇A。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sickening Poems B obtained.",
+      "target": "获得恶心诗篇B。",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CHACHA TRANSFER SYSTEM",
+      "target": "CHACHA转移系统",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "HOW TO ADD A NEW CHARACTER",
+      "target": "如何添加新角色",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "THINGS TO REMEMBER FOR NEW CIRCLES",
+      "target": "新圆环注意事项",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CIRCLE EVENT PLACEMENTS",
+      "target": "圆环事件位置",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "WEAPONS AND GEAR",
+      "target": "武器与装备",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "SPRITES",
+      "target": "精灵图",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "TILES",
+      "target": "图块",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hit Physical",
+      "target": "物理命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hit Effect",
+      "target": "命中效果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hit Fire",
+      "target": "火焰命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hit Ice",
+      "target": "冰霜命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hit Thunder",
+      "target": "雷电命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Slash Physical",
+      "target": "物理斩击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Slash Effect",
+      "target": "斩击效果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Slash Fire",
+      "target": "火焰斩击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Slash Ice",
+      "target": "冰霜斩击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Slash Thunder",
+      "target": "雷电斩击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pierce Physical",
+      "target": "物理突刺",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pierce Effect",
+      "target": "突刺效果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pierce Fire",
+      "target": "火焰突刺",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pierce Ice",
+      "target": "冰霜突刺",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pierce Thunder",
+      "target": "雷电突刺",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Claw Physical",
+      "target": "物理爪击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Claw Effect",
+      "target": "爪击效果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Claw Fire",
+      "target": "火焰爪击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Claw Ice",
+      "target": "冰霜爪击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Claw Thunder",
+      "target": "雷电爪击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sonic Wave",
+      "target": "音波",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "General Special",
+      "target": "通用特殊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Arrow Special",
+      "target": "箭矢特殊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Breath",
+      "target": "吐息",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pollen",
+      "target": "花粉",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Darkness",
+      "target": "黑暗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Poison Swamp",
+      "target": "毒沼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fire",
+      "target": "火焰",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ice",
+      "target": "冰",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Thunder",
+      "target": "雷",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wind",
+      "target": "风",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Water",
+      "target": "水域",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Physical",
+      "target": "物理",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Special",
+      "target": "特殊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Effect",
+      "target": "效果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Attack command",
+      "target": "攻击指令",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Guard command",
+      "target": "防御指令",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tutorial Fight",
+      "target": "教程战斗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "RANDOM ENCOUNTERS",
+      "target": "随机遇敌",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Waterfall",
+      "target": "瀑布",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ground",
+      "target": "地面",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dark Ground",
+      "target": "深色地面",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hole",
+      "target": "洞穴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wall",
+      "target": "墙壁",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ledge",
+      "target": "边缘",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stairs",
+      "target": "楼梯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Transparent",
+      "target": "透明",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Translucent",
+      "target": "半透明",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wire Mesh",
+      "target": "铁丝网",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lava",
+      "target": "熔岩",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Canal",
+      "target": "水渠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Castle",
+      "target": "城堡",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fort",
+      "target": "要塞",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Temple",
+      "target": "神殿",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Factory",
+      "target": "工厂",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Crystal",
+      "target": "水晶",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Frozen",
+      "target": "冰冻",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Marble",
+      "target": "大理石",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Brick",
+      "target": "砖块",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stone",
+      "target": "石头",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dirt Cave",
+      "target": "土洞窟",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rock Cave",
+      "target": "岩洞窟",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lava Cave",
+      "target": "熔岩洞窟",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ice Cave",
+      "target": "冰洞窟",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Grass Maze",
+      "target": "草迷宫",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Demonic World",
+      "target": "魔界",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "In Body",
+      "target": "体内",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Poison",
+      "target": "中毒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hit",
+      "target": "命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Slash",
+      "target": "斩击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pierce",
+      "target": "突刺",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Claw",
+      "target": "爪击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Heal",
+      "target": "治疗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "One",
+      "target": "单体",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "All",
+      "target": "全体",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Deep",
+      "target": "深",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Floor",
+      "target": "地面",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cracks",
+      "target": "裂缝",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Soil",
+      "target": "泥土",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rug",
+      "target": "地毯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Moss",
+      "target": "苔藓",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "on",
+      "target": "在",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "my",
+      "target": "我的",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "own",
+      "target": "独自",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "send",
+      "target": "送走",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "their",
+      "target": "他们的",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "way",
+      "target": "离开",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "please",
+      "target": "请",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "FOR",
+      "target": "为了",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "the",
+      "target": "这",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "THE",
+      "target": "这",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "NEW",
+      "target": "新",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "New",
+      "target": "新",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Character",
+      "target": "角色",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shoot",
+      "target": "射击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Laser",
+      "target": "激光",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ball",
+      "target": "球",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Light",
+      "target": "光",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tension",
+      "target": "紧张值",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Killer",
+      "target": "杀手",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cure",
+      "target": "治愈",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Earth",
+      "target": "大地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Neutral",
+      "target": "无属性",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dark",
+      "target": "暗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Holy",
+      "target": "神圣",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Life",
+      "target": "生命",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Death",
+      "target": "死亡",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Absorb",
+      "target": "吸收",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sleep",
+      "target": "睡眠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Blind",
+      "target": "失明",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Silence",
+      "target": "沉默",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stun",
+      "target": "眩晕",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Critical",
+      "target": "暴击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Kushiel",
+      "target": "库席耶尔",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Chacha",
+      "target": "恰恰",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mors",
+      "target": "莫尔斯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Limbo",
+      "target": "边狱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Humans",
+      "target": "人类",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Human",
+      "target": "人类",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sinners",
+      "target": "罪人们",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sinner",
+      "target": "罪人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "wrong",
+      "target": "错了",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "now",
+      "target": "现在",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "something",
+      "target": "什么事",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "enough",
+      "target": "足够",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "here",
+      "target": "这里",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "there",
+      "target": "那里",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "talk",
+      "target": "说话",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Need",
+      "target": "需要",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "need",
+      "target": "需要",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "see",
+      "target": "看见",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "careful",
+      "target": "小心",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "brother",
+      "target": "哥哥",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "winning",
+      "target": "获胜",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "called",
+      "target": "叫作",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "okay",
+      "target": "好吧",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Easy",
+      "target": "简单",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mine",
+      "target": "我的",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "about",
+      "target": "关于",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Exit",
+      "target": "退出",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Enter",
+      "target": "进入",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Proceed",
+      "target": "继续",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Descend",
+      "target": "下降",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Travel",
+      "target": "旅行",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "SKILLS",
+      "target": "技能",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "strike",
+      "target": "攻击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "steady",
+      "target": "稳步",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "march",
+      "target": "前进",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "mouth",
+      "target": "嘴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Chat",
+      "target": "聊天",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Nevermind",
+      "target": "没事",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Again",
+      "target": "再来",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Begin",
+      "target": "开始",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "anew",
+      "target": "重新",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "address",
+      "target": "称呼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "properly",
+      "target": "正确地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "solemnly",
+      "target": "庄严地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "swear",
+      "target": "发誓",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Poems",
+      "target": "诗篇",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Incense",
+      "target": "香",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bones",
+      "target": "骨头",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Everyone",
+      "target": "每个人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "does",
+      "target": "会",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "lightheaded",
+      "target": "头晕",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "haha",
+      "target": "哈哈",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "sleepy",
+      "target": "困",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sneering",
+      "target": "冷笑",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "corpses",
+      "target": "尸体",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "cute",
+      "target": "可爱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "freaks",
+      "target": "怪人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "annoying",
+      "target": "烦人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "care",
+      "target": "在乎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "ugly",
+      "target": "丑",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "advanced",
+      "target": "高级",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "tough",
+      "target": "艰难",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "fault",
+      "target": "过错",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "confusing",
+      "target": "令人困惑",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "hate",
+      "target": "讨厌",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "promise",
+      "target": "保证",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "know",
+      "target": "知道",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "weird",
+      "target": "奇怪",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "sometimes",
+      "target": "有时",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "hostile",
+      "target": "敌对",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "another",
+      "target": "另一个",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Surely",
+      "target": "一定",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "wandering",
+      "target": "游荡",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Destiny",
+      "target": "命运",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "fast",
+      "target": "快",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "slow",
+      "target": "慢",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cheating",
+      "target": "作弊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Training",
+      "target": "训练",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Speed",
+      "target": "速度",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stamina",
+      "target": "耐力",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Power",
+      "target": "力量",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Guts",
+      "target": "勇气",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wit",
+      "target": "智慧",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "faster",
+      "target": "更快",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "together",
+      "target": "一起",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "destination",
+      "target": "目的地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ferrier",
+      "target": "摆渡人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Charon",
+      "target": "卡戎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "stuff",
+      "target": "事情",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "passed",
+      "target": "去世",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "trouble",
+      "target": "麻烦",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "thing",
+      "target": "事情",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "shut",
+      "target": "关闭",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "tight",
+      "target": "紧闭",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "traverse",
+      "target": "穿越",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "safely",
+      "target": "安全地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "mind",
+      "target": "介意",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "ago",
+      "target": "以前",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "recently",
+      "target": "最近",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "business",
+      "target": "事情",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "efficiently",
+      "target": "高效地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Heart",
+      "target": "内心",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ashmadai",
+      "target": "阿斯莫代",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lust",
+      "target": "淫欲",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Retreat",
+      "target": "撤退",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Extras",
+      "target": "额外内容",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "BGM",
+      "target": "背景音乐",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "WAILING",
+      "target": "哀嚎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "FLAMEBOUND",
+      "target": "火焰束缚",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "DAEMOCIDIUM",
+      "target": "恶魔屠宰场",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "HELLBOUND",
+      "target": "地狱之路",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wrathful",
+      "target": "愤怒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gentle",
+      "target": "温和",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Weak",
+      "target": "弱小",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ignore",
+      "target": "忽略",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gear",
+      "target": "装备",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "customers",
+      "target": "客人",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "each",
+      "target": "彼此",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "other",
+      "target": "对方",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Skip",
+      "target": "跳过",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "intro",
+      "target": "开场",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Intro",
+      "target": "开场",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "version",
+      "target": "版本",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "update",
+      "target": "更新",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "released",
+      "target": "发布",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "available",
+      "target": "可用",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bye",
+      "target": "再见",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "poetic",
+      "target": "诗意",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "nearby",
+      "target": "附近",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "construct",
+      "target": "建造",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "temples",
+      "target": "神殿",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "exist",
+      "target": "存在",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "ended",
+      "target": "结束",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "bitter",
+      "target": "苦涩",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "tastes",
+      "target": "味道",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "takes",
+      "target": "带走",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Evasion",
+      "target": "闪避",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Damage",
+      "target": "伤害",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Powerup",
+      "target": "强化",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Powerdown",
+      "target": "弱化",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Blow",
+      "target": "打击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sword",
+      "target": "剑击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Monster",
+      "target": "怪物",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Crossbow",
+      "target": "弩箭",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sound",
+      "target": "音效",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fog",
+      "target": "雾",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sand",
+      "target": "沙",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Song",
+      "target": "歌曲",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shout",
+      "target": "喊叫",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sweep",
+      "target": "横扫",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bodyslam",
+      "target": "身体冲撞",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Flash",
+      "target": "闪光",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Saint",
+      "target": "圣光",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Starlight",
+      "target": "星光",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Recovery",
+      "target": "恢复",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Revive",
+      "target": "复活",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Up",
+      "target": "上升",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Down",
+      "target": "下降",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stare",
+      "target": "凝视",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bind",
+      "target": "束缚",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Twine",
+      "target": "缠绕",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Confusion",
+      "target": "混乱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Raise",
+      "target": "提升",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Paralyze",
+      "target": "麻痹",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Explosion",
+      "target": "爆炸",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Liquid",
+      "target": "液体",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dive",
+      "target": "潜水",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Break",
+      "target": "破坏",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Reflection",
+      "target": "反射",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Teleport",
+      "target": "传送",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gun",
+      "target": "枪击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Phone",
+      "target": "电话",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Miss",
+      "target": "未命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "crush",
+      "target": "碾碎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "finger",
+      "target": "手指",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "squeeze",
+      "target": "挤压",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pinch",
+      "target": "捏",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "star",
+      "target": "星星",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "scythe",
+      "target": "镰刀",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "slice",
+      "target": "切割",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "anger",
+      "target": "愤怒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Healing",
+      "target": "治疗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sleeping",
+      "target": "睡眠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Baptism",
+      "target": "洗礼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Anchor",
+      "target": "锚",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Blood",
+      "target": "血液",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spirit",
+      "target": "灵魂",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "noise",
+      "target": "噪音",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Malice",
+      "target": "恶意",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Retribution",
+      "target": "复仇",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Longing",
+      "target": "渴望",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Drips",
+      "target": "滴落",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Purgatorio",
+      "target": "炼狱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Defend",
+      "target": "防御",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Burning",
+      "target": "燃烧",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spark",
+      "target": "火花",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Blooming",
+      "target": "绽放",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dance",
+      "target": "舞蹈",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Talon",
+      "target": "利爪",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Invoke",
+      "target": "召唤",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Curse",
+      "target": "诅咒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Heat",
+      "target": "热力",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Foresight",
+      "target": "预见",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Barrier",
+      "target": "屏障",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Safeguard",
+      "target": "守护",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Null",
+      "target": "无效",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Purify",
+      "target": "净化",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sickle",
+      "target": "镰刀",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pincer",
+      "target": "钳击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dredge",
+      "target": "挖掘",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fallen",
+      "target": "堕落",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Guarding",
+      "target": "防御中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Immortal",
+      "target": "不死",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Poisoned",
+      "target": "中毒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Silenced",
+      "target": "沉默",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Enraged",
+      "target": "狂怒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dizzy",
+      "target": "眩晕",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Asleep",
+      "target": "睡着",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Yo",
+      "target": "哟",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Huh",
+      "target": "咦",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ah",
+      "target": "啊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Oh",
+      "target": "哦",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hey",
+      "target": "嘿",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hmm",
+      "target": "嗯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hmmm",
+      "target": "嗯……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hmph",
+      "target": "哼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tch",
+      "target": "啧",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Uh",
+      "target": "呃",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Uhhh",
+      "target": "呃……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wha",
+      "target": "哇",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wah",
+      "target": "哇",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Urk",
+      "target": "呃",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Whatever",
+      "target": "随便",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Farewell",
+      "target": "再见",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Alright",
+      "target": "好吧",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fufufu",
+      "target": "呵呵呵",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mmhm",
+      "target": "嗯哼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hmmrh",
+      "target": "嗯哼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Swamp",
+      "target": "沼泽",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Grass",
+      "target": "草地",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lotus",
+      "target": "莲花",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Flowers",
+      "target": "花朵",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fencepost",
+      "target": "栅栏柱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cobblestones",
+      "target": "鹅卵石路",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Decorative",
+      "target": "装饰",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tile",
+      "target": "地砖",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Metal",
+      "target": "金属",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ladder",
+      "target": "梯子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rope",
+      "target": "绳索",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Beanstalk",
+      "target": "豆茎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Log",
+      "target": "原木",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bridge",
+      "target": "桥",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wood",
+      "target": "木头",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spar",
+      "target": "桥墩",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Small",
+      "target": "小型",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Crystals",
+      "target": "水晶",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spherical",
+      "target": "球形",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lump",
+      "target": "突起",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Large",
+      "target": "大型",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Growth",
+      "target": "生长物",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pillar",
+      "target": "柱子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Orb",
+      "target": "宝珠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Broken",
+      "target": "破损",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rubble",
+      "target": "瓦砾",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Scrap",
+      "target": "碎木",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Barricade",
+      "target": "路障",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Entrance",
+      "target": "入口",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Window",
+      "target": "窗户",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spider",
+      "target": "蜘蛛",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Web",
+      "target": "蛛网",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fissures",
+      "target": "裂隙",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Monument",
+      "target": "纪念碑",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lit",
+      "target": "点亮",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Angel",
+      "target": "天使",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Statue",
+      "target": "雕像",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dais",
+      "target": "台座",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dragon",
+      "target": "龙",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Column",
+      "target": "柱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gravel",
+      "target": "碎石",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mound",
+      "target": "土堆",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dirt",
+      "target": "泥土",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Crate",
+      "target": "木箱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Silver",
+      "target": "白银",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bricks",
+      "target": "砖块",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dust",
+      "target": "灰尘",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pot",
+      "target": "罐子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shovel",
+      "target": "铲子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pickax",
+      "target": "镐",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Barrel",
+      "target": "木桶",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Table",
+      "target": "桌子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Jail",
+      "target": "牢房",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bars",
+      "target": "栅栏",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stool",
+      "target": "凳子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gate",
+      "target": "大门",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hexagram",
+      "target": "六芒星",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Coffin",
+      "target": "棺材",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rails",
+      "target": "铁轨",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Railroad",
+      "target": "铁路",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ties",
+      "target": "枕木",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hieroglyph",
+      "target": "象形文字",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bed",
+      "target": "床",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mural",
+      "target": "壁画",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cheap",
+      "target": "简易",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Straw",
+      "target": "稻草",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mat",
+      "target": "垫子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cabinet",
+      "target": "柜子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Closet",
+      "target": "衣柜",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dish",
+      "target": "餐具",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Wine",
+      "target": "葡萄酒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rack",
+      "target": "架子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bottle",
+      "target": "瓶子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shelf",
+      "target": "架子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tipped",
+      "target": "倾倒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sundries",
+      "target": "杂货",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Medicine",
+      "target": "药品",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bookshelf",
+      "target": "书架",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Curtains",
+      "target": "窗帘",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Clock",
+      "target": "时钟",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mirror",
+      "target": "镜子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stacked",
+      "target": "堆叠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Junk",
+      "target": "杂物",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bathing",
+      "target": "沐浴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spot",
+      "target": "地点",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bread",
+      "target": "面包",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Piano",
+      "target": "钢琴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mini",
+      "target": "迷你",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Flower",
+      "target": "花",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Oven",
+      "target": "烤炉",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sink",
+      "target": "水槽",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Kitchen",
+      "target": "厨房",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Counter",
+      "target": "台面",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dresser",
+      "target": "梳妆台",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pipe",
+      "target": "管风琴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Organ",
+      "target": "风琴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fireplace",
+      "target": "壁炉",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Iron",
+      "target": "铁",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Posted",
+      "target": "张贴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Notice",
+      "target": "告示",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Map",
+      "target": "地图",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Painting",
+      "target": "画作",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Portrait",
+      "target": "肖像",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Swords",
+      "target": "剑",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Basin",
+      "target": "盆",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tub",
+      "target": "浴缸",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Sacks",
+      "target": "麻袋",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cup",
+      "target": "杯子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Teapot",
+      "target": "茶壶",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Glass",
+      "target": "玻璃杯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pint",
+      "target": "品脱杯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mug",
+      "target": "马克杯",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ale",
+      "target": "麦酒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Meal",
+      "target": "餐点",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fish",
+      "target": "鱼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Meat",
+      "target": "肉",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Side",
+      "target": "配菜",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dishes",
+      "target": "菜肴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fruit",
+      "target": "水果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bowl",
+      "target": "碗",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Roast",
+      "target": "烤肉",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pig",
+      "target": "猪",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cake",
+      "target": "蛋糕",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pizza",
+      "target": "披萨",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dinner",
+      "target": "晚餐",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pie",
+      "target": "派",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fried",
+      "target": "炒",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rice",
+      "target": "米饭",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mystery",
+      "target": "神秘",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cooking",
+      "target": "烹饪",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Disaster",
+      "target": "灾难",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Breakfast",
+      "target": "早餐",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Plates",
+      "target": "盘子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Book",
+      "target": "书",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Notes",
+      "target": "笔记",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pen",
+      "target": "笔",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Envelope",
+      "target": "信封",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Letter",
+      "target": "信件",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Scrolls",
+      "target": "卷轴",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Vase",
+      "target": "花瓶",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Potted",
+      "target": "盆栽",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Plant",
+      "target": "植物",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Planter",
+      "target": "花盆",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Case",
+      "target": "盒子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cutting",
+      "target": "切菜",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Board",
+      "target": "砧板",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Potions",
+      "target": "药水",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Basket",
+      "target": "篮子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lab",
+      "target": "实验室",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Equipment",
+      "target": "设备",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stuffed",
+      "target": "填充",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Doll",
+      "target": "玩偶",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gifts",
+      "target": "礼物",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Pendant",
+      "target": "吊坠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Necklace",
+      "target": "项链",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Jewelry",
+      "target": "珠宝",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Axes",
+      "target": "斧头",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Spears",
+      "target": "长矛",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Whip",
+      "target": "鞭子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Knives",
+      "target": "小刀",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Utensils",
+      "target": "器具",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Men's",
+      "target": "男士",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Women's",
+      "target": "女士",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Clothing",
+      "target": "服装",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hanging",
+      "target": "悬挂",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hammers",
+      "target": "锤子",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bows",
+      "target": "弓",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Arrows",
+      "target": "箭",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Blacksmith",
+      "target": "铁匠",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stand",
+      "target": "支架",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dress",
+      "target": "裙装",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Cape",
+      "target": "斗篷",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Robe",
+      "target": "长袍",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Church",
+      "target": "教堂",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Symbol",
+      "target": "标志",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Meadow",
+      "target": "草甸",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Tree",
+      "target": "树",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Crash",
+      "target": "撞击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "BUFF",
+      "target": "增益",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "DEBUFF",
+      "target": "减益",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "RISER",
+      "target": "提升",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "summoning",
+      "target": "召唤",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "number22",
+      "target": "编号22",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "INVOCATION",
+      "target": "祈唤",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CANTO",
+      "target": "咏唱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "WARNING",
+      "target": "警告",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "TRUMPET",
+      "target": "号角",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "KICK",
+      "target": "踢击",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "BUBBLE",
+      "target": "泡沫",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "HITred",
+      "target": "红色命中",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CRUNCH",
+      "target": "咬碎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "blushycrushy",
+      "target": "羞红碾碎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "stella mortua",
+      "target": "死星",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "TWINKLE",
+      "target": "闪烁",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CLANG",
+      "target": "铿锵",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "taunting",
+      "target": "挑衅",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "BLIP",
+      "target": "哔声",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "flammanew",
+      "target": "新火焰",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CRACKLE",
+      "target": "爆裂声",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Carrot Muncher",
+      "target": "嚼胡萝卜者",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Captivated",
+      "target": "着迷",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Styx grab",
+      "target": "冥河擒拿",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Styx hands",
+      "target": "冥河之手",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "CONFER",
+      "target": "授予",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "NULLSPIRIT",
+      "target": "虚无灵魂",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Priest",
+      "target": "祭司",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "ESCAPE",
+      "target": "逃脱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "PLAYER",
+      "target": "玩家",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "eraser",
+      "target": "橡皮擦",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "respite",
+      "target": "喘息",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Chest",
+      "target": "宝箱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Fell",
+      "target": "堕落",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lynx",
+      "target": "猞猁",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Gecko",
+      "target": "壁虎",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Red String",
+      "target": "红线",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Stimulant",
+      "target": "兴奋剂",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Unholy Essence",
+      "target": "不洁精华",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Unholy Manifest",
+      "target": "不洁显现",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "RAPTURE",
+      "target": "狂喜",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "grimoire",
+      "target": "魔导书",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "MONEY",
+      "target": "金钱",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Target",
+      "target": "目标",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "REFLECT",
+      "target": "反射",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rattled",
+      "target": "动摇",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Bloody Wounds",
+      "target": "血腥伤口",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Perceptive",
+      "target": "敏锐",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Shocked",
+      "target": "震惊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Burned",
+      "target": "灼伤",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Affinity",
+      "target": "亲和",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "LOSS",
+      "target": "失败",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "RESULTS",
+      "target": "结果",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Overworld",
+      "target": "大地图",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Outside",
+      "target": "室外",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Dungeon",
+      "target": "地牢",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "evilball",
+      "target": "邪恶之球",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "ASH",
+      "target": "灰烬",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "QQ",
+      "target": "QQ",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Torn Grimoire",
+      "target": "残破魔导书",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rusty Dagger",
+      "target": "生锈匕首",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Rusty Bagh Nakh",
+      "target": "生锈虎爪",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Lucky Horseshoe",
+      "target": "幸运马蹄铁",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mmmh",
+      "target": "嗯……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mmmmh",
+      "target": "嗯……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Mmmmmrh",
+      "target": "唔嗯……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Haaah",
+      "target": "哈啊……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Haaaah",
+      "target": "哈啊……",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Ooooh",
+      "target": "哦哦哦",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Aaaaah",
+      "target": "啊啊啊",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Hehe",
+      "target": "呵呵",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Keh",
+      "target": "哼",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Yup",
+      "target": "没错",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Whoah",
+      "target": "哇",
+      "notes": "本地术语表"
+    },
+    {
+      "source": "Achoo",
+      "target": "阿嚏",
+      "notes": "本地术语表"
+    }
+  ],
+  "notes": "登记固定译法；翻译人员只追加 entries，不修改原始提取表的 source。"
+}
